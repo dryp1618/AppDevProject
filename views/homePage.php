@@ -14,9 +14,13 @@
 </head>
 <body>
     <template id="room-template">
-        <div class="room-card">
-            <h3 class="room-name"></h3>
-            <span class="room-status"></span>
+        <div class="room-wrapper">
+            <input type="radio" name="room-selection" class="room-input" id="">
+            
+            <label class="room-card">
+                <h3 class="room-name"></h3>
+                <span class="room-status"></span>
+            </label>
         </div>
     </template>
     <main class="main-border-box">

@@ -34,21 +34,33 @@ const colorMap = {
   closed: "#878787",
 };
 
+const selectedRoomId = document.querySelector(
+  'input[name="room-selection"]:checked',
+)?.value;
+
+if (selectedRoomId) {
+  console.log("User selected room:", selectedRoomId);
+} else {
+  console.log("No room selected yet.");
+}
+
 function createRoomCard(room) {
   const clone = template.content.cloneNode(true);
-
-  // We MUST target the div with the class, not the fragment itself
+  const wrapper = clone.querySelector(".room-wrapper");
   const card = clone.querySelector(".room-card");
+  const input = clone.querySelector(".room-input");
+
+  const uniqueId = `room-${room.id}`;
+  input.id = uniqueId;
+  card.setAttribute("for", uniqueId);
+  input.value = room.id;
 
   clone.querySelector(".room-name").textContent = room.name;
   clone.querySelector(".room-status").textContent = room.status;
 
-  // 1. Correct syntax: No "var()" wrapper here
-  // 2. Correct name: Must match the CSS exactly
   const color = colorMap[room.status] || "#878787";
   card.style.setProperty("--status-color", color);
 
-  card.dataset.id = room.id;
   return clone;
 }
 

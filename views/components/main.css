@@ -9,8 +9,9 @@
 
   --main-color: #b73b3b;
   --main-color-accent: #942527;
+  --cell-color: #fffdf6;
 
-  --selected-collor: var(--black);
+  --selected-color: var(--black);
 
   --nav-color: var(--main-color);
   --nav-accent: var(--main-color-accent);
@@ -30,8 +31,6 @@
   --link-color: #1277a2;
 
   --line-detail-color: #5c5c5c;
-
-  --main-cell-color: #fffdf6;
 
   --textbox-outline-color: #5c5c5c;
   --textbox-fill-color: #d9d9d9;

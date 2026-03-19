@@ -49,10 +49,28 @@ main {
 #room-grid-container {
   padding: 1em;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 0.75rem;
   justify-content: center;
   overflow: auto;
+}
+
+.room-wrapper {
+  position: relative;
+}
+
+.room-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.room-input:checked + .room-card {
+  border-color: var(--selected-color);
+  background-color: #ffffff;
+  transform: scale(1.02);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.65);
 }
 
 .room-card {
@@ -61,15 +79,16 @@ main {
   opacity: 0.8;
 
   position: relative;
-  background-color: var(--main-cell-color, #aaa);
+  background-color: var(--cell-color, #aaa);
   padding: 1rem;
   border-radius: 0.25rem;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 3.5rem;
+  cursor: pointer;
 
   transition: transform 0.2s ease;
 }
@@ -81,7 +100,7 @@ main {
   width: 1rem;
   height: 100%;
 
-  background-color: var(--status-color);
+  background-color: var(--status-color, #878787);
 
   transition: background-color 0.3s ease;
 }
