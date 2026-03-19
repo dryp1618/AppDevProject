@@ -6,19 +6,25 @@
     <title>Room Tracker | Homepage</title>
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="home.css">
-    <script defer type="text/javascript" src="../scripts/script.js"></script>
-    <nav>
+    <nav>   
         <button onclick="toggleSidebar()" class="mobile-only">Button</button>
         <?php include_once("components/navbarPublic.html");?>
     </nav>
+    <script defer type="text/javascript" src="../scripts/script.js"></script>
 </head>
 <body>
+    <template id="room-template">
+        <div class="room-card">
+            <h3 class="room-name"></h3>
+            <span class="room-status"></span>
+        </div>
+    </template>
     <main class="main-border-box">
-        <h1>Hello World</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quia quibusdam ducimus quis suscipit, beatae maxime vitae molestias et doloribus harum ex laboriosam nisi quas. Porro voluptates doloremque quo expedita.</p>
+        <div id="room-grid-container"></div>
     </main>
     <aside class="main-border-box" id="sidebar">
         <h1>NO ROOM SELECTED</h1>
     </aside>
+
 </body>
 </html>
