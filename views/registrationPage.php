@@ -4,7 +4,9 @@
     <title>Room Tracker | Login Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include_once("components/navbarLogin.html");?>
+    <nav>
+        <?php include_once("components/navbarLogin.html");?>
+    </nav>
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="registration.css">
     <script defer src="../scripts/service.js"></script>

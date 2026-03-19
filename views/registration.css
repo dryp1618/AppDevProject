@@ -181,7 +181,7 @@ input:valid + .label-line {
   font-size: 1em;
   height: 1.8rem;
   line-height: 1.8rem;
-  padding-inline: 12px;
+  padding-inline: 1px;
   transform: translate(-0.9rem, -1ex) scale(0.7);
   z-index: 10;
 }
