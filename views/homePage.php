@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="home.css">
     <nav>   
         <button onclick="toggleSidebar()" class="mobile-only">Button</button>
-        <?php include_once("components/navbarPublic.html");?>
+        <?php include_once("components/navbarAdmin.html");?>
     </nav>
     <script defer type="text/javascript" src="../scripts/script.js"></script>
 </head>
@@ -16,18 +16,19 @@
     <template id="room-template">
         <div class="room-wrapper">
             <input type="radio" name="room-selection" class="room-input" id="">
-            
             <label class="room-card">
                 <h3 class="room-name"></h3>
                 <span class="room-status"></span>
             </label>
         </div>
     </template>
+
+
     <main class="main-border-box">
         <div id="room-grid-container"></div>
     </main>
-    <aside class="main-border-box" id="sidebar">
-        <h1>NO ROOM SELECTED</h1>
+    <aside class="main-border-box asidebar-content" id="sidebar">
+        <div id="sidebar-view"></div>
     </aside>
 
 </body>

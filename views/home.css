@@ -6,7 +6,7 @@
 body {
   min-height: 100vh;
   display: grid;
-  grid-template: auto 1fr/ 2fr 1fr;
+  grid-template: 1fr/ 2fr 1fr;
   grid-template-areas:
     "navbar navbar"
     "main sidebar";
@@ -104,6 +104,7 @@ main {
 
   transition: background-color 0.3s ease;
 }
+
 .room-status {
   margin: 0;
   font-size: 0.85rem;
@@ -115,6 +116,83 @@ main {
   font-size: 1.1rem;
   color: var(--text-main);
   font-weight: bold;
+}
+
+.room-list {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 1em;
+  align-items: center;
+  min-width: 20em;
+  margin: auto;
+  margin-top: 1em;
+}
+
+/* Each room item */
+.room-item {
+  background: #eaeaea;
+  padding: 1em;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header stays similar */
+.room-header {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: var(--status-occupied-color);
+  border-radius: 50%;
+  margin-left: 0.2em;
+}
+
+.room-status {
+  margin-bottom: 15px;
+}
+
+.room-list .room-status {
+  text-decoration: underline;
+}
+
+/* Slot styles (same as before) */
+.slot {
+  text-align: center;
+  width: 20em;
+  background: white;
+  margin: 1em;
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.slot-header {
+  padding: 0.2em;
+  font-weight: bold;
+  color: white;
+}
+.slot-time {
+  padding: 2em;
+}
+
+.occupied {
+  background: var(--status-occupied-color);
+}
+.vacant {
+  background: var(--status-available-color);
+}
+.reserved {
+  background: var(--status-reserved-color);
+}
+.offline {
+  background: var(--status-offline-color);
 }
 
 @media (max-width: 800px) {

@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template: auto 1fr 2fr / 1fr 2fr;
+  grid-template-areas:
+    "navbar navbar"
+    "sidebar main1"
+    "sidebar main2";
+
+  gap: 2em;
+}
+
+nav {
+  grid-area: navbar;
+
+  z-index: 10;
+  position: sticky;
+  top: 0;
+}
+
+aside {
+  grid-area: sidebar;
+
+  height: 80vh;
+  position: sticky;
+  align-self: start;
+
+  margin: 1em;
+  margin-inline: 1.5em;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+
+  a {
+    color: var(--text-color-1);
+    font-size: 2em;
+    text-decoration: none;
+
+    border-bottom: solid thin var(--line-detail-color);
+    transition: transform 1s ease-in-out;
+
+    &:hover {
+      background-color: line-gradient(to left, gray, rgba(0, 0, 0, 0));
+      transform: scale(1.2);
+    }
+  }
+}
+
+main {
+  margin: 0.5em;
+  margin-inline-end: 2em;
+}
+.main-top {
+  grid-area: main1;
+}
+.main-bottom {
+  grid-area: main2;
+}

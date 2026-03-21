@@ -4,8 +4,6 @@ function toggleSidebar() {
   sidebar.classList.toggle("show");
 }
 
-const status = ["occupied", "vacant", "reserved", "closed"];
-
 const rooms = [
   { id: 1, name: 2001, status: "occupied" },
   { id: 2, name: 2002, status: "vacant" },
@@ -82,3 +80,53 @@ function updateRoomStatus(id, newStatus) {
     setTimeout(() => (card.style.transform = "scale(1)"), 200);
   }
 }
+
+const roomsSched = [
+  {
+    id: 1,
+    name: 2005,
+    status: "occupied",
+    slots: [
+      { type: "occupied", label: "2ITA", time: "10:00 - 13:00" },
+      { type: "vacant", label: "VACANT", time: "13:00 - 14:00" },
+      { type: "reserved", label: "RESERVED", time: "14:00 - 17:00" },
+    ],
+  },
+];
+
+const app = document.getElementById("sidebar-view");
+
+function createSideRoomCard(room) {
+  const card = document.createElement("div");
+  card.className = "room-list";
+
+  card.innerHTML = `
+    <div class="room-header">
+      ${room.name}
+      <span class="status-dot"></span>
+    </div>
+    <div class="room-status">Occupied</div>
+  `;
+
+  room.slots.forEach((slot) => {
+    const slotDiv = document.createElement("div");
+    slotDiv.className = "slot";
+
+    slotDiv.innerHTML = `
+      <div class="slot-header ${slot.type}">
+        ${slot.label}
+      </div>
+      <div class="slot-time">
+        ${slot.time}
+      </div>
+    `;
+
+    card.appendChild(slotDiv);
+  });
+
+  return card;
+}
+
+roomsSched.forEach((room) => {
+  app.appendChild(createSideRoomCard(room));
+});
