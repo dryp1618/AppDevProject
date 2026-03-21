@@ -1,0 +1,59 @@
+<?php
+    class usersTable{
+        private $conn;
+        public function __construct($db){
+            $this->conn = $db;
+        }
+        
+        public function createUserRegistration($fName, $lName){
+            $query = 
+            "INSERT INTO tbl_registrations
+            (firstName, lastName, createdAt, updatedAt)
+            VALUES (:firstName, :lastName, :createdAt, :updatedAt)"; 
+
+            $response = $this->conn->prepare($query);
+            
+            $datenow = date('Y-m-d H:i:s');
+            $response->bindParam(":firstName", $fName);
+            $response->bindParam(":lastName", $lName);
+            $response->bindParam(":createdAt", $datenow);
+            $response->bindParam(":updatedAt", $datenow);
+            
+            $response->execute();
+            
+            return $response;
+        }
+        public function readRegistration(){
+            $query = "SELECT * FROM tbl_registrations";
+            $response = $this->conn->prepare($query);
+            $response->execute();
+            return $response;
+        } 
+            
+        public function updateRegistration($fName, $lName, $regID){
+            $query="UPDATE tbl_registrations SET firstName = : firstName, lastName = :lastName, updatedAt = :updatedAt WHERE regsitartionID == :registrationID";
+            $response = $this->conn->prepare($query);
+
+            $datenow = date('Y-m-d H:i:s');
+            $response->bindParam(":firstName", $fName);
+            $response->bindParam(":lastName", $lName);
+            $response->bindParam(":registrationID", $regID);
+            $response->bindParam(":updatedAt", $datenow);
+
+            $response->execute();
+            return $response;
+        }   
+
+        public function deleteRegistration($regID){
+            $query = "DELETE FROM tbl_registations WHERE registartionID = :registartionID";
+            $response = $this->conn->prepare($query);
+            $response->execute();
+
+            return $response;
+
+        }
+    }
+
+
+
+?>

@@ -6,13 +6,13 @@
 body {
   min-height: 100vh;
   display: grid;
-  grid-template: auto 1fr 2fr / 1fr 2fr;
+  grid-template: auto 30% / auto;
   grid-template-areas:
-    "navbar navbar"
-    "sidebar main1"
-    "sidebar main2";
+    "navbar navbar navbar"
+    "sidebar main1 main1"
+    "sidebar main2 main2";
 
-  gap: 2em;
+  gap: 1em;
 }
 
 nav {
@@ -26,32 +26,34 @@ nav {
 aside {
   grid-area: sidebar;
 
-  height: 80vh;
+  height: 85vh;
   position: sticky;
-  align-self: start;
+  padding: 1em;
 
   margin: 1em;
-  margin-inline: 1.5em;
 
   display: flex;
   flex-flow: column nowrap;
 
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 1em;
 
   a {
+    background-color: transparent;
+    outline: auto;
     color: var(--text-color-1);
-    font-size: 2em;
+    font-size: 1.5em;
     text-decoration: none;
 
     border-bottom: solid thin var(--line-detail-color);
-    transition: transform 1s ease-in-out;
-
-    &:hover {
-      background-color: line-gradient(to left, gray, rgba(0, 0, 0, 0));
-      transform: scale(1.2);
-    }
+    transition:
+      scale 0.5s ease-in-out,
+      background-color 1s ease-in-out;
+  }
+  a:hover {
+    background-color: line-gradient(to left, gray, rgba(0, 0, 0, 0));
+    transform: scale(1.2);
   }
 }
 

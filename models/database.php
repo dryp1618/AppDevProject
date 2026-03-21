@@ -1,7 +1,7 @@
 <?php
     class Database{
         private $host = "localhost";
-        private $dbname = "AppDevProject_db";
+        private $dbname = "appdevtracker_project_db";
         private $username = "root";
         private $password = "";
 

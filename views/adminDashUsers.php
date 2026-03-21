@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    require_once('../bl/userManage.php');
+
+    $usermanagement = new userManage();
+    $users = $usermanagement -> getUser();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +30,7 @@
     <nav>   
         <?php include_once("components/navbarAdmin.html");?>
     </nav>
-    <script defer type="text/javascript" src="../scripts/script.js"></script>
+    <script defer type="text/javascript" src="../scripts/service.js"></script>
 </head>
 <body>
     <script async>
@@ -30,7 +39,50 @@
         }); 
     </script>
     <?php include_once("components/adminSideNavbar.html");?>
-    <main class="main-border-box main-top"></main>
+    <main class="main-border-box main-top">
+        <div class="row">
+            <div class="row">
+                <div class="input-field col s12 m12 l3">
+                    <input id="txtFirstName" type="text" class="validate">
+                    <label for="txtFirstName">First Name</label>
+                </div>
+                <div class="input-field col s12 m12 l3">
+                    <input id="txtLastName" type="text" class="validate">
+                    <label for="txtLastName">Last Name</label>
+                </div>
+
+                <div class="input-field col s12 m12 l3 select">
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var elems = document.querySelectorAll('select');
+                            var options = document.querySelectorAll('option');
+                            var instances = M.FormSelect.init(elems, options);
+                        });
+                    </script>
+                    <select>
+                        <option value="" disabled selected>Choose a role</option>
+                        <option value="1">Admin</option>
+                        <option value="2">Faculty</option>
+                        <option value="3">Staff</option>
+                        <option value="4">Student</option>
+                    </select>
+                    <label>Select User role</label>
+                </div>
+                <div class="col s12 m12 l3">
+                    <br><br>
+                    <a class="waves-effect waves-light btn" style="width: 90%;" onclick="addFunc();"><i class="material-icons right">add_circle_outline</i>Add User</a>
+                    <br><br>
+                    <a class="waves-effect waves-light btn" style="width: 90%;"><i class="material-icons right">backspace</i>Clear</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l4">
+                    <input id="txtUserID" type="text" class="validate">
+                    <label for="txtUserID">ID Number</label>
+                </div>
+            </div>
+        </div>
+    </main>
     <main class="main-border-box main-bottom">
         <table class="centered higlight striped" id="myTable">
             <thead>
@@ -43,9 +95,25 @@
                 </tr>
             </thead>
             <tbody>
+                <?php if(!empty($users)) :  ?>
+                <?php foreach($users as $index => $user) : ?>
                 <tr>
-                    <td></td>
+                        <td><?= $user["idNumber"] ?></td>
+                        <td><?= $user["firstName"] ?></td>
+                        <td><?= $user["lastName"] ?></td>
+                        <td><?= $user["role"] ?></td>
+                    <td class="row">
+                        <a class="waves-effect waves-light btn-small col s12 m12 l12 #2196f3 blue" onclick="updateFunc(<?= $user['idNumber'] ?>);"><i class="material-icons right" >update</i>UPDATE</a>
+                        <br><br>
+                        <a class="waves-effect waves-light btn-small col s12 m12 l12 #f44336 red" onclick="userDel(<?= $user['idNumber'] ?>);"><i class="material-icons right" >remove_circle</i>DELETE</a>
+                    </td>
                 </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <tr>
+                    <td>No Data Found</td>
+                </tr>
+                <?php endif ?>
             </tbody>
         </table>
     </main>
