@@ -31,12 +31,14 @@
         <?php include_once("components/navbarAdmin.html");?>
     </nav>
     <script defer type="text/javascript" src="../scripts/service.js"></script>
+    <script defer type="text/javascript" src="../scripts/dataTable.js"></script>
 </head>
 <body>
     <script async>
         $(document).ready(function () {
-            $("#myTable").DataTable();
-        }); 
+        $("#myTable").DataTable();
+        });
+
     </script>
     <?php include_once("components/adminSideNavbar.html");?>
     <main class="main-border-box main-top">
@@ -59,7 +61,7 @@
                             var instances = M.FormSelect.init(elems, options);
                         });
                     </script>
-                    <select>
+                    <select id="roleSelect">
                         <option value="" disabled selected>Choose a role</option>
                         <option value="1">Admin</option>
                         <option value="2">Faculty</option>
@@ -70,9 +72,9 @@
                 </div>
                 <div class="col s12 m12 l3">
                     <br><br>
-                    <a class="waves-effect waves-light btn" style="width: 90%;" onclick="addFunc();"><i class="material-icons right">add_circle_outline</i>Add User</a>
+                    <a class="waves-effect waves-light btn" style="width: 90%;" onclick="addUserFunc();"><i class="material-icons right">add_circle_outline</i>Add User</a>
                     <br><br>
-                    <a class="waves-effect waves-light btn" style="width: 90%;"><i class="material-icons right">backspace</i>Clear</a>
+                    <a class="waves-effect waves-light btn" style="width: 90%; background: #8b8b8b;"><i class="material-icons right">backspace</i>Clear</a>
                 </div>
             </div>
             <div class="row">
@@ -101,11 +103,10 @@
                         <td><?= $user["idNumber"] ?></td>
                         <td><?= $user["firstName"] ?></td>
                         <td><?= $user["lastName"] ?></td>
-                        <td><?= $user["role"] ?></td>
-                    <td class="row">
-                        <a class="waves-effect waves-light btn-small col s12 m12 l12 #2196f3 blue" onclick="updateFunc(<?= $user['idNumber'] ?>);"><i class="material-icons right" >update</i>UPDATE</a>
-                        <br><br>
-                        <a class="waves-effect waves-light btn-small col s12 m12 l12 #f44336 red" onclick="userDel(<?= $user['idNumber'] ?>);"><i class="material-icons right" >remove_circle</i>DELETE</a>
+                        <td><?= $user["roleID"] ?></td>
+                    <td class="">
+                        <a class="btn-floating btn-large waves-effect waves-light" style="background: #4296ba;" onclick="updateUserFunc(<?= $user['idNumber'] ?>)" title="Update user info"><i class="material-icons">update</i></a>
+                        <a class="btn-floating btn-large waves-effect waves-light" style="background: #e02b2e;" onclick="deleteUserFunc(<?= $user['idNumber'] ?>)" title="Delete user"><i class="material-icons">remove_circle</i></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

@@ -41,7 +41,7 @@ aside {
 
   a {
     background-color: transparent;
-    outline: auto;
+    /* outline: auto; */
     color: var(--text-color-1);
     font-size: 1.5em;
     text-decoration: none;

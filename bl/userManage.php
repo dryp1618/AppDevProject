@@ -13,9 +13,15 @@
             $this->regModel = new usersTable($db);
         }
 
+        public function createUser($fName, $lName, $role, $userID){
+
+        }
+
         public function getUser(){
-            $response = $this->regModel->readRegistration();
+            $response = $this->regModel->readUsers();
             return $response->fetchAll(PDO::FETCH_ASSOC);
+
+            //replace the role ID with actual string using array_map form summoning userReadRoles()
         }
     }
 

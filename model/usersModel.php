@@ -5,7 +5,7 @@
             $this->conn = $db;
         }
         
-        public function createUserRegistration($fName, $lName){
+        public function createUser($fName, $lName, $userID, $roleId ){
             $query = 
             "INSERT INTO tbl_registrations
             (firstName, lastName, createdAt, updatedAt)
@@ -23,14 +23,15 @@
             
             return $response;
         }
-        public function readRegistration(){
-            $query = "SELECT * FROM tbl_registrations";
+        public function readUsers(){
+            $query = "SELECT * FROM tbl_users";
             $response = $this->conn->prepare($query);
             $response->execute();
             return $response;
         } 
+
             
-        public function updateRegistration($fName, $lName, $regID){
+        public function updateUser($fName, $lName, $regID){
             $query="UPDATE tbl_registrations SET firstName = : firstName, lastName = :lastName, updatedAt = :updatedAt WHERE regsitartionID == :registrationID";
             $response = $this->conn->prepare($query);
 
@@ -44,7 +45,7 @@
             return $response;
         }   
 
-        public function deleteRegistration($regID){
+        public function deleteUser($regID){
             $query = "DELETE FROM tbl_registations WHERE registartionID = :registartionID";
             $response = $this->conn->prepare($query);
             $response->execute();
