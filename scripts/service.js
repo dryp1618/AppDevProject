@@ -1,6 +1,6 @@
 function addUserFunc() {
-  var firstName = document.getElementById("txtFirstname").value;
-  var lastName = document.getElementById("txtLastname").value;
+  var firstName = document.getElementById("txtFirstName").value;
+  var lastName = document.getElementById("txtLastName").value;
   var userID = document.getElementById("txtUserID").value;
   var roleID = document.getElementById("roleSelect").value;
 
@@ -14,7 +14,7 @@ function addUserFunc() {
       roleID: roleID,
     },
     success: (returnData) => {
-      console.log("Data sent to make a user.");
+      console.log("Data sent to register a user.");
     },
     error: (xhr) => {
       alert(xhr.status + " : " + xhr.responseText);

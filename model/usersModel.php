@@ -5,19 +5,21 @@
             $this->conn = $db;
         }
         
-        public function createUser($fName, $lName, $userID, $roleId ){
+        public function createUserModel($fName, $lName, $userID, $roleID ){
             $query = 
-            "INSERT INTO tbl_registrations
-            (firstName, lastName, createdAt, updatedAt)
-            VALUES (:firstName, :lastName, :createdAt, :updatedAt)"; 
+            "INSERT INTO tbl_users
+            VALUES (:idNumber, :roleID, :firstName, :lastName, :updatedAt, :createdAt)"; 
 
             $response = $this->conn->prepare($query);
             
             $datenow = date('Y-m-d H:i:s');
+            
+            $response->bindParam(":idNumber", $userID);
+            $response->bindParam(":roleID", $roleID);
             $response->bindParam(":firstName", $fName);
             $response->bindParam(":lastName", $lName);
-            $response->bindParam(":createdAt", $datenow);
             $response->bindParam(":updatedAt", $datenow);
+            $response->bindParam(":createdAt", $datenow);
             
             $response->execute();
             

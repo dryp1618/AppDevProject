@@ -72,7 +72,7 @@
                 </div>
                 <div class="col s12 m12 l3">
                     <br><br>
-                    <a class="waves-effect waves-light btn" style="width: 90%;" onclick="addUserFunc();"><i class="material-icons right">add_circle_outline</i>Add User</a>
+                    <a class="waves-effect waves-light btn" style="width: 90%;" onclick="addUserFunc()"><i class="material-icons right">add_circle_outline</i>Add User</a>
                     <br><br>
                     <a class="waves-effect waves-light btn" style="width: 90%; background: #8b8b8b;"><i class="material-icons right">backspace</i>Clear</a>
                 </div>
