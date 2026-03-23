@@ -30,8 +30,6 @@ aside {
   position: sticky;
   padding: 1em;
 
-  margin: 1em;
-
   display: flex;
   flex-flow: column nowrap;
 
@@ -58,8 +56,6 @@ aside {
 }
 
 main {
-  margin: 0.5em;
-  margin-inline-end: 2em;
 }
 .main-top {
   grid-area: main1;

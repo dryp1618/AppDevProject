@@ -1,3 +1,10 @@
+function clearUserFormsFunc() {
+  document.getElementById("txtFirstName").value = "";
+  document.getElementById("txtLastName").value = "";
+  document.getElementById("txtUserID").value = "";
+  document.getElementById("roleSelect").selectedIndex = null;
+}
+
 function addUserFunc() {
   var firstName = document.getElementById("txtFirstName").value;
   var lastName = document.getElementById("txtLastName").value;

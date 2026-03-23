@@ -1,9 +1,12 @@
 <?php
     session_start();
     require_once('../bl/userManage.php');
+    require_once('../bl/roleManage.php');
 
     $usermanagement = new userManage();
+    $rolemanagement = new roleManage();
     $users = $usermanagement -> getUser();
+    $roles = $rolemanagement -> getRoles();
 
 ?>
 
@@ -63,10 +66,11 @@
                     </script>
                     <select id="roleSelect">
                         <option value="" disabled selected>Choose a role</option>
-                        <option value="1">Admin</option>
-                        <option value="2">Faculty</option>
-                        <option value="3">Staff</option>
-                        <option value="4">Student</option>
+                        <?php foreach ($roles as $role) : ?>
+                            <option value="<?=  $role['roleID'] ?>">
+                                <?= ucfirst($role['roleName'])?>
+                            </option>
+                        <?php endforeach ?>
                     </select>
                     <label>Select User role</label>
                 </div>
@@ -74,7 +78,7 @@
                     <br><br>
                     <a class="waves-effect waves-light btn" style="width: 90%;" onclick="addUserFunc()"><i class="material-icons right">add_circle_outline</i>Add User</a>
                     <br><br>
-                    <a class="waves-effect waves-light btn" style="width: 90%; background: #8b8b8b;"><i class="material-icons right">backspace</i>Clear</a>
+                    <a class="waves-effect waves-light btn" style="width: 90%; background: #8b8b8b;" onclick="clearUserFormsFunc();"><i class="material-icons right">backspace</i>Clear</a>
                 </div>
             </div>
             <div class="row">
