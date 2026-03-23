@@ -55,11 +55,11 @@ aside {
   }
 }
 
-main {
-}
 .main-top {
   grid-area: main1;
 }
 .main-bottom {
   grid-area: main2;
+
+  padding: 2em;
 }
