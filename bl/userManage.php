@@ -20,8 +20,6 @@
         public function getUser(){
             $response = $this->regModel->readUsers();
             return $response->fetchAll(PDO::FETCH_ASSOC);
-
-            //replace the role ID with actual string using array_map form summoning userReadRoles()
         }
     }
 

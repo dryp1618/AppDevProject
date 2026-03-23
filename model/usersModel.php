@@ -24,7 +24,7 @@
             return $response;
         }
         public function readUsers(){
-            $query = "SELECT * FROM tbl_users";
+            $query = "SELECT tbl_users.*, tbl_userroles.roleName FROM tbl_users INNER JOIN tbl_userroles ON tbl_users.roleID = tbl_userroles.roleID";
             $response = $this->conn->prepare($query);
             $response->execute();
             return $response;
