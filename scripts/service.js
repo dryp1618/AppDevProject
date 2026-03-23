@@ -52,7 +52,21 @@ function updateUserFunc(userID) {
   });
 }
 
-function deleteUserFunc() {}
+function deleteUserFunc(userID) {
+  $.ajax({
+    url: "../controllers/userController.php",
+    type: "POST",
+    data: {
+      delID: userID,
+    },
+    success: (returnData) => {
+      console.log("Deleting user...");
+    },
+    error: (xhr) => {
+      alert(xhr.status + " : " + xhr.responseText);
+    },
+  });
+}
 
 function redirectFunc(redirectID) {
   switch (redirectID) {

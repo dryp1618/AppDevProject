@@ -50,9 +50,12 @@
             return $response;
         }   
 
-        public function deleteUser($regID){
-            $query = "DELETE FROM tbl_registations WHERE registartionID = :registartionID";
+        public function deleteUser($deleteUserID){
+            $query = "DELETE FROM tbl_users WHERE idNumber = :idNumber";
             $response = $this->conn->prepare($query);
+
+            $response->bindParam(":idNumber", $deleteUserID);
+
             $response->execute();
 
             return $response;

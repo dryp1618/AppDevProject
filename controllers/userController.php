@@ -7,15 +7,15 @@
         if (isset($_POST['fName'], $_POST['lName'], $_POST['userID'], $_POST['roleID'])) { //adding a user
             $usermanagement -> addNewUser( $_POST['fName'], $_POST['lName'], $_POST['userID'], $_POST['roleID']);
             exit;
-        }else
-        if(isset($_POST['uFName'], $_POST['uLName'],$_POST['uUserID'], $_POST['uroleID'])){
+        }else if(isset($_POST['uFName'], $_POST['uLName'],$_POST['uUserID'], $_POST['uroleID'])){
             $usermanagement -> changeUserInfo($_POST['uUserID'], $_POST['uroleID'], $_POST['uFName'], $_POST['uLName']);
             exit;
+        } else if(isset($_POST['delID'])){
+            $usermanagement -> removeUser($_POST['delID']);
+            exit;
         }
-        // else if(isset($_POST['delID'])){
-        //     $usermanagement -> deleteUserFunc($_POST['delID']);
-        //     exit;
-        // }else if(isset($_POST['lFName']) && isset($_POST['lLName'])){
+            
+        // else if(isset($_POST['lFName']) && isset($_POST['lLName'])){
         //     $usermanagement -> loginUserFunc($_POST['lFName'], $_POST['lLName']);
         // }
 
