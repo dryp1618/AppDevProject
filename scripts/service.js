@@ -29,7 +29,28 @@ function addUserFunc() {
   });
 }
 
-function updateUserFunc() {}
+function updateUserFunc(userID) {
+  var firstName = document.getElementById("txtFirstName").value;
+  var lastName = document.getElementById("txtLastName").value;
+  var roleID = document.getElementById("roleSelect").value;
+
+  $.ajax({
+    url: "../controllers/userController.php",
+    type: "POST",
+    data: {
+      uFName: firstName,
+      uLName: lastName,
+      uroleID: roleID,
+      uUserID: userID,
+    },
+    success: (returnData) => {
+      console.log("Data sent to update selectef user.");
+    },
+    error: (xhr) => {
+      alert(xhr.status + " : " + xhr.responseText);
+    },
+  });
+}
 
 function deleteUserFunc() {}
 

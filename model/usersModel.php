@@ -33,17 +33,20 @@
         } 
 
             
-        public function updateUser($fName, $lName, $regID){
-            $query="UPDATE tbl_registrations SET firstName = : firstName, lastName = :lastName, updatedAt = :updatedAt WHERE regsitartionID == :registrationID";
+        public function updateUserModel($userID, $roleID, $fName, $lName){
+            $query="UPDATE tbl_users SET roleID = :roleID, firstName = :firstName, lastName = :lastName, updatedAt = :updatedAt WHERE idNumber = :idNumber";
             $response = $this->conn->prepare($query);
 
             $datenow = date('Y-m-d H:i:s');
+            
+            $response->bindParam(":idNumber", $userID);
+            $response->bindParam(":roleID", $roleID);
             $response->bindParam(":firstName", $fName);
             $response->bindParam(":lastName", $lName);
-            $response->bindParam(":registrationID", $regID);
             $response->bindParam(":updatedAt", $datenow);
 
             $response->execute();
+
             return $response;
         }   
 

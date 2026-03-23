@@ -32,6 +32,20 @@
             return $response->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        public function changeUserInfo($userID, $roleID, $fName, $lName){
+            try {
+                if($this->userModel->updateUserModel($userID, $roleID, $fName, $lName)){
+                    echo "User info updated successfully.";
+                }else{
+                    echo "Error encountered while updating user credentials.";
+                }
+            } catch (InvalidArgumentException $ex) {
+                http_response_code(500);
+                echo $ex->getMessage();
+                exit;
+            }
+        }
+
         public function processDataFunc($fNameParam, $lNameParam) {
             try {
                 echo $fNameParam . ' ' . $lNameParam . ' from, PHP';

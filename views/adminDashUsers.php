@@ -102,7 +102,7 @@
             </thead>
             <tbody>
                 <?php if(!empty($users)) :  ?>
-                <?php foreach($users as $index => $user) : ?>
+                <?php foreach($users as $user) : ?>
                 <tr>
                         <td><?= $user["idNumber"] ?></td>
                         <td><?= $user["firstName"] ?></td>
