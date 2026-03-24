@@ -48,7 +48,7 @@
 
         public function removeUser($deleteID){
             try {
-                if($this->userModel->deleteUser($deleteID)){
+                if($this->userModel->deleteUserModel($deleteID)){
                     echo "User deleted successfully.";
                 }else{
                     echo "Error encountered while deleting user.";
@@ -56,17 +56,6 @@
             } catch (InvalidArgumentException $ex) {
                 http_response_code(500);
                 echo $ex->getMessage();
-                exit;
-            }
-        }
-
-        public function processDataFunc($fNameParam, $lNameParam) {
-            try {
-                echo $fNameParam . ' ' . $lNameParam . ' from, PHP';
-                exit;
-            } catch (InvalidArgumentException $ex) {
-                http_response_code(501);
-                echo $ex -> getMessage();
                 exit;
             }
         }

@@ -1,3 +1,31 @@
+function newUserRegisterFunc() {
+  var firstName = document.getElementById("txtfName").value;
+  var lastName = document.getElementById("txtlName").value;
+  var userID = document.getElementById("regID").value;
+  var roleID = document.getElementById("roleSelectReg").value;
+  var usrPass = document.getElementById("userPassword").value;
+
+  $.ajax({
+    url: "../controllers/registrationController php",
+    type: "POST",
+    data: {
+      regFName: firstName,
+      regLName: lastName,
+      regUserID: userID,
+      regRole: roleID,
+      regPass: usrPass,
+    },
+    success: (returnData) => {
+      console.log(
+        "Hang on until an admin approves your account creation request.",
+      );
+    },
+    error: (xhr) => {
+      alert(xhr.status + " : " + xhr.responseText);
+    },
+  });
+}
+
 function clearUserFormsFunc() {
   document.getElementById("txtFirstName").value = "";
   document.getElementById("txtLastName").value = "";

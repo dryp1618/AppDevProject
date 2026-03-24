@@ -6,7 +6,7 @@
 
 .body-contain {
   display: flex;
-  min-height: 90vh;
+  min-height: 70vh;
   justify-content: center;
   align-items: center;
 
@@ -159,9 +159,7 @@ input {
   text-wrap: nowrap;
   position: absolute;
   font-size: 1rem;
-  padding-inline: 1.5rem;
   margin-inline: 1.25rem;
-  padding-block: 0;
   margin-block: -1rem;
   color: var(--line-detail-color);
   background-color: transparent;
@@ -184,4 +182,17 @@ input:valid + .label-line {
   padding-inline: 1px;
   transform: translate(-0.9rem, -1ex) scale(0.7);
   z-index: 10;
+}
+
+select {
+  text-align: center;
+  background-color: var(--textbox-fill-color);
+  border: transparent;
+  border-radius: 5px;
+
+  min-width: 100%;
+  min-height: 3.1em;
+}
+option:hover {
+  background-color: var(--line-detail-color);
 }
