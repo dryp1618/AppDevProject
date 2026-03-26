@@ -19,6 +19,7 @@ function newUserRegisterFunc() {
     },
     success: (returnData) => {
       console.log("Data sent to register user.");
+      window.location.href = "../views/loginPage.php";
     },
     error: (xhr) => {
       alert(xhr.status + " : " + xhr.responseText);
