@@ -6,7 +6,7 @@
 
 .body-contain {
   display: flex;
-  min-height: 70vh;
+  padding: 2em;
   justify-content: center;
   align-items: center;
 

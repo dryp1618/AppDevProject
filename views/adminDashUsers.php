@@ -96,21 +96,16 @@
                     <th> First Name </th>
                     <th> Last Name </th>
                     <th> Role </th>
-                    <th> Action </th>
                 </tr>
             </thead>
             <tbody>
                 <?php if(!empty($users)) :  ?>
                 <?php foreach($users as $user) : ?>
                 <tr>
-                        <td><?= $user["idNumber"] ?></td>
+                        <td><?= $user["userID"] ?></td>
                         <td><?= $user["firstName"] ?></td>
                         <td><?= $user["lastName"] ?></td>
-                        <td><?= ucfirst($user["roleName"]) ?></td>
-                    <td class="">
-                        <a class="btn-floating btn-large waves-effect waves-light" style="background: #4296ba;" onclick="updateUserFunc(<?= $user['idNumber'] ?>)" title="Update user info"><i class="material-icons">update</i></a>
-                        <a class="btn-floating btn-large waves-effect waves-light" style="background: #e02b2e;" onclick="deleteUserFunc(<?= $user['idNumber'] ?>)" title="Delete user"><i class="material-icons">remove_circle</i></a>
-                    </td>
+                        <td><?= ucfirst($user["role_name"]) ?></td>
                 </tr>
                 <?php endforeach; ?>
             <?php else : ?>
