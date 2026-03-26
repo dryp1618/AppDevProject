@@ -2,54 +2,23 @@ function newUserRegisterFunc() {
   var firstName = document.getElementById("txtfName").value;
   var lastName = document.getElementById("txtlName").value;
   var userID = document.getElementById("regID").value;
-  var roleID = document.getElementById("roleSelectReg").value;
+  var email = document.getElementById("email").value;
+  var phone = document.getElementById("phone").value;
   var usrPass = document.getElementById("userPassword").value;
-
-  $.ajax({
-    url: "../controllers/registrationController php",
-    type: "POST",
-    data: {
-      regFName: firstName,
-      regLName: lastName,
-      regUserID: userID,
-      regRole: roleID,
-      regPass: usrPass,
-    },
-    success: (returnData) => {
-      console.log(
-        "Hang on until an admin approves your account creation request.",
-      );
-    },
-    error: (xhr) => {
-      alert(xhr.status + " : " + xhr.responseText);
-    },
-  });
-}
-
-function clearUserFormsFunc() {
-  document.getElementById("txtFirstName").value = "";
-  document.getElementById("txtLastName").value = "";
-  document.getElementById("txtUserID").value = "";
-  document.getElementById("roleSelect").selectedIndex = null;
-}
-
-function addUserFunc() {
-  var firstName = document.getElementById("txtFirstName").value;
-  var lastName = document.getElementById("txtLastName").value;
-  var userID = document.getElementById("txtUserID").value;
-  var roleID = document.getElementById("roleSelect").value;
 
   $.ajax({
     url: "../controllers/userController.php",
     type: "POST",
     data: {
-      fName: firstName,
-      lName: lastName,
-      userID: userID,
-      roleID: roleID,
+      regFName: firstName,
+      regLName: lastName,
+      regUserID: userID,
+      regEmail: email,
+      regPhone: phone,
+      regPass: usrPass,
     },
     success: (returnData) => {
-      console.log("Data sent to register a user.");
+      console.log("Data sent to register user.");
     },
     error: (xhr) => {
       alert(xhr.status + " : " + xhr.responseText);
@@ -103,6 +72,7 @@ function redirectFunc(redirectID) {
       break;
     default:
       console.error("No valid redirects!");
+      window.location.reload();
       break;
   }
   exit;

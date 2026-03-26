@@ -5,19 +5,25 @@
             $this->conn = $db;
         }
         
-        public function createUserModel($fName, $lName, $userID, $roleID){
+        public function createUserModel($userID, $fName, $lName, $phone_num, $email, $password){
             $query = 
             "INSERT INTO tbl_users
-            VALUES (:idNumber, :roleID, :firstName, :lastName, :updatedAt, :createdAt)"; 
+            VALUES (:userID, :roleID, :firstName, :lastName, :password, :email, :phone_number, :updatedAt, :createdAt)"; 
 
             $response = $this->conn->prepare($query);
             
+            $roleIDdefault = 2; // default user
             $datenow = date('Y-m-d H:i:s');
+
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             
-            $response->bindParam(":idNumber", $userID);
-            $response->bindParam(":roleID", $roleID);
+            $response->bindParam(":userID", $userID);
+            $response->bindParam(":roleID", $roleIDdefault);
             $response->bindParam(":firstName", $fName);
             $response->bindParam(":lastName", $lName);
+            $response->bindParam(":password", $hashedPassword);
+            $response->bindParam(":email", $email);
+            $response->bindParam(":phone_number", $phone_num);
             $response->bindParam(":updatedAt", $datenow);
             $response->bindParam(":createdAt", $datenow);
             

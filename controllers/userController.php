@@ -4,8 +4,8 @@
 
     $usermanagement = new userManage();
 
-        if (isset($_POST['fName'], $_POST['lName'], $_POST['userID'], $_POST['roleID'])) {
-            $usermanagement -> addNewUser( $_POST['fName'], $_POST['lName'], $_POST['userID'], $_POST['roleID']);
+        if (isset($_POST['regFName'], $_POST['regLName'], $_POST['regUserID'], $_POST['regEmail'], $_POST['regPhone'], $_POST['regPass'])) {
+            $usermanagement -> registerNewUser($_POST['regUserID'], $_POST['regFName'], $_POST['regLName'], $_POST['regPhone'], $_POST['regEmail'], $_POST['regPass']);
             exit;
         }else if(isset($_POST['uFName'], $_POST['uLName'],$_POST['uUserID'], $_POST['uroleID'])){
             $usermanagement -> changeUserInfo($_POST['uUserID'], $_POST['uroleID'], $_POST['uFName'], $_POST['uLName']);

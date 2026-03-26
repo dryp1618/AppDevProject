@@ -13,9 +13,9 @@
             $this->userModel = new usersTable($db);
         }
 
-        public function addNewUser($fName, $lName, $userID, $role){
+        public function registerNewUser($userID, $fName, $lName, $phone_num, $email, $password){
             try {
-                if($this->userModel->createUserModel($fName, $lName, $userID, $role)){
+                if($this->userModel->createUserModel($userID, $fName, $lName, $phone_num, $email, $password)){
                     echo "User added successfuly!";
                 } else{
                     echo "Error encountered while adding user.";

@@ -13,9 +13,12 @@
     <title>Room Tracker | Login Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <nav>
         <?php include_once("components/navbarLogin.html");?>
     </nav>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="registration.css">
     <script defer src="../scripts/service.js"></script>
@@ -30,11 +33,11 @@
                     <div class="name-group">
                         <div class="entry-area">                              
                             <input type="text" id="txtfName" required>
-                            <label for="fName" class="label-line">First Name</label>
+                            <label for="txtfName" class="label-line">First Name</label>
                         </div>
                         <div class="entry-area">                              
                             <input type="text" id="txtlName" required>
-                            <label for="lName" class="label-line">Last Name</label>
+                            <label for="txtlName" class="label-line">Last Name</label>
                         </div>
                     </div>
                     <div class="entry-area">

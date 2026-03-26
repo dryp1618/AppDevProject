@@ -16,13 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room Tracker | Admin Homepage</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
@@ -44,49 +37,7 @@
     </script>
     <?php include_once("components/adminSideNavbar.html");?>
     <main class="main-border-box main-top">
-        <div class="row">
-            <div class="row">
-                <div class="row input-field col s12 m12 l4">
-                    <div class="input-field col s12 m12 l6">
-                        <input id="txtFirstName" type="text" class="validate">
-                        <label for="txtFirstName">First Name</label>
-                    </div>
-                    <div class="input-field col s12 m12 l6">
-                        <input id="txtLastName" type="text" class="validate">
-                        <label for="txtLastName">Last Name</label>
-                    </div>
-                    <div class="input-field col s12 m12 l12">
-                        <input id="txtUserID" type="text" class="validate">
-                        <label for="txtUserID">ID Number</label>
-                    </div>
-                </div>
 
-                <div class="col s12 m12 l4 select">
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            var elems = document.querySelectorAll('select');
-                            var options = document.querySelectorAll('option');
-                            var instances = M.FormSelect.init(elems, options);
-                        });
-                    </script>
-                    <select id="roleSelect">
-                        <option value="" disabled selected>Choose a role</option>
-                        <?php foreach ($roles as $role) : ?>
-                            <option value="<?=  $role['roleID'] ?>">
-                                <?= ucfirst($role['roleName'])?>
-                            </option>
-                        <?php endforeach ?>
-                    </select>
-                    <label>Select User role</label>
-                </div>
-                <div class="col s12 m12 l4">
-                    <br><br>
-                    <a class="waves-effect waves-light btn deep-purple lighten-2" style="width: 90%;" onclick="addUserFunc()"><i class="material-icons right">add_circle_outline</i>Add User</a>
-                    <br><br>
-                    <a class="waves-effect waves-light btn" style="width: 90%; background: #8b8b8b;" onclick="clearUserFormsFunc();"><i class="material-icons right">backspace</i>Clear</a>
-                </div>
-            </div>
-        </div>
     </main>
     <main class="main-border-box main-bottom">
         <table class="centered higlight striped" id="myTable">
