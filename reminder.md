@@ -28,7 +28,7 @@ Data to collect:
 - Email
 - Birthdate
 
-Why store your phone numbers with a varchar with a 15 char limit? cause  that's the E.164 standard
+Why store your phone numbers with a varchar with a 15 char limit? cause that's the E.164 standard
 https://dev.to/jkprod/best-way-to-store-phone-numbers-in-your-app-1j1o
 
 WebApp conditions:
@@ -40,3 +40,5 @@ WebApp conditions:
 
 - Zip the code
 - Compile Database schema inside zip file
+
+- Fix all CSS before continuing
