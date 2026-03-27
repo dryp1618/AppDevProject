@@ -39,7 +39,7 @@
         } 
 
         public function updateUserModel($userID, $role, $fName, $lName){
-            $query="UPDATE tbl_users SET roleID = :roleID, firstName = : firstName, lastName = :lastName, updatedAt = :updatedAt WHERE IdNumber = :IdNumber";
+            $query="UPDATE tbl_users SET roleID = :roleID, firstName = : firstName, lastName = :lastName, updatedAt = :updatedAt WHERE userID = :userID";
             $response = $this->conn->prepare($query);
 
             $datenow = date('Y-m-d H:i:s');
@@ -63,8 +63,26 @@
 
             return $response;
         }
+
+        public function loginUserModel($userID, $userPassword){
+            $query = "SELECT * FROM tbl_users WHERE userID = :userID";
+            $response = $this->conn->prepare($query);
+
+            $response->bindParam(":userID", $userID);
+            $response->execute();
+
+            $passCheck = $response->fetch(PDO::FETCH_ASSOC);
+
+            //user does't exist
+            if($passCheck === false){
+                return false;
+            }
+
+            if(password_verify($userPassword, $passCheck['password'])){
+                return true;
+            }
+            exit;
+        }
     }
-
-
 
 ?>

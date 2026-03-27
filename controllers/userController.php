@@ -13,10 +13,14 @@
         } else if(isset($_POST['delID'])){
             $usermanagement -> removeUser($_POST['delID']);
             exit;
-        }
-            
-        // else if(isset($_POST['lFName']) && isset($_POST['lLName'])){
-        //     $usermanagement -> loginUserFunc($_POST['lFName'], $_POST['lLName']);
-        // }
+        } else if(isset($_POST['loginID'], $_POST['loginPass'])){
+            $confirmLogin = $usermanagement->loginUser($_POST['loginID'], $_POST['loginPass']);
 
+            if($confirmLogin === true){
+                header('Location: http://localhost/AppDevProject/views/homePage.php');
+                echo "<script>window.location.href='dashboard.php';</script>";
+                exit;
+            }
+            exit;
+        }
 ?>

@@ -59,6 +59,20 @@
                 exit;
             }
         }
+
+        public function loginUser($inputID, $inputPass){
+            try {
+                if($this->userModel->loginUserModel($inputID, $inputPass)){
+                    echo "User login successfully.";
+                }else{
+                    echo "Error encountered while logging in user.";
+                }
+            } catch (InvalidArgumentException $ex) {
+                http_response_code(500);
+                echo $ex->getMessage();
+                exit;
+            }
+        }
     }
 
 

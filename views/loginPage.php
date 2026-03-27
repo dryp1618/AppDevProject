@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,8 @@
     <nav>
         <?php include_once("components/navbarLogin.html");?>
     </nav>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="login.css">
     <script defer src="../scripts/service.js"></script>
@@ -19,14 +22,14 @@
                 <br>
                 <div class="input-area">
                         <div class="entry-area">
-                            <input type="text" id="regID" required>
-                            <label for="regID" class="label-line">ID Number</label>
+                            <input type="text" id="loginID" required>
+                            <label for="loginID" class="label-line">ID Number</label>
                         </div>
                         <div class="entry-area">
                             <input type="text" id="userPassword" required>
                             <label for="userPassword" class="label-line">Password</label>
                         </div>
-                        <button type="submit" name="action">
+                        <button type="submit" name="action" onclick="loginFunc()">
                             <span>Enter</span>
                             <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
                         </button>

@@ -66,6 +66,26 @@ function deleteUserFunc(userID) {
   });
 }
 
+function loginFunc() {
+  var loginID = document.getElementById("loginID").value;
+  var password = document.getElementById("userPassword").value;
+
+  $.ajax({
+    url: "../controllers/userController.php",
+    type: "POST",
+    data: {
+      loginID: loginID,
+      loginPass: password,
+    },
+    success: (returnData) => {
+      console.log("Logging in...");
+    },
+    error: (xhr) => {
+      alert(xhr.status + " : " + xhr.responseText);
+    },
+  });
+}
+
 function redirectFunc(redirectID) {
   switch (redirectID) {
     case 1: //registration
