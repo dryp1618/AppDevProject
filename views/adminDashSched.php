@@ -17,7 +17,7 @@
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="components/main.css">
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin2.css">
     <nav>   
         <?php include_once("components/navbarAdmin.html");?>
     </nav>
