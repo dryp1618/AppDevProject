@@ -54,10 +54,10 @@
         }
 
         public function deleteUserModel($deleteUserID){
-            $query = "DELETE FROM tbl_users WHERE idNumber = :idNumber";
+            $query = "DELETE FROM tbl_users WHERE userID = :userID";
             $response = $this->conn->prepare($query);
 
-            $response->bindParam(":idNumber", $deleteUserID);
+            $response->bindParam(":userID", $deleteUserID);
 
             $response->execute();
 
