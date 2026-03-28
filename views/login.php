@@ -1,4 +1,10 @@
+<?php
 
+    require_once('../bl/userManage.php');
+    $usermanage = new UserManage();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +40,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/></svg>
                         </button>
                 </div>
-                <p>Want to Register? <a href="registrationPage.php">Click here</a></p>
+                <p> Want to Register? <a href="registrationPage.php">Click here</a></p>
             </div>
         </div>
     </div>

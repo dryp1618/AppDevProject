@@ -14,11 +14,12 @@
             $usermanagement -> removeUser($_POST['delID']);
             exit;
         } else if(isset($_POST['loginID'], $_POST['loginPass'])){
+            $confirmLogin = false;
             $confirmLogin = $usermanagement->loginUser($_POST['loginID'], $_POST['loginPass']);
 
-            if($confirmLogin === true){
-                header('Location: http://localhost/AppDevProject/views/homePage.php');
-                echo "<script>window.location.href='dashboard.php';</script>";
+            if($confirmLogin == true){
+                header('Location: ../views/homePage.php');
+                echo "<script>window.location.href='../views/homePage.php';</script>";
                 exit;
             }
             exit;
