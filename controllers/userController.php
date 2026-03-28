@@ -17,9 +17,9 @@
             $confirmLogin = false;
             $confirmLogin = $usermanagement->loginUser($_POST['loginID'], $_POST['loginPass']);
 
-            if($confirmLogin == true){
-                header('Location: ../views/homePage.php');
-                echo "<script>window.location.href='../views/homePage.php';</script>";
+            if($confirmLogin === true){
+                header('Location: ../views/home.php');
+                echo "<script>window.location.href='../views/home.php';</script>";
                 exit;
             }
             exit;
