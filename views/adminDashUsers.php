@@ -1,12 +1,9 @@
 <?php
     session_start();
     require_once('../bl/userManage.php');
-    require_once('../bl/roleManage.php');
 
     $usermanagement = new userManage();
-    $rolemanagement = new roleManage();
     $users = $usermanagement -> getUser();
-    $roles = $rolemanagement -> getRoles();
 ?>
 
 <!DOCTYPE html>

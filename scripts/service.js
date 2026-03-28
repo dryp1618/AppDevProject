@@ -96,5 +96,28 @@ function redirectFunc(redirectID) {
       window.location.reload();
       break;
   }
-  exit;
+}
+
+function addNewSchedule() {
+  var section = document.getElementById("").value;
+  var room = document.getElementById("").value;
+  var timeIn = document.getElementById("").value;
+  var timeOut = document.getElementById("").value;
+
+  $.ajax({
+    url: "../controllers/userController.php",
+    type: "POST",
+    data: {
+      newSchedSect: section,
+      newSchedRoom: room,
+      newSchedTimeIn: timeIn,
+      newSchedTimeOut: timeOut,
+    },
+    success: (returnData) => {
+      console.log("Making new Schedule...");
+    },
+    error: (xhr) => {
+      alert(xhr.status + " : " + xhr.responseText);
+    },
+  });
 }
