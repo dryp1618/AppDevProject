@@ -6,6 +6,7 @@
 - Models:Database access, direct functionality with db
 - Management/business logic: actually commands the data interaction between site and database
 
+- dont't forget to change the varcahr of the days!!!!
 * CRUD Operations on all tables except user roles, room status, sched type
 
 * registrations are always accepted by the system
