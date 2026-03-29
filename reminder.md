@@ -44,3 +44,5 @@ WebApp conditions:
 # To-Do
 
 - Schedule C~~R~~UD functionality
+- Create schdules
+- Once functionaliry completed, sync with Java display
