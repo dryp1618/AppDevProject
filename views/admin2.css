@@ -4,13 +4,14 @@
 }
 
 body {
-  min-height: 100vh;
+  height: 100vh;
   display: grid;
-  grid-template: auto 30% / auto;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto auto 1fr;
   grid-template-areas:
-    "navbar navbar navbar"
-    "sidebar main1 main1"
-    "sidebar main2 main2";
+    "navbar navbar"
+    "sidebar main1"
+    "sidebar main2";
 
   gap: 1em;
 }
@@ -55,9 +56,14 @@ aside {
   }
 }
 
+main {
+  background-color: var(--fg-color);
+}
+
 .main-top {
   grid-area: main1;
   display: flex;
+  padding: 1em;
 }
 .main-bottom {
   grid-area: main2;
@@ -67,12 +73,108 @@ aside {
 
 .input-area {
   border: solid thick pink;
+  flex-grow: 2;
   height: fit-content;
-  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  flex-flow: row wrap;
+  gap: 1em;
+  padding: 0.5em;
+}
+
+.label-line {
+  font-size: 1em;
+  margin-bottom: 0.5em;
+  color: var(--text-color-1);
+}
+
+.input-field {
+  max-height: minmax(auto, 3em);
+
+  border: none;
+  border-radius: 5px;
+  background: var(--textbox-fill-color);
+  outline: none;
+
+  padding: 1em;
+}
+
+.entry-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .button-area {
   border: solid thick pink;
-  height: fit-content;
-  width: 30%;
+  height: auto;
+  flex-grow: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-area button {
+  color: var(--text-color-2);
+  font-size: 1em;
+  height: auto;
+  width: 80%;
+
+  background-color: var(--button-add-color);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+
+  padding-block: 0.5em;
+  padding-inline: 1em;
+
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+.button-area button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.button-area .material-symbols-outlined {
+  color: inherit; /* ensures it follows button color */
+  display: inline-flex;
+  align-items: center;
+}
+
+.action-button-area {
+  border: none;
+  color: white;
+  padding: 1em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.action-button-area .update-button {
+  color: inherit;
+  background-color: var(--update-button-color);
+  border-radius: 50%;
+  border: none;
+  height: 3em;
+  width: 3em;
+
+  justify-content: center;
+  align-items: center;
+}
+.action-button-area .delete-button {
+  color: inherit;
+  background-color: var(--delete-button-color);
+  border-radius: 50%;
+  border: none;
+  height: 3em;
+  width: 3em;
+
+  justify-content: center;
+  align-items: center;
 }

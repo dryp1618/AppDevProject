@@ -28,13 +28,12 @@
 <body>
     <script async>
         $(document).ready(function () {
-        $("#myTable").DataTable();
-        });
-
+            $("#myTable").DataTable();
+        }); 
     </script>
     <?php include_once("components/adminSideNavbar.html");?>
-    <main class="main-border-box main-bottom">
-        <table class="centered higlight striped" id="myTable">
+    <main class="main-border-box">
+        <table class="display compact" id="myTable">
             <thead>
                 <tr>
                     <th> User ID </th>
@@ -57,7 +56,7 @@
                 <tr>
                     <td>No Data Found</td>
                 </tr>
-                <?php endif ?>
+            <?php endif ?>
             </tbody>
         </table>
     </main>

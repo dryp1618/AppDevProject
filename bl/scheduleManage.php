@@ -13,7 +13,7 @@
             $this->schedModel = new scheduleTable($db);
         }
 
-        public function getSchedule(){
+        public function getSchedules(){
             $response = $this->schedModel->readSchedulesModel();
             return $response->fetchAll(PDO::FETCH_ASSOC);
         }

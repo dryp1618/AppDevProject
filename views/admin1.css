@@ -8,9 +8,9 @@ body {
   display: grid;
   grid-template: auto;
   grid-template-areas:
-    "navbar navbar navbar"
-    "sidebar main main"
-    "sidebar main main";
+    "navbar navbar"
+    "sidebar main"
+    "sidebar main";
   gap: 1em;
 }
 
@@ -20,6 +20,7 @@ main {
 
   margin: 1em;
   overflow: scroll;
+  background-color: var(--fg-color);
 }
 
 nav {
@@ -59,4 +60,8 @@ aside {
     background-color: line-gradient(to left, gray, rgba(0, 0, 0, 0));
     transform: scale(1.2);
   }
+}
+
+table {
+  font-color: var(--text-color-1);
 }

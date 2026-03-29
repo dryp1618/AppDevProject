@@ -1,12 +1,12 @@
 <?php
-    class rolesTable{
+    class schedTypeTable{
         private $conn;
         public function __construct($db){
             $this->conn = $db;
         }
         
-        public function readUserRolesModel(){
-            $query = "SELECT * FROM tbl_userroles";
+        public function readSchedTypeModel(){
+            $query = "SELECT * FROM tbl_schedType";
 
             $response = $this->conn->prepare($query);
             $response->execute();

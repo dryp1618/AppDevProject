@@ -2,15 +2,19 @@
     require_once('../bl/sectionManage.php');
     require_once('../bl/roomManage.php');
     require_once('../bl/scheduleManage.php');
+    require_once('../bl/scheduleTypeManage.php');
 
     $roommanagement = new roomManage();
     $rooms = $roommanagement -> getRooms();
+
+    $schedtypemanage = new schedTypeManage();
+    $schedtype = $schedtypemanage -> getScheduleTypes();
+
     $sectionmanagement = new sectionManage();
     $sections = $sectionmanagement -> getSections();
+
     $schedmanagement = new scheduleManage();
     $schedules = $schedmanagement -> getSchedules();
-
-    
 
 
 ?>
@@ -26,13 +30,15 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="admin2.css">
-    <script defer src="../scripts/service.js"></script>
-
+    
     <nav>   
         <?php include_once("components/navbarAdmin.html");?>
     </nav>
+    <script defer src="../scripts/service.js"></script>
 </head>
 <body>
     <script async>
@@ -43,9 +49,9 @@
     <?php include_once("components/adminSideNavbar.html");?>
     <main class="main-border-box main-top">
         <div class="input-area">
-                <div>
-                    <label for="roomSelect">Room No.</label>
-                    <select name="" id="roomSelect">
+                <div class="entry-area">
+                    <label for="roomSelect" class="label-line">Room No.</label>
+                    <select name="" class="input-field" id="roomSelect">
                         <option value="" disabled selected>Choose a Room</option>
                         <?php
                             $floorGroup = [];
@@ -62,10 +68,18 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-
-                <div>
-                    <label for="sectionSelect">Section</label>
-                    <select name="" id="sectionSelect">
+                <div class="entry-area">
+                    <label for="schedTypeSelect" class="label-line">Type</label>
+                    <select name="" class="input-field" id="schedTypeSelect">
+                        <option value="" disabled selected>Choose a type</option>
+                            <?php foreach($schedtype as $type) : ?>
+                            <option value="<?= $type['schedTypeID'] ?>" ><?= ucfirst($type['type_name']) ?></option>
+                            <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="entry-area">
+                    <label for="sectionSelect" class="label-line">Section</label>
+                    <select name="" class="input-field" id="sectionSelect">
                         <option value="" disabled selected>Choose a Section</option>
                         <?php
                             $deptGroup = [];
@@ -85,9 +99,9 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div>
-                    <label for="daySelect">Day</label>
-                    <select name="" id="daySelect">
+                <div class="entry-area">
+                    <label for="daySelect" class="label-line">Day</label>
+                    <select name="" class="input-field" id="daySelect">
                         <option value="" disabled selected>Choose a Day</option>
                         <option value="1">Sunday</option>
                         <option value="2">Monday</option>
@@ -98,47 +112,54 @@
                         <option value="7">Saturday</option>
                     </select>
                 </div>
-                <div>
-                    <label for="">Time Start</label>
-                    <input type="time" id="timeIn">
+                <div class="entry-area">
+                    <label for="" class="label-line">Time Start</label>
+                    <input type="time" class="input-field" id="timeIn">
                 </div>
-                <div>
-                    <label for="">Time End</label>
-                    <input type="time" id="timeOut">
+                <div class="entry-area">
+                    <label for="" class="label-line">Time End</label>
+                    <input type="time" class="input-field" id="timeOut">
                 </div>
         </div>
         <div class="button-area">
-            <button onclick="addNewSchedule()">Submit</button>
+            <button onclick="addNewSchedule()">Submit<span class="material-symbols-outlined">add_circle</span></button>
         </div>
 
     </main>
     <main class="main-border-box main-bottom">
-        <table class="centered higlight striped" id="myTable">
+        <table class="display compact" id="myTable">
             <thead>
                 <tr>
-                    <th> Room No. </th>
-                    <th> Section No. </th>
+                    <th> Type </th>
+                    <th> Room </th>
+                    <th> Section </th>
                     <th> Day </th>
-                    <th colspan="2"> Time </th>
-                    <th> Action </th>
+                    <th colspan="3"> <center>Time</center> </th>
+                    <th> <center>Action</center> </th>
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($sched)) :  ?>
+                <?php if(!empty($schedules)) :  ?>
                 <?php foreach($schedules as $sched) : ?>
                 <tr>
+                    <td><?= ucfirst($sched["type_name"]) ?></td>
                     <td><?= $sched["room_number"] ?></td>
-                        <td><?= ucfirst($sched["type_name"]) ?></td>
+                    <td><?= $sched["section_code"] ?></td>
                         <td><?= ucfirst($sched["day"]) ?></td>
-                        <td><?= $sched["time_start"] ?></td>
-                        <td><?= $sched["time_end"] ?></td>
+                        <td><center><?= $sched["time_start"]?></center></td>
+                        <td> <center>-</center> </td>
+                        <td></center><?= $sched["time_end"] ?></center></td>
+                        <td class="action-button-area">
+                            <button class="update-button"><span class="material-symbols-outlined">edit</span></button>
+                            <button class="delete-button"><span class="material-symbols-outlined">delete</span></button>
+                        </td>
                 </tr>
                 <?php endforeach; ?>
             <?php else : ?>
                 <tr>
                     <td>No Data Found</td>
                 </tr>
-                <?php endif ?>                 
+            <?php endif ?>                 
             </tbody>
         </table>
     </main>

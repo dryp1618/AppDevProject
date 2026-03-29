@@ -41,4 +41,6 @@ WebApp conditions:
 - Zip the code
 - Compile Database schema inside zip file
 
-- Fix all CSS before continuing
+# To-Do
+
+- Schedule C~~R~~UD functionality

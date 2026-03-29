@@ -39,7 +39,9 @@
         }
         
         public function readSchedulesModel(){
-            $query = "SELECT * FROM tbl_schedules";
+            // $query = "SELECT tbl_users.*, tbl_userroles.role_name FROM tbl_users INNER JOIN tbl_userroles ON tbl_users.roleID = tbl_userroles.roleID";
+
+            $query = "SELECT tbl_schedules.*, tbl_schedtype.* FROM tbl_schedules INNER JOIN tbl_schedtype ON tbl_schedules.schedTypeID = tbl_schedtype.schedTypeID";
 
             $response = $this->conn->prepare($query);
             $response->execute();
