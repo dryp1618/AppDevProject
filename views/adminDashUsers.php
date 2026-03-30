@@ -17,6 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
+    
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="admin1.css">
     <nav>   

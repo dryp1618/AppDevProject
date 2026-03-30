@@ -5,10 +5,11 @@
             $this->conn = $db;
         }
 
-        public function createScheduleModel($room, $section, $day, $time_start, $time_end){
+        public function createScheduleModel($type, $room, $section, $day, $time_start, $time_end){
             $query = 
             "INSERT INTO tbl_schedules
-            VALUES (:room_number, :schedTypeID, :day, :time_start, :time_end, :updatedAt, :createdAt)"; 
+            (room_number, schedTypeID, day, time_start, time_end, section_code, updatedAt, createdAt)
+            VALUES (:room_number, :schedTypeID, :day, :time_start, :time_end, :section_code, :updatedAt, :createdAt)";
 
             $response = $this->conn->prepare($query);
             
@@ -22,14 +23,14 @@
                 7 => "saturday"
             ];
 
-            $defaultSchedType = 1;
             $datenow = date('Y-m-d H:i:s');
             
             $response->bindParam(":room_number", $room);
-            $response->bindParam(":schedTypeID", $defaultSchedType);
+            $response->bindParam(":schedTypeID", $type);
             $response->bindParam(":day", $days[$day]);
-            $response->bindParam(":time_start", $time_start);
-            $response->bindParam(":time_end", $time_end);
+            $response->bindParam(":section_code", $section);
+            $response->bindParam(":time_start", date_format(date_create($time_start), "H:i:s"));
+            $response->bindParam(":time_end", date_format(date_create($time_end), "H:i:s"));
             $response->bindParam(":updatedAt", $datenow);
             $response->bindParam(":createdAt", $datenow);
             
@@ -47,8 +48,46 @@
             $response->execute();
             return $response;
         } 
+
+        public function updateScheduleModel($id, $type, $room, $section, $day, $time_start, $time_end){
+            $query="UPDATE tbl_schedules SET  room_number = :room_number, schedTypeID = :schedTypeID, day = :day, time_start = :time_start, time_end = :time_end, section_code = :section_code, updatedAt = :updatedAt WHERE sched_id = :sched_id";
+            $response = $this->conn->prepare($query);
+
+            $days = [       
+                1 => "sunday",
+                2 => "monday",
+                3 => "tuesday",
+                4 => "wednesday",
+                5 => "thursday",
+                6 => "friday",
+                7 => "saturday"
+            ];
+
+            $datenow = date('Y-m-d H:i:s');
+
+            $response->bindParam(":sched_id", $id);
+            $response->bindParam(":room_number", $room);
+            $response->bindParam(":schedTypeID", $type);
+            $response->bindParam(":day", $days[$day]);
+            $response->bindParam(":section_code", $section);
+            $response->bindParam(":time_start", date_format(date_create($time_start), "H:i:s"));
+            $response->bindParam(":time_end", date_format(date_create($time_end), "H:i:s"));
+            $response->bindParam(":updatedAt", $datenow);
+
+
+            $response->execute();
+            return $response;
+        }
+
+        public function deleteScheduleModel($id){
+            $query = "DELETE FROM tbl_schedules WHERE sched_id = :sched_id";
+            $response = $this->conn->prepare($query);
+
+            $response->bindParam(":sched_id", $id);
+
+            $response->execute();
+
+            return $response;
+        }
     }
-
-
-
 ?>

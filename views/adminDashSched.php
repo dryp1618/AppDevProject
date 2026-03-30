@@ -49,77 +49,89 @@
     <?php include_once("components/adminSideNavbar.html");?>
     <main class="main-border-box main-top">
         <div class="input-area">
-                <div class="entry-area">
-                    <label for="roomSelect" class="label-line">Room No.</label>
-                    <select name="" class="input-field" id="roomSelect">
-                        <option value="" disabled selected>Choose a Room</option>
-                        <?php
-                            $floorGroup = [];
-                            foreach($rooms as $room){
-                                $floor = substr($room['room_number'], 0, 2);
-                                $floorGroup[$floor][] = $room;
-                            }
-                            foreach($floorGroup as $floor =>$rooms) : ?>
-                                <optgroup label="Floor <?=  $floor ?>">
-                                    <?php foreach($rooms as $room) : ?>
-                                    <option value="<?=  $room['room_number']?>"><?=  $room['room_number']?></option>
-                            <?php endforeach;?>
-                                </optgroup>
+            <div class="entry-area">
+                <label for="schedTypeSelect" class="label-line">Schedule Type</label>
+                <select name="schedTypeSelect" class="input-field select-box" id="schedTypeSelect">
+                    <option value="" disabled selected>Choose a type</option>
+                        <?php foreach($schedtype as $type) : ?>
+                        <option value="<?= $type['schedTypeID'] ?>" ><?= ucfirst($type['type_name']) ?></option>
                         <?php endforeach; ?>
-                    </select>
+                </select>
+                <div class="icon-container">
+                    <span class="material-symbols-outlined">arrow_drop_down</span>
                 </div>
-                <div class="entry-area">
-                    <label for="schedTypeSelect" class="label-line">Type</label>
-                    <select name="" class="input-field" id="schedTypeSelect">
-                        <option value="" disabled selected>Choose a type</option>
-                            <?php foreach($schedtype as $type) : ?>
-                            <option value="<?= $type['schedTypeID'] ?>" ><?= ucfirst($type['type_name']) ?></option>
-                            <?php endforeach; ?>
-                    </select>
+            </div>
+            <div class="entry-area">
+                <label for="roomSelect" class="label-line">Room No.</label>
+                <select name="roomSelect" class="input-field select-box" id="roomSelect">
+                    <option value="" disabled selected>Choose a Room</option>
+                    <?php
+                        $floorGroup = [];
+                        foreach($rooms as $room){
+                            $floor = substr($room['room_number'], 0, 2);
+                            $floorGroup[$floor][] = $room;
+                        }
+                        foreach($floorGroup as $floor =>$rooms) : ?>
+                            <optgroup label="Floor <?=  $floor ?>">
+                                <?php foreach($rooms as $room) : ?>
+                                <option value="<?= $room['room_number']?>"><?=  $room['room_number']?></option>
+                        <?php endforeach;?>
+                            </optgroup>
+                    <?php endforeach; ?>
+                </select>
+                <div class="icon-container">
+                    <span class="material-symbols-outlined">arrow_drop_down</span>
                 </div>
-                <div class="entry-area">
-                    <label for="sectionSelect" class="label-line">Section</label>
-                    <select name="" class="input-field" id="sectionSelect">
-                        <option value="" disabled selected>Choose a Section</option>
-                        <?php
-                            $deptGroup = [];
-                            foreach ($sections as $section) {
-                                $departmentName = $section['dept_name'];
-                                $deptGroup[$departmentName][] = $section;
-                            }
+            </div>
+            <div class="entry-area">
+                <label for="sectionSelect" class="label-line">Section</label>
+                <select name="sectionSelect" class="input-field select-box" id="sectionSelect">
+                    <option value="" disabled selected>Choose a Section</option>
+                    <?php
+                        $deptGroup = [];
+                        foreach ($sections as $section) {
+                            $departmentName = $section['dept_name'];
+                            $deptGroup[$departmentName][] = $section;
+                        }
 
-                            foreach ($deptGroup as $department => $deptSections) : ?>
-                                <optgroup label="<?= $department ?>">
-                                    <?php foreach ($deptSections as $section) : ?>
-                                        <option value="<?= $section['sectionID'] ?>">
-                                            <?= $section['year_level'] . $section['dept_code'] . $section['block'] ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </optgroup>
-                        <?php endforeach; ?>
-                    </select>
+                        foreach ($deptGroup as $department => $deptSections) : ?>
+                            <optgroup label="<?= $department ?>">
+                                <?php foreach ($deptSections as $section) : ?>
+                                    <option value="<?= $section['section_code'] ?>">
+                                        <?= $section['section_code'] ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </optgroup>
+                    <?php endforeach; ?>
+                </select>
+                <div class="icon-container">
+                    <span class="material-symbols-outlined">arrow_drop_down</span>
                 </div>
-                <div class="entry-area">
-                    <label for="daySelect" class="label-line">Day</label>
-                    <select name="" class="input-field" id="daySelect">
-                        <option value="" disabled selected>Choose a Day</option>
-                        <option value="1">Sunday</option>
-                        <option value="2">Monday</option>
-                        <option value="3">Tuesday</option>
-                        <option value="4">Wednesday</option>
-                        <option value="5">Thursday</ption>
-                        <option value="6">Friday</option>
-                        <option value="7">Saturday</option>
-                    </select>
+            </div>
+            <div class="entry-area">
+                <label for="daySelect" class="label-line">Day</label>
+                <select name="daySelect" class="input-field select-box" id="daySelect">
+                    <option value="" disabled selected>Choose a Day</option>
+                    <option value="1">Sunday</option>
+                    <option value="2">Monday</option>
+                    <option value="3">Tuesday</option>
+                    <option value="4">Wednesday</option>
+                    <option value="5">Thursday</ption>
+                    <option value="6">Friday</option>
+                    <option value="7">Saturday</option>
+                </select>
+                <div class="icon-container">
+                    <span class="material-symbols-outlined">arrow_drop_down</span>
                 </div>
-                <div class="entry-area">
-                    <label for="" class="label-line">Time Start</label>
-                    <input type="time" class="input-field" id="timeIn">
-                </div>
-                <div class="entry-area">
-                    <label for="" class="label-line">Time End</label>
-                    <input type="time" class="input-field" id="timeOut">
-                </div>
+            </div>
+            <div class="entry-area">
+                <label for="timeIn" class="label-line">Time Start</label>
+                <input type="time" class="input-field" id="timeIn">
+            </div>
+            <div class="entry-area">
+                <label for="timeOut" class="label-line">Time End</label>
+                <input type="time" class="input-field" id="timeOut">
+            </div>
         </div>
         <div class="button-area">
             <button onclick="addNewSchedule()">Submit<span class="material-symbols-outlined">add_circle</span></button>
@@ -130,6 +142,7 @@
         <table class="display compact" id="myTable">
             <thead>
                 <tr>
+                    <th> ID </th>
                     <th> Type </th>
                     <th> Room </th>
                     <th> Section </th>
@@ -140,18 +153,19 @@
             </thead>
             <tbody>
                 <?php if(!empty($schedules)) :  ?>
-                <?php foreach($schedules as $sched) : ?>
+                <?php foreach($schedules as $index=> $sched) : ?>
                 <tr>
+                    <td><?= $sched["sched_id"] ?></td>
                     <td><?= ucfirst($sched["type_name"]) ?></td>
                     <td><?= $sched["room_number"] ?></td>
                     <td><?= $sched["section_code"] ?></td>
                         <td><?= ucfirst($sched["day"]) ?></td>
-                        <td><center><?= $sched["time_start"]?></center></td>
+                        <td><center><?= date_format(date_create($sched["time_start"]), "g:i A") ?></center></td>
                         <td> <center>-</center> </td>
-                        <td></center><?= $sched["time_end"] ?></center></td>
+                        <td></center><?= date_format(date_create($sched["time_end"]),"g:i A") ?></center></td>
                         <td class="action-button-area">
-                            <button class="update-button"><span class="material-symbols-outlined">edit</span></button>
-                            <button class="delete-button"><span class="material-symbols-outlined">delete</span></button>
+                            <button class="update-button" onclick="changeSchedInfo(<?= $sched['sched_id'] ?>)" title="Edit Schedule entry"><span class="material-symbols-outlined">edit</span></button>
+                            <button class="delete-button" onclick="deleteSchedule(<?= $sched['sched_id'] ?>)" title="Delete Schedule entry"><span class="material-symbols-outlined">delete</span></button>
                         </td>
                 </tr>
                 <?php endforeach; ?>

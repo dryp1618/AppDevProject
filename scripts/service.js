@@ -1,3 +1,5 @@
+//  =========================== USER =====================================
+
 function newUserRegisterFunc() {
   var firstName = document.getElementById("txtfName").value;
   var lastName = document.getElementById("txtlName").value;
@@ -98,23 +100,74 @@ function redirectFunc(redirectID) {
   }
 }
 
+//  =========================== SCHEDULE =====================================
+
 function addNewSchedule() {
-  var section = document.getElementById("").value;
-  var room = document.getElementById("").value;
-  var timeIn = document.getElementById("").value;
-  var timeOut = document.getElementById("").value;
+  var type = document.getElementById("schedTypeSelect").value;
+  var section = document.getElementById("sectionSelect").value;
+  var room = document.getElementById("roomSelect").value;
+  var day = document.getElementById("daySelect").value;
+  var timeIn = document.getElementById("timeIn").value;
+  var timeOut = document.getElementById("timeOut").value;
 
   $.ajax({
-    url: "../controllers/userController.php",
+    url: "../controllers/scheduleController.php",
     type: "POST",
     data: {
+      newSchedType: type,
       newSchedSect: section,
       newSchedRoom: room,
+      newSchedDay: day,
       newSchedTimeIn: timeIn,
       newSchedTimeOut: timeOut,
     },
     success: (returnData) => {
       console.log("Making new Schedule...");
+    },
+    error: (xhr) => {
+      alert(xhr.status + " : " + xhr.responseText);
+    },
+  });
+}
+
+function changeSchedInfo(sched_id) {
+  var type = document.getElementById("schedTypeSelect").value;
+  var section = document.getElementById("sectionSelect").value;
+  var room = document.getElementById("roomSelect").value;
+  var day = document.getElementById("daySelect").value;
+  var timeIn = document.getElementById("timeIn").value;
+  var timeOut = document.getElementById("timeOut").value;
+
+  $.ajax({
+    url: "../controllers/scheduleController.php",
+    type: "POST",
+    data: {
+      updSchedID: sched_id,
+      updSchedType: type,
+      updSchedSect: section,
+      updSchedRoom: room,
+      updSchedDay: day,
+      updSchedTimeIn: timeIn,
+      updSchedTimeOut: timeOut,
+    },
+    success: (returnData) => {
+      console.log("Changing selected Schedule...");
+    },
+    error: (xhr) => {
+      alert(xhr.status + " : " + xhr.responseText);
+    },
+  });
+}
+
+function deleteSchedule(sched_id) {
+  $.ajax({
+    url: "../controllers/scheduleController.php",
+    type: "POST",
+    data: {
+      delSchedID: sched_id,
+    },
+    success: (returnData) => {
+      console.log("Deleting schedule...");
     },
     error: (xhr) => {
       alert(xhr.status + " : " + xhr.responseText);
