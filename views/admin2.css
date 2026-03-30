@@ -57,6 +57,7 @@ aside {
 
 main {
   background-color: var(--fg-color);
+  margin-inline: 1em;
 }
 
 .main-top {
@@ -66,7 +67,9 @@ main {
 }
 .main-bottom {
   grid-area: main2;
+  height: 64vh;
 
+  overflow: auto;
   padding: 2em;
 }
 

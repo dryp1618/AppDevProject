@@ -6,20 +6,22 @@
 body {
   min-height: 90vh;
   display: grid;
-  grid-template: auto;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     "navbar navbar"
-    "sidebar main"
     "sidebar main";
+
   gap: 1em;
 }
 
 main {
   grid-area: main;
   padding: 2em;
+  height: 80vh;
+  margin-inline: 1em;
 
-  margin: 1em;
-  overflow: scroll;
+  overflow: auto;
   background-color: var(--fg-color);
 }
 
