@@ -1,4 +1,5 @@
 # Trying to understand:
+
 - Views: What the user sees
 - Scripts: Frontend stuff + bridge data to the controller
 - Controller: Passively updates the front/backend by interacting with management/bl
@@ -20,11 +21,13 @@ WebApp conditions:
 - New Users cannot apply for admin
 
 # April 1: Video Presentation
+
 - Zip the source code
 - Compile Database schema inside zip file
 - send DB CSV file for easier Database population on Sir's end
 
 # To-Do
+
 - Fix login
 - Populate schedules table
 - Once functionality completed, sync with Javascript display

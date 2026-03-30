@@ -3,12 +3,16 @@
     require_once('../bl/roomManage.php');
     require_once('../bl/scheduleManage.php');
     require_once('../bl/scheduleTypeManage.php');
+    require_once('../bl/dayManage.php');
 
     $roommanagement = new roomManage();
     $rooms = $roommanagement -> getRooms();
 
     $schedtypemanage = new schedTypeManage();
     $schedtype = $schedtypemanage -> getScheduleTypes();
+
+    $daysmanage = new dayManage();
+    $days = $daysmanage -> getDays();
 
     $sectionmanagement = new sectionManage();
     $sections = $sectionmanagement -> getSections();
@@ -112,13 +116,9 @@
                 <label for="daySelect" class="label-line">Day</label>
                 <select name="daySelect" class="input-field select-box" id="daySelect">
                     <option value="" disabled selected>Choose a Day</option>
-                    <option value="1">Sunday</option>
-                    <option value="2">Monday</option>
-                    <option value="3">Tuesday</option>
-                    <option value="4">Wednesday</option>
-                    <option value="5">Thursday</ption>
-                    <option value="6">Friday</option>
-                    <option value="7">Saturday</option>
+                    <?php foreach($days as $day) : ?>
+                        <option value="<?= $day['day_id'] ?>" ><?= ucfirst($day['day_name']) ?></option>
+                    <?php endforeach; ?>
                 </select>
                 <div class="icon-container">
                     <span class="material-symbols-outlined">arrow_drop_down</span>
@@ -159,7 +159,7 @@
                     <td><?= ucfirst($sched["type_name"]) ?></td>
                     <td><?= $sched["room_number"] ?></td>
                     <td><?= $sched["section_code"] ?></td>
-                        <td><?= ucfirst($sched["day"]) ?></td>
+                        <td><?= ucfirst($sched["day_name"]) ?></td>
                         <td><center><?= date_format(date_create($sched["time_start"]), "g:i A") ?></center></td>
                         <td> <center>-</center> </td>
                         <td></center><?= date_format(date_create($sched["time_end"]),"g:i A") ?></center></td>
