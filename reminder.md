@@ -28,5 +28,4 @@ WebApp conditions:
 
 # To-Do
 
-- Fix login
 - Once functionality completed, sync with Javascript display
