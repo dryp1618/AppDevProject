@@ -84,13 +84,6 @@
     &:hover {
       background-color: var(--main-color-accent);
     }
-
-    svg {
-      display: block;
-      fill: var(--text-color-2);
-      justify-self: end;
-      align-self: flex-end;
-    }
   }
 }
 

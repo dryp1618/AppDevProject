@@ -73,6 +73,10 @@ main {
   padding: 2em;
 }
 
+.main-bottom table {
+  border: dashed thin gray;
+}
+
 .input-area {
   flex-grow: 2;
   height: fit-content;

@@ -65,5 +65,5 @@ aside {
 }
 
 table {
-  font-color: var(--text-color-1);
+  border: dashed thin gray;
 }

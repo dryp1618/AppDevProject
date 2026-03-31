@@ -60,7 +60,7 @@
                         <span>Register</span>
                     </button>
                 </div>
-                <p>Want to Login? <a href="loginPage.php">Click here</a></p>
+                <p>Want to Login? <a href="login.php">Click here</a></p>
             </div>
         </div>
     </div>

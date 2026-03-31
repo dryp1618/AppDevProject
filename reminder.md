@@ -29,5 +29,4 @@ WebApp conditions:
 # To-Do
 
 - Fix login
-- Populate schedules table
 - Once functionality completed, sync with Javascript display
