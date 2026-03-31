@@ -110,7 +110,7 @@ nav svg {
 
 .main-border-box {
   background-color: var(--fg-color);
-  box-shadow: 0 9px 33px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 9px 33px 9px rgba(0, 0, 0, 0.5);
 }
 
 /* ==== MOBILE RESPONSIVE ===== */

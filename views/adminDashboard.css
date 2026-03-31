@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-area {
+  width: 100%;
+  height: clamp(150px, fit-content, 300px);
+
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+
+  gap: 1em;
+}
+
+.card-item {
+  font-size: 0.8em;
+  text-wrap: balance;
+
+  column-rule: var(--text-color-2);
+
+  background-color: var(--status-offline-color);
+  border-radius: 2px;
+  box-shadow: 0 10px 12px 5px rgba(0, 0, 0, 0.2);
+
+  height: fit-content;
+  width: fit-content;
+  padding: 2em;
+
+  text-align: center;
+}
+
+.card-red {
+  background-color: oklch(
+    from var(--status-occupied-color) l c h / calc(alpha - 0.1)
+  );
+  border: var(--status-occupied-color);
+}
+.card-green {
+  background-color: var(--status-available-color);
+}
+.card-blue {
+  background-color: var(--status-reserved-color);
+}
+.card-blank {
+  border: solid thin var(--status-offline-color);
+  background-color: var(--bg-color);
+}
+
+.graph-area {
+  display: flex;
+  flex-flow: row nowrap;
+
+  gap: 1em;
+
+  width: 100%;
+  height: fit-content;
+
+  flex-grow: 1;
+  justify-content: space-evenly;
+  align-items: center;
+
+  gap: 1em;
+}
+
+.graph-box {
+  border-radius: 5px;
+  border: solid thick var(--black);
+  background-color: var(--white);
+
+  height: fit-content;
+
+  width: 100%;
+
+  padding: 1.5em;
+
+  text-align: center;
+}
+
+.table-area {
+  width: 100%;
+  flex-grow: 2;
+}

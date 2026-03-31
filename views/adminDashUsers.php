@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require_once('../bl/userManage.php');
 
     $usermanagement = new userManage();
@@ -11,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room Tracker | Admin Homepage</title>
+    <title>Room Tracker | Admin Users view</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -44,19 +43,19 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if(!empty($users)) :  ?>
+            <?php if(!empty($users)) :  ?>
                 <?php foreach($users as $user) : ?>
-                <tr>
+                    <tr>
                         <td><?= $user["userID"] ?></td>
                         <td><?= $user["firstName"] ?></td>
                         <td><?= $user["lastName"] ?></td>
                         <td><?= ucfirst($user["role_name"]) ?></td>
-                </tr>
+                    </tr>
                 <?php endforeach; ?>
-            <?php else : ?>
-                <tr>
-                    <td>No Data Found</td>
-                </tr>
+                <?php else : ?>
+                    <tr>
+                        <td>No Data Found</td>
+                    </tr>
             <?php endif ?>
             </tbody>
         </table>

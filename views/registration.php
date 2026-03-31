@@ -32,28 +32,28 @@
                 <div class="input-area">
                     <div class="name-group">
                         <div class="entry-area">                              
-                            <input type="text" id="txtfName" required>
+                            <input type="text" id="txtfName" required validate>
                             <label for="txtfName" class="label-line">First Name</label>
                         </div>
                         <div class="entry-area">                              
-                            <input type="text" id="txtlName" required>
+                            <input type="text" id="txtlName" required validate>
                             <label for="txtlName" class="label-line">Last Name</label>
                         </div>
                     </div>
                     <div class="entry-area">
-                        <input type="text" id="regID" required>
+                        <input type="text" id="regID" required validate>
                         <label for="regID" class="label-line">ID Number</label>
                     </div>
                     <div class="entry-area">
-                        <input type="tel" id="email" required>
+                        <input type="text" id="email" required validate >
                         <label for="email" class="label-line">Email</label>
                     </div>
                     <div class="entry-area">
-                        <input type="tel" id="phone" pattern="[0-9]{4}-[0-9]{3}=[0-9]{4}" required>
+                        <input type="tel" id="phone" pattern="[0-9]{11}" required pattern validate>
                         <label for="phone" class="label-line">Phone Number</label>
                     </div>
                     <div class="entry-area">
-                        <input type="text" id="userPassword" required>
+                        <input type="text" id="userPassword" required validate>
                         <label for="userPassword" class="label-line">Password</label>
                     </div>
                     <button type="submit" name="action" class="btn-enter" onclick="newUserRegisterFunc()">
