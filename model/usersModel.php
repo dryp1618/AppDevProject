@@ -8,7 +8,7 @@
         public function createUserModel($userID, $fName, $lName, $phone_num, $email, $password){
             $query = 
             "INSERT INTO tbl_users
-            VALUES (:userID, :roleID, :firstName, :lastName, :password, :email, :phone_number, :updatedAt, :createdAt)"; 
+            VALUES (:userID, :roleID, :firstName, :lastName, :password, :email, :phone_number, :updatedAt, :createdAt)";
 
             $response = $this->conn->prepare($query);
             
@@ -73,14 +73,15 @@
 
             $passCheck = $response->fetch(PDO::FETCH_ASSOC);
 
-            //user does't exist
-            if($passCheck === false){
+            if(!isset($passCheck['password'])){
                 return false;
             }
 
-            if(password_verify($userPassword, $passCheck['password'])){
+            if($userPassword == $passCheck['password']){
                 return true;
             }
+
+            return password_verify($userPassword, $passCheck['password']);
             exit;
         }
     }

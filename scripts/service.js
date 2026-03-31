@@ -79,8 +79,13 @@ function loginFunc() {
       loginID: loginID,
       loginPass: password,
     },
+    dataType: "json",
     success: (returnData) => {
-      console.log("Logging in...");
+      if (returnData.success) {
+        window.location.href = "../views/home.php";
+      } else {
+        console.log(returnData.message || "Login failed.");
+      }
     },
     error: (xhr) => {
       alert(xhr.status + " : " + xhr.responseText);

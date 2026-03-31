@@ -63,10 +63,8 @@
         public function loginUser($inputID, $inputPass){
             try {
                 if($this->userModel->loginUserModel($inputID, $inputPass)){
-                    echo "User login successfully.";
                     return true;
                 }else{
-                    echo "Error encountered while logging in user.";
                     return false;
                 }
             } catch (InvalidArgumentException $ex) {
