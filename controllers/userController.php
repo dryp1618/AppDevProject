@@ -17,8 +17,7 @@
             $confirmLogin = $usermanagement->loginUser($_POST['loginID'], $_POST['loginPass']);
 
             if($confirmLogin){
-                $_SESSION['userID'] = $_POST['loginID'];
-                echo json_encode(['success' => true]);
+                echo json_encode(['success' => true, 'message' => 'Login authorized.']);
             } else {
                 echo json_encode(['success' => false, 'message' => 'Wrong password.']);
             }

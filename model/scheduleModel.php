@@ -12,7 +12,8 @@
             VALUES (:room_number, :schedTypeID, :day_id, :time_start, :time_end, :section_code, :updatedAt, :createdAt)";
 
             $response = $this->conn->prepare($query);
-            
+
+            date_default_timezone_set('Asia/Manila');
             $datenow = date('Y-m-d H:i:s');
             
             $response->bindParam(":room_number", $room);
@@ -43,6 +44,7 @@
             $query="UPDATE tbl_schedules SET  room_number = :room_number, schedTypeID = :schedTypeID, day_id = :day_id, time_start = :time_start, time_end = :time_end, section_code = :section_code, updatedAt = :updatedAt WHERE sched_id = :sched_id";
             $response = $this->conn->prepare($query);
 
+            date_default_timezone_set('Asia/Manila');
             $datenow = date('Y-m-d H:i:s');
 
             $response->bindParam(":sched_id", $id);

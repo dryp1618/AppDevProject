@@ -82,9 +82,10 @@ function loginFunc() {
     dataType: "json",
     success: (returnData) => {
       if (returnData.success) {
+        console.log(returnData.message || "Login works.");
         window.location.href = "../views/home.php";
       } else {
-        console.log(returnData.message || "Login failed.");
+        console.log(returnData.message || "Login fails.");
       }
     },
     error: (xhr) => {

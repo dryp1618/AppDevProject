@@ -13,6 +13,7 @@
             $response = $this->conn->prepare($query);
             
             $roleIDdefault = 2; // default user
+            date_default_timezone_set('Asia/Manila');
             $datenow = date('Y-m-d H:i:s');
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -42,6 +43,7 @@
             $query="UPDATE tbl_users SET roleID = :roleID, firstName = : firstName, lastName = :lastName, updatedAt = :updatedAt WHERE userID = :userID";
             $response = $this->conn->prepare($query);
 
+            date_default_timezone_set('Asia/Manila');
             $datenow = date('Y-m-d H:i:s');
             $response->bindParam(":firstName", $fName);
             $response->bindParam(":lastName", $lName);
