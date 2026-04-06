@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap");
 
 :root {
+  /* Semantic colors */
+
   --bg-color: #fff;
   --fg-color: #f6f6f6;
   --black: #000;
@@ -37,10 +39,12 @@
   --textbox-outline-color: #5c5c5c;
   --textbox-fill-color: #d9d9d9;
   --button-add-color: #8a50ff;
+
+  --standard-font-size: 12pt;
 }
 
 html {
-  font-size: 12pt;
+  font-size: var(--standard-font-size);
   font-family: "Inter", "Poppins", "Segoe UI", "Tahoma", "sans-serif";
   background-color: var(--bg-color);
 }
