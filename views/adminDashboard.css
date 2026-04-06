@@ -41,10 +41,7 @@ main {
 }
 
 .card-red {
-  background-color: oklch(
-    from var(--status-occupied-color) l c h / calc(alpha - 0.1)
-  );
-  border: var(--status-occupied-color);
+  background-color: var(--status-occupied-color);
 }
 .card-green {
   background-color: var(--status-available-color);

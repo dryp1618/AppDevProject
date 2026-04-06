@@ -130,7 +130,7 @@ main {
   width: 80%;
 
   background-color: var(--button-add-color);
-  border: transparent thin;
+  border: thin var(--button-add-color);
   border-radius: 5px;
   outline: none;
 
@@ -149,8 +149,7 @@ main {
   cursor: pointer;
 }
 .button-area button:hover {
-  border: var(--button-add-color);
-  background-color: oklch(60% chroma hue);
+  filter: brightness(90%);
 }
 
 .button-area .material-symbols-outlined {

@@ -139,7 +139,7 @@ input {
   line-height: 3em;
   border-radius: 5px;
   background-color: var(--textbox-fill-color);
-  border: thin solid oklch(from currentColor calc(l + 1) c h);
+  border: thin transparent;
   transition: 0.1s ease;
 
   z-index: 10;
