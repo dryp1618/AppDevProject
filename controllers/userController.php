@@ -19,7 +19,7 @@
             if($confirmLogin){
                 echo json_encode(['success' => true, 'message' => 'Login authorized.']);
             } else {
-                echo json_encode(['success' => false, 'message' => 'Wrong password.']);
+                echo json_encode(['success' => false, 'message' => 'Wrong credentials.']);
             }
         }
 ?>

@@ -16,7 +16,8 @@
             date_default_timezone_set('Asia/Manila');
             $datenow = date('Y-m-d H:i:s');
 
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $hashedPassword = password_hash($password, PASSWORD_ARGON2ID);
             
             $response->bindParam(":userID", $userID);
             $response->bindParam(":roleID", $roleIDdefault);
