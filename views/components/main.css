@@ -3,11 +3,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap");
 
 :root {
-  /* Semantic colors */
+  /* Primitive colors */
+  --color-black: #000;
+  --color-white: #fff;
 
-  --bg-color: #fff;
+  /* Semantic colors (not yet in use) */
+
+  --color-panel-background: var(--color-white);
+  --color-panel-foreground: #f6f6f6;
+
+  --color-theme-primary: #b73b3b;
+  --color-theme-primary-accent: #b73b3b;
+
+  --color-display-cell: #fffdf6;
+  --color-display-cell-selected: var(--color-black);
+
+  --color-navbar-primary: var(--color-theme-primary);
+  --color-navbar-accent: var(--color-theme-primary-accent);
+
+  --color-button-enter: var(--color-navbar-primary);
+  --color-button-clearform: #817f7f;
+  --color-button-update: #4296ba;
+  --color-button-delete: #e02b2e;
+  --color-button-add: #8a50ff;
+
+  --color-status-occupied: #e95f5f;
+  --color-status-vacant: #8cc767;
+  --color-status-reserved: #6c99ed;
+  --color-status-closed: #878787;
+
+  --color-text-primary: var(--color-black);
+  --color-text-alternate: var(--color-white);
+  --color-text-link: #1277a2;
+
+  --color-input-fill: #d9d9d9;
+  --color-input-border: #5c5c5c;
+
+  --color-detail-line: #5c5c5c;
+
+  /* Universal font size */
+  --font-size-standard: 12pt;
+
+  /* former color names (currently in use)*/
+  --bg-color: var(--color-white);
   --fg-color: #f6f6f6;
-  --black: #000;
 
   --main-color: #b73b3b;
   --main-color-accent: #942527;
@@ -39,12 +78,10 @@
   --textbox-outline-color: #5c5c5c;
   --textbox-fill-color: #d9d9d9;
   --button-add-color: #8a50ff;
-
-  --standard-font-size: 12pt;
 }
 
 html {
-  font-size: var(--standard-font-size);
+  font-size: var(--font-size-standard);
   font-family: "Inter", "Poppins", "Segoe UI", "Tahoma", "sans-serif";
   background-color: var(--bg-color);
 }
