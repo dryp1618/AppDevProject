@@ -44,7 +44,9 @@
   /* Universal font size */
   --font-size-standard: 12pt;
 
-  /* former color names (currently in use)*/
+  /* former color names (currently in use) */
+  --white: #fff;
+  --black: #000;
   --bg-color: var(--color-white);
   --fg-color: #f6f6f6;
 

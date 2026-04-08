@@ -16,9 +16,11 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="admin1.css">
+
     <nav>   
         <?php include_once("components/navbarAdmin.html");?>
     </nav>
@@ -40,6 +42,7 @@
                     <th> First Name </th>
                     <th> Last Name </th>
                     <th> Role </th>
+                    <th> <center>Actions</center> </th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +53,10 @@
                         <td><?= $user["firstName"] ?></td>
                         <td><?= $user["lastName"] ?></td>
                         <td><?= ucfirst($user["role_name"]) ?></td>
+                        <td class="action-button-area">
+                            <button class="update-button" onclick="deleteUserFunc(<?= $user['userID'] ?>)" title="Delete User"><span class="material-symbols-outlined">delete</span></button>
+                        </td>
+
                     </tr>
                 <?php endforeach; ?>
                 <?php else : ?>

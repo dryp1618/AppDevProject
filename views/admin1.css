@@ -67,3 +67,34 @@ aside {
 table {
   border: dashed thin gray;
 }
+
+.action-button-area {
+  border: none;
+  color: white;
+  padding: 1em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.action-button-area .update-button {
+  color: inherit;
+  background-color: var(--update-button-color);
+  border-radius: 50%;
+  border: none;
+  height: 3em;
+  width: 3em;
+
+  justify-content: center;
+  align-items: center;
+}
+.action-button-area .delete-button {
+  color: inherit;
+  background-color: var(--delete-button-color);
+  border-radius: 50%;
+  border: none;
+  height: 3em;
+  width: 3em;
+
+  justify-content: center;
+  align-items: center;
+}

@@ -72,8 +72,8 @@ main {
 
 .graph-box {
   border-radius: 5px;
-  border: solid thick var(--black);
-  background-color: var(--white);
+  border: solid thick var(--color-black);
+  background-color: var(--color-white);
 
   height: fit-content;
 
