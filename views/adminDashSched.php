@@ -142,7 +142,7 @@
         <table class="display compact" id="myTable">
             <thead>
                 <tr>
-                    <th> ID </th>
+                    <th> Count </th>
                     <th> Type </th>
                     <th> Room </th>
                     <th> Section </th>
@@ -155,7 +155,7 @@
                 <?php if(!empty($schedules)) :  ?>
                 <?php foreach($schedules as $index=> $sched) : ?>
                 <tr>
-                    <td><?= $sched["sched_id"] ?></td>
+                    <td><?= $index + 1 ?></td>
                     <td><?= ucfirst($sched["type_name"]) ?></td>
                     <td><?= $sched["room_number"] ?></td>
                     <td><?= $sched["section_code"] ?></td>
