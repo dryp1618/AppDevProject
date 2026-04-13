@@ -22,7 +22,7 @@ const rooms = [
   { id: 15, name: 2015, status: "occupied" },
 ];
 
-const container = document.getElementById("room-grid-container");
+const container = document.getElementById("grid-room-container");
 const template = document.getElementById("room-template");
 
 const colorMap = {

@@ -10,11 +10,6 @@
 * Student view: Can request to reserve a room, can logout, user account (change info)
 * Admin view: See dashboard (graphs, tables, cards)
 
-# WebApp conditions:
-
-- Admin cannot change any user data
-- New Users cannot apply for admin
-
 # April 1: Video Presentation
 
 - Zip the source code
@@ -23,6 +18,7 @@
 
 # To-Do
 
+- Fix homepage & index CSS
 - Fix font size, and family (make it universal)
 - Update color names properly and apply them
 - Once functionality completed, sync with Javascript display

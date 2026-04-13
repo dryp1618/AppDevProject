@@ -6,10 +6,6 @@
     <title>Room Tracker | Homepage</title>
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="home.css">
-    <nav>   
-        <button onclick="toggleSidebar()" class="mobile-only">Button</button>
-        <?php include_once("components/navbarAdmin.html");?>
-    </nav>
     <script defer type="text/javascript" src="../scripts/script.js"></script>
 </head>
 <body>
@@ -22,14 +18,18 @@
             </label>
         </div>
     </template>
-
-
-    <main class="main-border-box">
-        <div id="room-grid-container"></div>
-    </main>
-    <aside class="main-border-box asidebar-content" id="sidebar">
-        <div id="sidebar-view"></div>
-    </aside>
+    <nav>   
+        <button onclick="toggleSidebar()" class="mobile-only">Button</button>
+        <?php include_once("components/navbarAdmin.html");?>
+    </nav>
+    <div class="main-content">
+        <main class="main-border-box">
+            <div id="grid-room-container"></div>
+        </main>
+        <aside class="main-border-box asidebar-content" id="sidebar">
+            <div id="sidebar-view"></div>
+        </aside>
+    </div>
 
 </body>
 </html>
