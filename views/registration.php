@@ -49,7 +49,7 @@
                         <label for="email" class="label-line">Email</label>
                     </div>
                     <div class="entry-area">
-                        <input type="tel" id="phone" pattern="[0-9]{11}" required pattern validate>
+                        <input type="tel" id="phone" pattern="[0-9]{11}" required pattern validate maxlength="10">
                         <label for="phone" class="label-line">Phone Number</label>
                     </div>
                     <div class="entry-area">
