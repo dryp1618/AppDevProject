@@ -26,7 +26,7 @@
         <main class="main-border-box">
             <div id="grid-room-container"></div>
         </main>
-        <aside class="main-border-box asidebar-content" id="sidebar">
+        <aside class="main-border-box" id="sidebar">
             <div id="sidebar-view"></div>
         </aside>
     </div>

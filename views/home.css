@@ -12,14 +12,15 @@ nav {
 .main-content {
   height: 90vh;
   width: 100%;
-  border: solid thick pink;
   display: grid;
 
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   grid-template-areas: "main sidebar";
 
   gap: 1em;
   padding: 1em;
+
+  align-items: center;
 
   box-sizing: border-box;
 }
@@ -29,7 +30,6 @@ aside {
 
   height: 80vh;
   width: 100%;
-  align-self: start;
 }
 
 main {

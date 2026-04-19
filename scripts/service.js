@@ -1,12 +1,13 @@
 //  =========================== USER =====================================
 
 function newUserRegisterFunc() {
-  var firstName = document.getElementById("txtfName").value;
-  var lastName = document.getElementById("txtlName").value;
-  var userID = document.getElementById("regID").value;
-  var email = document.getElementById("email").value;
-  var phone = document.getElementById("phone").value;
-  var usrPass = document.getElementById("userPassword").value;
+  var firstName = document.getElementById("txtfName").value.trim();
+  var lastName = document.getElementById("txtlName").value.trim();
+  var userID = document.getElementById("regID").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var phone = document.getElementById("phone").value.trim();
+  var usrPass = document.getElementById("userPassword").value.trim();
+  
 
   $.ajax({
     url: "../controllers/userController.php",
@@ -30,9 +31,9 @@ function newUserRegisterFunc() {
 }
 
 function updateUserFunc(userID) {
-  var firstName = document.getElementById("txtFirstName").value;
-  var lastName = document.getElementById("txtLastName").value;
-  var roleID = document.getElementById("roleSelect").value;
+  var firstName = document.getElementById("txtFirstName").value.trim();
+  var lastName = document.getElementById("txtLastName").value.trim();
+  var roleID = document.getElementById("roleSelect").value.trim();
 
   $.ajax({
     url: "../controllers/userController.php",
@@ -69,8 +70,8 @@ function deleteUserFunc(userID) {
 }
 
 function loginFunc() {
-  var loginID = document.getElementById("loginID").value;
-  var password = document.getElementById("userPassword").value;
+  var loginID = document.getElementById("loginID").value.trim();
+  var password = document.getElementById("userPassword").value.trim();
 
   $.ajax({
     url: "../controllers/userController.php",

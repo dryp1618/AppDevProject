@@ -10,15 +10,8 @@
 * Student view: Can request to reserve a room, can logout, user account (change info)
 * Admin view: See dashboard (graphs, tables, cards)
 
-# April 1: Video Presentation
-
-- Zip the source code
-- Compile Database schema inside zip file
-- send DB CSV file for easier Database population on Sir's end
-
 # To-Do
 
-- Fix homepage & index CSS
 - Fix font size, and family (make it universal)
 - Update color names properly and apply them
 - Once functionality completed, sync with Javascript display
@@ -30,3 +23,22 @@
 
 - Password hash = argon2id
 - API encrypt = AES
+
+# Lesson notes:
+
+- Dashboard cards are dynamically generated
+- Every user text input should have a maximum length (dbAllow-1) = maxlength
+- JS can also disallow minimum and maximum characters
+- JS validation always happens on the client-side
+- Another JS RegEx to only allow numbers
+
+- Important validations:
+
+* Text input maximum length
+* Do not allow future date selection
+
+## By next week (written on Apr16):
+
+- Form validation
+- Cards
+- Charts
