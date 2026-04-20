@@ -12,9 +12,17 @@
 
 # To-Do
 
+## Priority
+
+- Form validation
+- Dashboard cards
+- Charts
+- Once functionality completed, sync with Javascript display
+
+## Inessential
+
 - Fix font size, and family (make it universal)
 - Update color names properly and apply them
-- Once functionality completed, sync with Javascript display
 
 * Why store your phone numbers with a varchar with a 15 char limit? cause that's the E.164 standard
   https://dev.to/jkprod/best-way-to-store-phone-numbers-in-your-app-1j1o
@@ -36,9 +44,3 @@
 
 * Text input maximum length
 * Do not allow future date selection
-
-## By next week (written on Apr16):
-
-- Form validation
-- Cards
-- Charts
