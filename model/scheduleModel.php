@@ -71,5 +71,16 @@
 
             return $response;
         }
+
+        public function countTime(){
+            $query = "SELECT COUNT(*) as total 
+            FROM tbl_schedules
+            WHERE NOW() BETWEEN time_start AND time_end;";
+
+            $response = $this->conn->prepare($query);
+            $response->execute();
+            $resp = $response->fetch(PDO::FETCH_ASSOC);
+            return (int) $resp[0];
+        }
     }
 ?>

@@ -32,6 +32,11 @@
             return $response->fetchAll(PDO::FETCH_ASSOC);
         }
 
+        public function getSchedCount(){
+            $response = $this->schedModel->readSchedulesModel();
+            return (int) $response;
+        }
+
         public function changeScheduleInfo($id, $type, $room, $section, $day, $time_start, $time_end){
             try {
                 if($this-> schedModel-> updateScheduleModel($id, $type, $room, $section, $day, $time_start, $time_end)){
