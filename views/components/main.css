@@ -23,6 +23,7 @@
 
   --color-button-enter: var(--color-navbar-primary);
   --color-button-clearform: #817f7f;
+  --color-button-disable: #636363;
   --color-button-update: #4296ba;
   --color-button-delete: #e02b2e;
   --color-button-add: #8a50ff;
@@ -91,6 +92,8 @@ html {
 * {
   margin: 0;
   padding: 0;
+
+  user-select: none;
 }
 
 /* ==== NAVIGATION BAR DESIGN ==== */
@@ -131,6 +134,8 @@ nav a {
   align-items: center;
   text-decoration: none;
   color: var(--text-color-2);
+
+  user-select: none;
 
   &:hover {
     background-color: var(--nav-accent);

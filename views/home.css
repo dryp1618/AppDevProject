@@ -36,6 +36,7 @@ main {
   grid-area: main;
 
   height: 80vh;
+  min-width: 650px;
   overflow-y: auto; /* in case cards overflow vertically */
 }
 
@@ -45,10 +46,9 @@ main {
 
 #grid-room-container {
   padding: 1em;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 0.75rem;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   overflow: hidden;
 
   align-content: center;
@@ -105,6 +105,25 @@ main {
   transition: background-color 0.3s ease;
 }
 
+.floor-section {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.floor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.5rem;
+}
+
+.floor-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
 .room-status {
   margin: 0;
   font-size: 0.85rem;
@@ -125,7 +144,6 @@ main {
   gap: 1em;
   align-items: center;
   min-width: 20em;
-  /* margin: auto; */
   margin-top: 1em;
 }
 

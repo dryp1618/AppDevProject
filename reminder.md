@@ -8,19 +8,26 @@
 
 * Public view: Anyone can access, can see sign in
 * Student view: Can request to reserve a room, can logout, user account (change info)
-* Admin view: See dashboard (graphs, tables, cards)
+* Admin view: See dashboard (graphs, tables, cards), can see view homepage, can logout
+
+# Date notes:
+
+- The current schedule only recorded right now is synced to 2ITA SY 2025-2026 for a smaller, manageable data set.
 
 # To-Do
 
 ## Priority
 
 - Form validation
+- Admin can disable a room
+- Once functionality completed, sync with Javascript display
 - Dashboard cards
 - Charts
-- Once functionality completed, sync with Javascript display
+- Email functionality
 
 ## Inessential
 
+- Sweet alert
 - Fix font size, and family (make it universal)
 - Update color names properly and apply them
 
@@ -44,3 +51,21 @@
 
 * Text input maximum length
 * Do not allow future date selection
+
+## Github lesson notes:
+
+- If it is collaborative, make one email as the Repo Owner and share the credentials instead
+- Visibility
+  - Public: Anyone can view, download, comment on your code
+  - Private: Only stays within the account
+- gitignore: hides or does not upload certain files or folders
+- In company, there's a separate team that only requests the repo
+
+- dot(.) means all files
+- Commands:
+  - git init: initializes the git
+  - git add
+  - git commit -m "$message$": queues the changes to be uploaded with a message
+  - git push: uploading the code to the repo
+  - git switch -c $branch_name$ :create a new branch
+    - git push -u origin new-branch: pushes a new branch

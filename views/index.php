@@ -1,3 +1,19 @@
+<?php
+    require_once("../bl/roomManage.php");
+
+    $roommanagement = new roomManage();
+    $roommanagement->updateStatus();
+    $rooms = $roommanagement -> getRooms();
+
+    $room = array_map(function($room) {    //rename stuff for easier recognition
+        return [
+            "id" => $room["room_number"],
+            "name" => $room["room_number"],
+            "status" => $room["statusID"]
+        ];
+    }, $rooms);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +22,11 @@
     <title>Room Tracker | Homepage</title>
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="home.css">
-    <script defer type="text/javascript" src="../scripts/script.js"></script>
 </head>
 <body>
+    <script defer>
+        const rooms = <?= json_encode($room) ?>;
+    </script>
     <template id="room-template">
         <div class="room-wrapper">
             <input type="radio" name="room-selection" class="room-input" id="">
@@ -30,6 +48,7 @@
             <div id="sidebar-view"></div>
         </aside>
     </div>
+    <script defer type="text/javascript" src="../scripts/script.js"></script>
 
 </body>
 </html>

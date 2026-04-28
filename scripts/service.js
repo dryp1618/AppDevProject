@@ -1,3 +1,14 @@
+// == VALIDATION ===
+// input.addEventListener("input", () => {
+//   const msg = validate(input.value);
+//   if (msg) {
+//     errorSpan.textContent = msg;
+//     errorSpan.classList.add("visible");
+//   } else {
+//     errorSpan.classList.remove("visible");
+//   }
+// });
+
 //  =========================== USER =====================================
 
 function newUserRegisterFunc() {
@@ -7,7 +18,6 @@ function newUserRegisterFunc() {
   var email = document.getElementById("email").value.trim();
   var phone = document.getElementById("phone").value.trim();
   var usrPass = document.getElementById("userPassword").value.trim();
-  
 
   $.ajax({
     url: "../controllers/userController.php",
@@ -175,6 +185,24 @@ function deleteSchedule(sched_id) {
     },
     success: (returnData) => {
       console.log("Deleting schedule...");
+    },
+    error: (xhr) => {
+      alert(xhr.status + " : " + xhr.responseText);
+    },
+  });
+}
+
+//  =========================== ROOM. =====================================
+
+function toggleRoom(sched_id) {
+  $.ajax({
+    url: "../controllers/roomController.php",
+    type: "POST",
+    data: {
+      disableRoom: sched_id,
+    },
+    success: (returnData) => {
+      console.log("Disabling room...");
     },
     error: (xhr) => {
       alert(xhr.status + " : " + xhr.responseText);

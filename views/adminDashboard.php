@@ -1,5 +1,13 @@
 <?php
-// e
+    require_once('../bl/roomManage.php');
+    require_once('../bl/scheduleManage.php');
+    require_once('../bl/dayManage.php');
+
+    $roommanagement = new roomManage();
+    $roommanagement->updateStatus();
+    $rmStat = $roommanagement->getRoomStat();
+    $rmTotal = $roommanagement->getTotalCount();
+
 ?>
 
 <!DOCTYPE html>
@@ -32,25 +40,31 @@
     <?php include_once("components/adminSideNavbar.html");?>
     <main class="main-border-box">
         <div class="card-area">
-            <div class="card-item card-red">
-                Rooms Occupied for the week: 75% <br>
-                34/45
+            <div class="card-item card-red tooltip">
+                <span class="room-count"><?=  $rmStat[0]['occupied'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
+                <span class="tooltiptext">Current Occupied Room count within 30 minute interval</span>
+                Occupied
+                <!-- current count of rooms within this 30 minute timeframe -->
             </div>
-            <div class="card-item card-green">
-                Rooms Vacant for the week: 20% <br>
-                9/45
+            <div class="card-item card-green tooltip">
+                <span class="room-count"><?=  $rmStat[0]['vacant'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
+                <span class="tooltiptext">Current Available Room count within 30 minute interval</span>
+                Vacant
             </div>
-            <div class="card-item card-blue">
-                Rooms Reserved for the week: 4% <br>
-                2/45
+            <div class="card-item card-blue tooltip">
+                <span class="room-count"><?=  $rmStat[0]['reserved'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
+                <span class="tooltiptext">Current Reserved Room count within 30 minute interval</span>
+                Reserved
             </div>
-            <div class="card-item card-blank">
-                I don't know what to display<br>
-                beep boop bap
+            <div class="card-item card-blank tooltip">
+                <span class="room-count"><?=  $rmStat[0]['closed'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
+                <span class="tooltiptext">Current Closed Room count within 30 minute interval</span>
+                Closed
             </div>
         </div>
         <div class="graph-area">
             <div class="graph-box">Bar Graph for <br> Most used room per day (Top 5)</div>
+            <div class="graph-box">Pie Graph for <br> Daily percentage of statuses</div>
             <div class="graph-box">Pie Graph for <br> Daily percentage of statuses</div>
         </div>
         <div class="table-area">

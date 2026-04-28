@@ -188,6 +188,17 @@ main {
   justify-content: center;
   align-items: center;
 }
+.action-button-area .disable-button {
+  color: inherit;
+  background-color: var(--color-button-disable);
+  border-radius: 50%;
+  border: none;
+  height: 3em;
+  width: 3em;
+
+  justify-content: center;
+  align-items: center;
+}
 
 .entry-area {
   justify-content: center;
