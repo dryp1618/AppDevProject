@@ -67,5 +67,5 @@
   - git add
   - git commit -m "$message$": queues the changes to be uploaded with a message
   - git push: uploading the code to the repo
-  - git switch -c $branch_name$ :create a new branch
+  - git switch -c $branch_name$ : create a new branch
     - git push -u origin new-branch: pushes a new branch
