@@ -32,39 +32,35 @@
                 <div class="input-area">
                     <div class="name-group">
                         <div class="entry-area">                              
-                            <input type="text" id="txtfName" required validate>
-                            <label for="txtfName" class="label-line req-error" minlength="2" maxlength="50" placeholder="John">First Name</label>
-                            <span class="req-error" id="err-your-field">Name must be more than 2 characters</span>
-                            <span class="req-error">Name must be less than 50 characters</span>
-                            <span class="req-error">Name must not have special characters</span>
+                            <input type="text" id="txtfName" minlength="2" maxlength="51" required validate>
+                            <label for="txtfName" class="label-line">First Name</label>
+                            <!-- <span class="req-error" id="err-first-name"></span> -->
                         </div>
                         <div class="entry-area">                              
-                            <input type="text" id="txtlName" required validate>
-                            <label for="txtlName" class="label-line" minlength="2" maxlength="50" placeholder="Smith">Last Name</label>
-                            <!-- <span class="req-error">Name must be more than 2 characters</span>
-                            <span class="req-error">Name must be less than 50 characters</span>
-                            <span class="req-error">Name must not have special characters</span> -->
+                            <input type="text" id="txtlName" minlength="2" maxlength="51" required validate>
+                            <label for="txtlName" class="label-line">Last Name</label>
+                            <!-- <span class="req-error" id="err-last-name"></span> -->
                         </div>
                     </div>
                     <div class="entry-area">
-                        <input type="text" id="regID" required validate>
-                        <label for="regID" class="label-line" placeholder="1111222233">ID Number</label>
-                        <!-- <span class="req-error">Only numbers are allowed</span>
-                        <span class="req-error">ID must be 10 digits</span> -->
+                        <input type="text" id="regID" maxlength="11" required validate>
+                        <label for="regID" class="label-line">ID Number</label>
+                        <!-- <span class="req-error" id="err-id-number"></span> -->
                     </div>
                     <div class="entry-area">
                         <input type="email" id="email" required validate >
-                        <label for="email" class="label-line" placeholder="you@example.com">Email</label>
-                        <!-- <span class="req-error">Enter a valid email address</span> -->
+                        <label for="email" class="label-line">Email</label>
+                        <span class="req-error" id="err-email"></span>
                     </div>
                     <div class="entry-area">
-                        <input type="tel" id="phone" pattern="[0-9]{11}" required pattern validate maxlength="10">
+                        <input type="tel" id="phone" pattern="^0(9\d{9}|[2-9]\d{7,8})$" required pattern validate maxlength="10">
                         <label for="phone" class="label-line">Phone Number</label>
+                        <!-- <span class="req-error" id="err-phone-number"></span> -->
                     </div>
                     <div class="entry-area">
                         <input type="text" id="userPassword" required validate>
                         <label for="userPassword" class="label-line">Password</label>
-                        <!-- <span class="req-error"></span> -->
+                        <!-- <span class="req-error" id="err-password"></span> -->
                     </div>
                     <button type="submit" name="action" class="btn-enter" onclick="newUserRegisterFunc()">
                         <span>Register</span>

@@ -196,3 +196,18 @@ select {
 option:hover {
   background-color: var(--line-detail-color);
 }
+
+.entry-area {
+  margin-bottom: 1.5rem;
+}
+
+.req-error {
+  display: none;
+  font-size: 12px;
+  color: red;
+  margin-top: 5px;
+}
+
+.req-error.visible {
+  display: block;
+}

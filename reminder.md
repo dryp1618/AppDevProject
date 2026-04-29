@@ -30,6 +30,9 @@
 - Sweet alert
 - Fix font size, and family (make it universal)
 - Update color names properly and apply them
+- Update logic to prevent duplicates
+- Update notification to inform admin if there's schedule conflicts
+- Add admin or user sessions
 
 * Why store your phone numbers with a varchar with a 15 char limit? cause that's the E.164 standard
   https://dev.to/jkprod/best-way-to-store-phone-numbers-in-your-app-1j1o
