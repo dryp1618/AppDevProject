@@ -73,6 +73,48 @@
             return $response;
         }
 
+        public function countBusiestRoomModel(){
+            $query = "SELECT 
+                        room_number, 
+                        ROUND(SUM(TIME_TO_SEC(TIMEDIFF(time_end, time_start))) / 3600, 2) AS total_hours
+                    FROM 
+                        tbl_schedules
+                    WHERE 
+                        day_id = DATE_FORMAT(CURDATE(), '%w')
+                    GROUP BY 
+                        room_number
+                    ORDER BY 
+                        total_hours DESC
+                    LIMIT 10;";
+            $response = $this->conn->prepare($query);
+            $response->execute();
+            return $response;
+        }
+
+        public function countDayVacancy(){
+            $query = "SELECT 
+                        CASE day_id
+                            WHEN 0 THEN 'Sunday'
+                            WHEN 1 THEN 'Monday'
+                            WHEN 2 THEN 'Tuesday'
+                            WHEN 3 THEN 'Wednesday'
+                            WHEN 4 THEN 'Thursday'
+                            WHEN 5 THEN 'Friday'
+                            WHEN 6 THEN 'Saturday'
+                        END AS day_name,
+                        ROUND(( (SELECT COUNT(DISTINCT room_number) FROM tbl_schedules) * 14 ) - 
+                        SUM(TIME_TO_SEC(TIMEDIFF(time_end, time_start)) / 3600), 2) AS vacant_hours
+                    FROM 
+                        tbl_schedules
+                    GROUP BY 
+                        day_id
+                    ORDER BY 
+                        day_id ASC;";
+            $response = $this->conn->prepare($query);
+            $response->execute();
+            return $response;
+        }
+
         public function countRoomsModel(){
             $query = "SELECT COUNT(room_number) AS room_count FROM tbl_rooms";
             $response = $this->conn->prepare($query);

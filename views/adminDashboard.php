@@ -7,8 +7,36 @@
     $roommanagement->updateStatus();
     $rmStat = $roommanagement->getRoomStat();
     $rmTotal = $roommanagement->getTotalCount();
+    $busyRms = $roommanagement->getBusiestCount();
+    $availDays = $roommanagement->getTotalAvailableDailyHour();
+
+    $statusLabel = array_map('ucfirst' ,array_keys($rmStat));
+    $statusData = array_values($rmStat);
+
+    $busyLabel = array_column($busyRms, 'room_number');
+    $busyData = array_column($busyRms, 'total_hours');
+
+    $availDailyLabel = array_column($availDays, 'day_name');
+    $availDailyData = array_column($availDays, 'vacant_hours');
 
 ?>
+
+<script async>
+    window.PieData = {
+        labels: <?= json_encode($statusLabel); ?>,
+        data: <?= json_encode($statusData); ?>
+    }
+
+    window.BarData = {
+        labels: <?= json_encode($busyLabel); ?>,
+        data: <?= json_encode($busyData); ?>
+    }
+    
+    window.LineData = {
+        labels: <?= json_encode($availDailyLabel); ?>,
+        data: <?= json_encode($availDailyData); ?>
+    }
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +58,7 @@
         <?php include_once("components/navbarAdmin.html");?>
     </nav>
     <script defer type="text/javascript" src="../scripts/service.js"></script>
+    <script defer type="text/javascript" src="../scripts/charts.js"></script>
     <script defer type="text/javascript" src="../scripts/dataTable.js"></script>
     <script async src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -38,85 +67,42 @@
         $(document).ready(function () {
             $("#myTable").DataTable();
         }); 
-
-        const ctx = document.getElementById('myChart');
-        const lineChart = document.getElementById("lineChart");
-
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-            },
-        options: {
-            scales: {
-                y: {
-                beginAtZero: true
-                }
-            }
-            }
-        });
-
-        new Chart(lineChart, {
-        type: "line",
-        data: {
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-            datasets: [
-            {
-                label: "# of Votes",
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1,
-            },
-            ],
-        },
-        options: {
-            scales: {
-            y: {
-                beginAtZero: true,
-            },
-            },
-        },
-        });
     </script>
     <?php include_once("components/adminSideNavbar.html");?>
     <main class="main-border-box">
         <div class="card-area">
             <div class="card-item card-red tooltip">
-                <span class="room-count"><?=  $rmStat[0]['occupied'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
+                <span class="room-count"><?=  $rmStat['occupied'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
                 <span class="tooltiptext">Current Occupied Room count within 30 minute interval</span>
                 Occupied
                 <!-- current count of rooms within this 30 minute timeframe -->
             </div>
             <div class="card-item card-green tooltip">
-                <span class="room-count"><?=  $rmStat[0]['vacant'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
+                <span class="room-count"><?=  $rmStat['vacant'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
                 <span class="tooltiptext">Current Available Room count within 30 minute interval</span>
                 Vacant
             </div>
             <div class="card-item card-blue tooltip">
-                <span class="room-count"><?=  $rmStat[0]['reserved'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
+                <span class="room-count"><?=  $rmStat['reserved'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
                 <span class="tooltiptext">Current Reserved Room count within 30 minute interval</span>
                 Reserved
             </div>
             <div class="card-item card-blank tooltip">
-                <span class="room-count"><?=  $rmStat[0]['closed'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
+                <span class="room-count"><?=  $rmStat['closed'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
                 <span class="tooltiptext">Current Closed Room count within 30 minute interval</span>
                 Closed
             </div>
         </div>
         <div class="graph-area">
             <div class="graph-box">
-                <canvas id="myChart"></canvas>
+                <canvas id="pieChart"></canvas>
+            </div>
+            <div class="graph-box">
+                <canvas id="barChart"></canvas>
             </div>
             <div class="graph-box">
                 <canvas id="lineChart"></canvas>
             </div>
-            <div class="graph-box">Bar Graph for <br> idk </div>
-            <div class="graph-box">Line Graph for <br> idk </div>
         </div>
         <div class="table-area">
             <table class="display compact" id="myTable">

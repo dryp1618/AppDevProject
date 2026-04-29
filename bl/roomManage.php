@@ -48,9 +48,19 @@
             return $response->fetch(PDO::FETCH_ASSOC);
         }
 
+        public function getBusiestCount(){
+            $response = $this->roomModel->countBusiestRoomModel();
+            return $response->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function getTotalAvailableDailyHour(){
+            $response = $this->roomModel->countDayVacancy();
+            return $response->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         public function getRoomStat(){
             $response = $this->roomModel->readRoomStatus();
-            return $response->fetchAll(PDO::FETCH_ASSOC);
+            return $response->fetch(PDO::FETCH_ASSOC);
         }
     }
 
