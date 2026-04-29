@@ -22,6 +22,7 @@
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
     
+    
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="admin1.css">
     <link rel="stylesheet" href="adminDashboard.css">
@@ -30,12 +31,57 @@
     </nav>
     <script defer type="text/javascript" src="../scripts/service.js"></script>
     <script defer type="text/javascript" src="../scripts/dataTable.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <script async>
         $(document).ready(function () {
             $("#myTable").DataTable();
         }); 
+
+        const ctx = document.getElementById('myChart');
+        const lineChart = document.getElementById("lineChart");
+
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+            },
+        options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+            }
+        });
+
+        new Chart(lineChart, {
+        type: "line",
+        data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [
+            {
+                label: "# of Votes",
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1,
+            },
+            ],
+        },
+        options: {
+            scales: {
+            y: {
+                beginAtZero: true,
+            },
+            },
+        },
+        });
     </script>
     <?php include_once("components/adminSideNavbar.html");?>
     <main class="main-border-box">
@@ -63,9 +109,14 @@
             </div>
         </div>
         <div class="graph-area">
-            <div class="graph-box">Bar Graph for <br> Most used room per day (Top 5)</div>
-            <div class="graph-box">Pie Graph for <br> Daily percentage of statuses</div>
-            <div class="graph-box">Pie Graph for <br> Daily percentage of statuses</div>
+            <div class="graph-box">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="graph-box">
+                <canvas id="lineChart"></canvas>
+            </div>
+            <div class="graph-box">Bar Graph for <br> idk </div>
+            <div class="graph-box">Line Graph for <br> idk </div>
         </div>
         <div class="table-area">
             <table class="display compact" id="myTable">
