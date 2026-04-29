@@ -72,7 +72,7 @@ function newUserRegisterFunc() {
   const phoneRegex = /^0(9\d{9}|[2-9]\d{7,8})$./; //philippine local phone numbers
   const passwordRegex = /^(?=.*[0-9])(?=.*[_.!@#$*])[^\s]{6,}$/; //at least one number, one special character, more than 6 characters
 
-  if (firstName.length <= 3 && lastName.length <= 3) {
+  if (firstName.length < 3 && lastName.length < 3) {
     console.log(
       "First or Last name too short. Three or more characters required.",
     );
