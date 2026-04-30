@@ -45,7 +45,8 @@ main {
 
   height: 80vh;
   min-width: 650px;
-  overflow-y: auto; /* in case cards overflow vertically */
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
 }
 
 .mobile-only {
@@ -65,6 +66,7 @@ main {
 .room-wrapper {
   position: relative;
   width: 100%;
+  scroll-snap-align: start; 
 }
 
 .room-input {

@@ -6,6 +6,6 @@
         'port' => 587,
         'encryption' => 'tls',
         'from_email' => 'test.0.messaging@gmail.com',
-        'from_name' => 'Your App Name'
+        'from_name' => 'no-reply-reserve-notify'
     ]
 ?>
