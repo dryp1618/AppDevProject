@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-area {
+  width: 100%;
+  height: clamp(150px, fit-content, 300px);
+
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+
+  gap: 1em;
+}
+
+.card-item {
+  font-size: 1em;
+  text-wrap: balance;
+
+  column-rule: var(--text-color-2);
+
+  background-color: var(--status-offline-color);
+  border-radius: 2px;
+  box-shadow: 0 10px 12px 5px rgba(0, 0, 0, 0.2);
+
+  height: fit-content;
+  width: 100%;
+  min-width: fit-content;
+  padding: 2em;
+
+  text-align: center;
+}
+
+.card-item .room-count {
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.card-red {
+  background-color: var(--status-occupied-color);
+}
+.card-green {
+  background-color: var(--status-available-color);
+}
+.card-blue {
+  background-color: var(--status-reserved-color);
+}
+.card-blank {
+  border: solid thin var(--status-offline-color);
+  background-color: var(--bg-color);
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* Add dots under the hoverable text */
+  cursor: pointer;
+}
+
+/* Tooltip text */
+.tooltiptext {
+  visibility: hidden; /* Hidden by default */
+  width: 130px;
+  background-color: black;
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1; /* Ensure tooltip is displayed above content */
+}
+
+.tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%; /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+/* Show the tooltip text on hover */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.graph-area {
+  display: flex;
+  flex-flow: row nowrap;
+
+  gap: 1em;
+
+  width: 100%;
+  height: fit-content;
+
+  justify-content: space-evenly;
+  align-items: center;
+
+  gap: 1em;
+}
+
+.graph-box {
+  position: relative;
+  border-radius: 5px;
+  border: solid thick var(--color-black);
+  background-color: var(--color-white);
+
+  height: 300px;
+
+  width: 100%;
+
+  padding: 1.5em;
+
+  flex-grow: 1;
+
+  text-align: center;
+}
+
+.table-area {
+  width: 100%;
+  flex-grow: 2;
+}

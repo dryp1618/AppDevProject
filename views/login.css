@@ -84,13 +84,6 @@
     &:hover {
       background-color: var(--main-color-accent);
     }
-
-    svg {
-      display: block;
-      fill: var(--text-color-2);
-      justify-self: end;
-      align-self: flex-end;
-    }
   }
 }
 
@@ -110,7 +103,7 @@ input {
   line-height: 3em;
   border-radius: 5px;
   background-color: var(--textbox-fill-color);
-  border: thin solid oklch(from currentColor calc(l + 1) c h);
+  border: thin transparent;
   transition: 0.1s ease;
 
   z-index: 10;
@@ -124,7 +117,7 @@ input {
   padding-block: 0;
   margin-block: -1rem;
   color: var(--line-detail-color);
-  transition: 0.35s ease-in-out;
+  transition: 0.2s ease-in-out;
 
   z-index: 10;
 }

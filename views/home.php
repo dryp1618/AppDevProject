@@ -38,7 +38,7 @@
     </template>
     <nav>   
         <button onclick="toggleSidebar()" class="mobile-only">Button</button>
-        <?php include_once("components/navbarPublic.html");?>
+        <?php include_once("components/navbarAdmin.html");?>
     </nav>
     <div class="main-content">
         <main class="main-border-box">
@@ -49,6 +49,5 @@
         </aside>
     </div>
     <script defer type="text/javascript" src="../scripts/script.js"></script>
-
 </body>
 </html>

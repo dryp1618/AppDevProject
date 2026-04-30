@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 90vh;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "navbar navbar"
+    "sidebar main";
+
+  gap: 1em;
+}
+
+main {
+  grid-area: main;
+  padding: 2em;
+  height: 80vh;
+  margin-inline: 1em;
+
+  overflow: auto;
+  background-color: var(--fg-color);
+}
+
+nav {
+  grid-area: navbar;
+
+  z-index: 10;
+  position: sticky;
+  top: 0;
+}
+
+aside {
+  grid-area: sidebar;
+
+  height: 85vh;
+  position: sticky;
+  padding: 1em;
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1em;
+
+  a {
+    background-color: transparent;
+    color: var(--text-color-1);
+    font-size: 1.5em;
+    text-decoration: none;
+
+    border-bottom: solid thin var(--line-detail-color);
+    transition:
+      scale 0.5s ease-in-out,
+      background-color 1s ease-in-out;
+  }
+  a:hover {
+    background-color: line-gradient(to left, gray, rgba(0, 0, 0, 0));
+    transform: scale(1.2);
+  }
+}
+
+table {
+  border: dashed thin gray;
+}
+
+.action-button-area {
+  border: none;
+  color: white;
+  padding: 1em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.action-button-area .update-button {
+  color: inherit;
+  background-color: var(--update-button-color);
+  border-radius: 50%;
+  border: none;
+  height: 3em;
+  width: 3em;
+
+  justify-content: center;
+  align-items: center;
+}
+.action-button-area .delete-button {
+  color: inherit;
+  background-color: var(--delete-button-color);
+  border-radius: 50%;
+  border: none;
+  height: 3em;
+  width: 3em;
+
+  justify-content: center;
+  align-items: center;
+}

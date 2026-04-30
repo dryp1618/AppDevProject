@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+}
+
+.main-content {
+  height: 90vh;
+  width: 100%;
+  display: grid;
+
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: "main sidebar";
+
+  gap: 1em;
+  padding: 1em;
+
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+.main-content:has(.invis) {
+  grid-template-columns: 1fr; /* redefine without that slot */
+}
+
+.invis {
+  display: none;
+}
+
+aside {
+  grid-area: sidebar;
+
+  height: 80vh;
+  width: 100%;
+}
+
+main {
+  grid-area: main;
+
+  height: 80vh;
+  min-width: 650px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.mobile-only {
+  display: none;
+}
+
+#grid-room-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+
+  align-content: center;
+}
+
+.room-wrapper {
+  position: relative;
+  width: 100%;
+  scroll-snap-align: start; 
+}
+
+.room-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.room-input:checked + .room-card {
+  border-color: var(--selected-color);
+  background-color: #ffffff;
+  transform: scale(1.02);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.65);
+}
+
+.room-card {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+
+  position: relative;
+  background-color: var(--cell-color, #aaa);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 3.5rem;
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+.room-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1rem;
+  height: 100%;
+
+  background-color: var(--status-color, #878787);
+
+  transition: background-color 0.3s ease;
+}
+
+.floor-section {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.floor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.5rem;
+}
+
+.floor-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.room-status {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  text-transform: capitalize;
+}
+.room-name {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  font-weight: bold;
+}
+
+.room-list {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 1em;
+  align-items: center;
+  min-width: 20em;
+  margin-top: 1em;
+}
+
+/* Each room item */
+.room-item {
+  background: #eaeaea;
+  padding: 1em;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header stays similar */
+.room-header {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: var(--status-occupied-color);
+  border-radius: 50%;
+  margin-left: 0.2em;
+}
+
+.room-status {
+  margin-bottom: 15px;
+}
+
+.room-list .room-status {
+  text-decoration: underline;
+}
+
+/* Slot styles (same as before) */
+.slot {
+  text-align: center;
+  width: 20em;
+  background: white;
+  margin: 1em;
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.slot-header {
+  padding: 0.2em;
+  font-weight: bold;
+  color: white;
+}
+.slot-time {
+  padding: 2em;
+}
+
+.occupied {
+  background: var(--status-occupied-color);
+}
+.vacant {
+  background: var(--status-available-color);
+}
+.reserved {
+  background: var(--status-reserved-color);
+}
+.offline {
+  background: var(--status-offline-color);
+}
+
+@media (max-width: 800px) {
+  body {
+    grid-template-columns: 1fr;
+  }
+  aside {
+    display: none;
+    position: fixed;
+    width: 300px;
+  }
+  .show {
+    display: block;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}

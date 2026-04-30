@@ -1,0 +1,64 @@
+.sidebar {
+  width: 14rem;
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.panel-select a {
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.875rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #888;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+/* gradient sweep from left */
+.panel-select a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #cecbf6 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: 8px;
+}
+
+/* left accent bar */
+.panel-select a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 3px;
+  background: #534ab7;
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  transform: scaleY(0.4);
+}
+
+.panel-select a:hover {
+  color: #3c3489;
+}
+
+.panel-select a:hover::before {
+  opacity: 1;
+}
+
+.panel-select a:hover::after {
+  opacity: 1;
+  transform: scaleY(1);
+}
