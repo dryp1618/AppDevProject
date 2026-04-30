@@ -21,22 +21,6 @@
 
 ?>
 
-<script>
-    window.PieData = {
-        labels: <?= json_encode($statusLabel); ?>,
-        data: <?= json_encode($statusData); ?>
-    }
-
-    window.BarData = {
-        labels: <?= json_encode($busyLabel); ?>,
-        data: <?= json_encode($busyData); ?>
-    }
-    
-    window.LineData = {
-        labels: <?= json_encode($availDailyLabel); ?>,
-        data: <?= json_encode($availDailyData); ?>
-    }
-</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,8 +29,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room Tracker | Admin Dashboard</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
     
@@ -57,13 +39,28 @@
     <nav>   
         <?php include_once("components/navbarAdmin.html");?>
     </nav>
+    <script defer type="text/javascript" src="../scripts/dataTable.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer type="text/javascript" src="../scripts/service.js"></script>
     <script defer type="text/javascript" src="../scripts/charts.js"></script>
-    <script defer type="text/javascript" src="../scripts/dataTable.js"></script>
-    <script async src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <script>
+        window.PieData = {
+            labels: <?= json_encode($statusLabel); ?>,
+            data: <?= json_encode($statusData); ?>
+        }
+    
+        window.BarData = {
+            labels: <?= json_encode($busyLabel); ?>,
+            data: <?= json_encode($busyData); ?>
+        }
+        
+        window.LineData = {
+            labels: <?= json_encode($availDailyLabel); ?>,
+            data: <?= json_encode($availDailyData); ?>
+        }
+        
         $(document).ready(function () {
             $("#myTable").DataTable();
         }); 

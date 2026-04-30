@@ -45,11 +45,6 @@
                     WHERE tbl_rooms.statusID <> 4;";
             $response = $this->conn->prepare($query);
 
-            date_default_timezone_set('Asia/Manila');
-            // $datenow = date('Y-m-d H:i:s');
-
-            // $response->bindParam(":updatedAt", $datenow);
-
             $response->execute();
             return $response;
         }
@@ -74,17 +69,12 @@
         }
 
         public function countBusiestRoomModel(){
-            $query = "SELECT 
-                        room_number, 
+            $query = "SELECT room_number, 
                         ROUND(SUM(TIME_TO_SEC(TIMEDIFF(time_end, time_start))) / 3600, 2) AS total_hours
-                    FROM 
-                        tbl_schedules
-                    WHERE 
-                        day_id = DATE_FORMAT(CURDATE(), '%w')
-                    GROUP BY 
-                        room_number
-                    ORDER BY 
-                        total_hours DESC
+                    FROM tbl_schedules
+                    WHERE day_id = DATE_FORMAT(CURDATE(), '%w')
+                    GROUP BY room_number
+                    ORDER BY total_hours DESC
                     LIMIT 10;";
             $response = $this->conn->prepare($query);
             $response->execute();
@@ -92,24 +82,13 @@
         }
 
         public function countDayVacancy(){
-            $query = "SELECT 
-                        CASE day_id
-                            WHEN 0 THEN 'Sunday'
-                            WHEN 1 THEN 'Monday'
-                            WHEN 2 THEN 'Tuesday'
-                            WHEN 3 THEN 'Wednesday'
-                            WHEN 4 THEN 'Thursday'
-                            WHEN 5 THEN 'Friday'
-                            WHEN 6 THEN 'Saturday'
-                        END AS day_name,
-                        ROUND(( (SELECT COUNT(DISTINCT room_number) FROM tbl_schedules) * 14 ) - 
-                        SUM(TIME_TO_SEC(TIMEDIFF(time_end, time_start)) / 3600), 2) AS vacant_hours
-                    FROM 
-                        tbl_schedules
-                    GROUP BY 
-                        day_id
-                    ORDER BY 
-                        day_id ASC;";
+            $query = "SELECT tbl_days.day_name,
+                        840 - ROUND(SUM(TIME_TO_SEC(TIMEDIFF(LEAST(tbl_schedules.time_end, '21:00:00'), GREATEST(tbl_schedules.time_start, '07:00:00'))) / 3600), 2) AS vacant_hours
+                    FROM tbl_schedules
+                    JOIN tbl_days ON tbl_schedules.day_id = tbl_days.day_id
+                    WHERE tbl_schedules.time_start < '21:00:00' AND tbl_schedules.time_end > '07:00:00'
+                    GROUP BY tbl_days.day_id, tbl_days.day_name
+                    ORDER BY tbl_days.day_id;";
             $response = $this->conn->prepare($query);
             $response->execute();
             return $response;

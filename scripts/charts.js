@@ -11,12 +11,18 @@ new Chart(pie, {
         label: "Percentage of current room statuses",
         data: window.PieData.data,
         borderWidth: 2,
+        backgroundColor: [
+          "#F1948A",
+          "#82E0AA",
+          "#85C1E9",
+          "#BFC9CA",
+        ],
       },
     ],
   },
   options: {
     maintainAspectRatio: false,
-    responsive: true
+    responsive: true,
   },
 });
 
@@ -29,6 +35,8 @@ new Chart(bar, {
         label: "Most used Room Today (Total Hours)",
         data: window.BarData.data,
         borderWidth: 1,
+        borderColor: "#FF6384",
+        backgroundColor: "#FFB1C1",
       },
     ],
   },
@@ -51,6 +59,8 @@ new Chart(line, {
         label: "Free Room Hours per Day",
         data: window.LineData.data,
         borderWidth: 1,
+        borderColor: "#84b664",
+        backgroundColor: "#b4e694",
       },
     ],
   },

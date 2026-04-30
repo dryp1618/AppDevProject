@@ -18,21 +18,21 @@
 
 ## Priority
 
-- Form validation
 - Admin can disable a room
-- Once functionality completed, sync with Javascript display
-- Dashboard cards
-- Charts
 - Email functionality
+- Sidebar functionality in index page 
 
 ## Inessential
 
 - Sweet alert
 - Fix font size, and family (make it universal)
 - Update color names properly and apply them
-- Update logic to prevent duplicates
+- Update logic to prevent schedule duplicates
+- Update logic to prevent user duplicates
 - Update notification to inform admin if there's schedule conflicts
 - Add admin or user sessions
+- Chart count doesn't count closed rooms as part of a working hour and therefore should reduce the "free time & room" count
+- Optimize everything for performance, robustness, and remove redundance
 
 * Why store your phone numbers with a varchar with a 15 char limit? cause that's the E.164 standard
   https://dev.to/jkprod/best-way-to-store-phone-numbers-in-your-app-1j1o

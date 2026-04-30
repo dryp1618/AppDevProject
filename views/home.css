@@ -25,6 +25,14 @@ nav {
   box-sizing: border-box;
 }
 
+.main-content:has(.invis) {
+  grid-template-columns: 1fr; /* redefine without that slot */
+}
+
+.invis {
+  display: none;
+}
+
 aside {
   grid-area: sidebar;
 
