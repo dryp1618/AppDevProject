@@ -13,6 +13,7 @@
                 $days = ['Sunday', 'Monday', 'Tuesday', 'Wedesday', 'Thursday', 'Friday', 'Saturday'];
 
                 $dateOfRes = htmlspecialchars($days[$_POST['newSchedDay']]);
+                $room = htmlspecialchars($_POST['newSchedRoom']);
                 $timeSpan = htmlspecialchars($_POST['newSchedTimeIn'] . '-' . $_POST['newSchedTimeOut']);
                 $section = htmlspecialchars($_POST['newSchedSect']);
                 $datenow = htmlspecialchars(date('Y-m-d H:i:s'));
@@ -27,6 +28,7 @@
                 <h3>Room Reservation created</h3>
                 <p><strong>Day:</strong> $dateOfRes</p>
                 <p><strong>Time:</strong> $timeSpan</p>
+                <p><strong>Room:</strong><br> $room</p>
                 <p><strong>Section:</strong><br> $section</p>
                 <p><strong>Date of creation:</strong><br> $datenow</p>
                 ";
