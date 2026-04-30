@@ -112,11 +112,12 @@ main {
 }
 
 .graph-box {
+  position: relative;
   border-radius: 5px;
   border: solid thick var(--color-black);
   background-color: var(--color-white);
 
-  height: fit-content;
+  height: 300px;
 
   width: 100%;
 

@@ -21,7 +21,7 @@
 
 ?>
 
-<script async>
+<script>
     window.PieData = {
         labels: <?= json_encode($statusLabel); ?>,
         data: <?= json_encode($statusData); ?>
@@ -63,7 +63,7 @@
     <script async src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <script async>
+    <script>
         $(document).ready(function () {
             $("#myTable").DataTable();
         }); 

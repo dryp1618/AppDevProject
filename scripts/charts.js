@@ -14,7 +14,10 @@ new Chart(pie, {
       },
     ],
   },
-  options: {},
+  options: {
+    maintainAspectRatio: false,
+    responsive: true
+  },
 });
 
 new Chart(bar, {
@@ -30,6 +33,8 @@ new Chart(bar, {
     ],
   },
   options: {
+    maintainAspectRatio: false,
+    responsive: true,
     scales: {
       y: {
         beginAtZero: true,
@@ -50,6 +55,8 @@ new Chart(line, {
     ],
   },
   options: {
+    maintainAspectRatio: false,
+    responsive: true,
     scales: {
       y: {
         beginAtZero: true,
