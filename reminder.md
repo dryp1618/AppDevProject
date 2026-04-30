@@ -19,12 +19,11 @@
 ## Priority
 
 - Admin can disable a room
-- Email functionality
 - Sidebar functionality in index page 
+- Sweet alert
 
 ## Inessential
 
-- Sweet alert
 - Fix font size, and family (make it universal)
 - Update color names properly and apply them
 - Update logic to prevent schedule duplicates
