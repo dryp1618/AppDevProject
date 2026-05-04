@@ -19,7 +19,8 @@
 ## Priority
 
 - Admin can disable a room
-- Sidebar functionality in index page 
+- Backend a way to have a heirarhcy where the updater cant change status if it detects the room is initially reserved or closed
+- Sidebar functionality in index page
 - Sweet alert
 
 ## Inessential

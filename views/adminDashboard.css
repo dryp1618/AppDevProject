@@ -71,6 +71,9 @@ main {
 /* Tooltip text */
 .tooltiptext {
   visibility: hidden; /* Hidden by default */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
   width: 130px;
   background-color: black;
   color: #ffffff;
@@ -85,7 +88,7 @@ main {
   content: " ";
   position: absolute;
   bottom: 100%; /* At the top of the tooltip */
-  left: 50%;
+  left: 10%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -94,6 +97,7 @@ main {
 /* Show the tooltip text on hover */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+  opacity: 1;
 }
 
 .graph-area {

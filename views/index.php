@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <script defer>
+    <script async>
         const rooms = <?= json_encode($room) ?>;
     </script>
     <template id="room-template">
