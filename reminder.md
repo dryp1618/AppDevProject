@@ -24,7 +24,7 @@
 ## Inessential
 
 - Fix font size, and family (make it universal)
-- Update color names properly and apply them
+- Apply new color names
 - Update logic to prevent schedule duplicates
 - Update logic to prevent user duplicates
 - Update notification to inform admin if there's schedule conflicts
