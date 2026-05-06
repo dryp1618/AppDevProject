@@ -18,8 +18,6 @@
 
 ## Priority
 
-- Admin can disable a room
-- Backend a way to have a heirarhcy where the updater cant change status if it detects the room is initially reserved or closed
 - Sidebar functionality in index page
 - Sweet alert
 
@@ -32,6 +30,7 @@
 - Update notification to inform admin if there's schedule conflicts
 - Add admin or user sessions
 - Chart count doesn't count closed rooms as part of a working hour and therefore should reduce the "free time & room" count
+- Implement SPA
 - Optimize everything for performance, robustness, and remove redundance
 
 * Why store your phone numbers with a varchar with a 15 char limit? cause that's the E.164 standard

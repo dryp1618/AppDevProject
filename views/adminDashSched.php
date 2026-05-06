@@ -164,7 +164,7 @@
                         <td><center>-</center></td>
                         <td></center><?= date_format(date_create($sched["time_end"]),"g:i A") ?></center></td>
                         <td class="action-button-area">
-                            <button class="disable-button" onclick="toggleDisable(<?= $sched['room_number'] ?>)" title="Disable Room"><span class="material-symbols-outlined">block</span></button>
+                            <button class="disable-button" onclick="toggleRoom(<?= $sched['room_number'] ?>)" title="Disable Room"><span class="material-symbols-outlined">block</span></button>
                             <button class="update-button" onclick="changeSchedInfo(<?= $sched['sched_id'] ?>)" title="Edit Schedule entry"><span class="material-symbols-outlined">edit</span></button>
                             <button class="delete-button" onclick="deleteSchedule(<?= $sched['sched_id'] ?>)" title="Delete Schedule entry"><span class="material-symbols-outlined">delete</span></button>
                         </td>
@@ -174,7 +174,7 @@
                 <tr>
                     <td>No Data Found</td>
                 </tr>
-            <?php endif ?>                 
+            <?php endif ?>          
             </tbody>
         </table>
     </main>
