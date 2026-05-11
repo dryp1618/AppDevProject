@@ -15,6 +15,8 @@
 ## Priority
 
 - Sidebar functionality in index page
+- Admin can disable a room
+- Sidebar functionality in index page 
 - Sweet alert
 
 ## Inessential
