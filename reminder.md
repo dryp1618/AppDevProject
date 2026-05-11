@@ -10,10 +10,6 @@
 * Student view: Can request to reserve a room, can logout, user account (change info)
 * Admin view: See dashboard (graphs, tables, cards), can see view homepage, can logout
 
-# Date notes:
-
-- The current schedule only recorded right now is synced to 2ITA SY 2025-2026 for a smaller, manageable data set.
-
 # To-Do
 
 ## Priority
@@ -25,6 +21,7 @@
 
 - Fix font size, and family (make it universal)
 - Apply new color names
+- Fix CSS grid layout (bigger grid then split into smaller grid)
 - Update logic to prevent schedule duplicates
 - Update logic to prevent user duplicates
 - Update notification to inform admin if there's schedule conflicts
