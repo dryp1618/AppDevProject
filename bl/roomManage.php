@@ -13,15 +13,15 @@
             $this->roomModel = new roomsTable($db);
         }
 
-        // public function toggleDisable($room){
-        //     try {
-        //         $this->roomModel->changeStatusModel($room, $newStat);
-        //     } catch (InvalidArgumentException $ex) {
-        //         http_response_code(500);
-        //         echo $ex->getMessage();
-        //         exit;
-        //     }
-        // }
+        public function toggleDisable($room){
+            try {
+                $this->roomModel->disableRoom($room);
+            } catch (InvalidArgumentException $ex) {
+                http_response_code(500);
+                echo $ex->getMessage();
+                exit;
+            }
+        }
 
         public function getRooms(){
             $response = $this->roomModel->readRoomsModel();
@@ -62,6 +62,7 @@
             $response = $this->roomModel->readRoomStatus();
             return $response->fetch(PDO::FETCH_ASSOC);
         }
+
     }
 
 

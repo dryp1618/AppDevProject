@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <script defer>
+    <script async>
         const rooms = <?= json_encode($room) ?>;
     </script>
     <template id="room-template">
@@ -44,7 +44,7 @@
         <main class="main-border-box">
             <div id="grid-room-container"></div>
         </main>
-        <aside class="main-border-box invis" id="sidebar">
+        <aside class="main-border-box" id="sidebar">
             <div id="sidebar-view"></div>
         </aside>
     </div>

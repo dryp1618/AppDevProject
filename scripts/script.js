@@ -109,6 +109,45 @@ function updateRoomStatus(id, newStatus) {
   }
 }
 
+function groupByFloor(rooms) {
+  return rooms.reduce((acc, room) => {
+    const floor = Math.floor(room.name / 100);
+    if (!acc[floor]) acc[floor] = [];
+    acc[floor].push(room);
+    return acc;
+  }, {});
+}
+
+function renderRooms(rooms) {
+  const grouped = groupByFloor(rooms);
+
+  const sortedFloors = Object.keys(grouped).sort((a, b) => b - a);
+
+  sortedFloors.forEach((floor) => {
+    const section = document.createElement("div");
+    section.className = "floor-section";
+    section.dataset.floor = floor;
+
+    const label = document.createElement("h2");
+    label.className = "floor-label";
+    label.textContent = `${floor}th Floor`;
+
+    const grid = document.createElement("div");
+    grid.className = "floor-grid";
+
+    grouped[floor].forEach((room) => {
+      grid.appendChild(createRoomCard(room));
+    });
+
+    section.appendChild(label);
+    section.appendChild(grid);
+    container.appendChild(section);
+  });
+}
+
+renderRooms(rooms);
+
+// ===========================
 const roomsSched = [
   {
     id: 1,
@@ -158,41 +197,3 @@ function createSideRoomCard(room) {
 roomsSched.forEach((room) => {
   app.appendChild(createSideRoomCard(room));
 });
-
-function groupByFloor(rooms) {
-  return rooms.reduce((acc, room) => {
-    const floor = Math.floor(room.name / 100);
-    if (!acc[floor]) acc[floor] = [];
-    acc[floor].push(room);
-    return acc;
-  }, {});
-}
-
-function renderRooms(rooms) {
-  const grouped = groupByFloor(rooms);
-
-  const sortedFloors = Object.keys(grouped).sort((a, b) => b - a);
-
-  sortedFloors.forEach((floor) => {
-    const section = document.createElement("div");
-    section.className = "floor-section";
-    section.dataset.floor = floor;
-
-    const label = document.createElement("h2");
-    label.className = "floor-label";
-    label.textContent = `${floor}th Floor`;
-
-    const grid = document.createElement("div");
-    grid.className = "floor-grid";
-
-    grouped[floor].forEach((room) => {
-      grid.appendChild(createRoomCard(room));
-    });
-
-    section.appendChild(label);
-    section.appendChild(grid);
-    container.appendChild(section);
-  });
-}
-
-renderRooms(rooms);

@@ -3,8 +3,8 @@
 
     $roomManage = new roomManage();
 
-        // if (isset($_POST['disableRoom'])) {
-        //     $roomManage -> toggleDisable($_POST['disableRoom']);
-        //     exit;
-        // }
+        if (isset($_POST['disableRoom'])) {
+            $roomManage -> toggleDisable($_POST['disableRoom']);
+            exit;
+        }
 ?>
