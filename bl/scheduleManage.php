@@ -1,6 +1,8 @@
 <?php
-    require_once("../model/database.php");
-    require_once("../model/scheduleModel.php");
+    // require_once("../model/database.php");
+    require_once __DIR__ . '/../model/database.php';
+    // require_once("../model/scheduleModel.php");
+    require_once __DIR__ . '/../model/scheduleModel.php';
 
     class scheduleManage{
         private $schedModel;

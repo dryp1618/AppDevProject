@@ -21,8 +21,8 @@
 
 ## Priority
 
+- Implement user roles. Every registration is a non-privileged user, assign session when logging in
 - Sidebar functionality in index and home page
-- Admin can disable a room
 - Sweet alert
 
 ## Inessential

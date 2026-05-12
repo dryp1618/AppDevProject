@@ -1,6 +1,8 @@
 <?php
-    require_once("../model/database.php");
-    require_once("../model/roomsModel.php");
+    // require_once("../model/database.php");
+    require_once __DIR__ . '/../model/database.php';
+    // require_once("../model/roomsModel.php");
+    require_once __DIR__ . '/../model/roomsModel.php';
 
     class roomManage{
         private $roomModel;
