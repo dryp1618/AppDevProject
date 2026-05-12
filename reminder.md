@@ -12,17 +12,22 @@
 
 # To-Do
 
+- Hashing [✅]
+- Input Validation [✅]
+- Dynamic Cards [✅]
+- Dynamic Charts [✅]
+- Emailer [✅]
+- GitHub [✅]
+
 ## Priority
 
-- Sidebar functionality in index page
+- Sidebar functionality in index and home page
 - Admin can disable a room
-- Sidebar functionality in index page 
 - Sweet alert
 
 ## Inessential
 
 - Fix font size, and family (make it universal)
-- Apply new color names
 - Fix CSS grid layout (bigger grid then split into smaller grid)
 - Update logic to prevent schedule duplicates
 - Update logic to prevent user duplicates

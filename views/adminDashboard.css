@@ -27,9 +27,9 @@ main {
   font-size: 1em;
   text-wrap: balance;
 
-  column-rule: var(--text-color-2);
+  column-rule: var(--color-text-alternate);
 
-  background-color: var(--status-offline-color);
+  background-color: var(--color-status-closed);
   border-radius: 2px;
   box-shadow: 0 10px 12px 5px rgba(0, 0, 0, 0.2);
 
@@ -47,17 +47,17 @@ main {
 }
 
 .card-red {
-  background-color: var(--status-occupied-color);
+  background-color: var(--color-status-occupied);
 }
 .card-green {
-  background-color: var(--status-available-color);
+  background-color: var(--color-status-vacant);
 }
 .card-blue {
-  background-color: var(--status-reserved-color);
+  background-color: var(--color-status-reserved);
 }
 .card-blank {
-  border: solid thin var(--status-offline-color);
-  background-color: var(--bg-color);
+  border: solid thin var(--color-status-closed);
+  background-color: var(--color-panel-foreground);
 }
 
 /* Tooltip container */

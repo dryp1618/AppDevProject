@@ -10,11 +10,11 @@
   justify-content: center;
   align-items: center;
 
-  background: var(--bg-color);
+  background: var(--color-panel-background);
 }
 
 .main-container {
-  background-color: var(--fg-color);
+  background-color: var(--color-panel-foreground);
   width: 30vw;
 }
 
@@ -22,7 +22,7 @@
   font-family: "Kumbh Sans", "Inter", sans-serif;
   justify-content: center;
   align-items: center;
-  background: var(--fg-color);
+  background: var(--color-panel-foreground);
   padding: 2em;
 
   position: relative;
@@ -37,7 +37,7 @@
   }
 
   a {
-    color: var(--link-color);
+    color: var(--color-text-link);
     text-decoration: none;
   }
 
@@ -64,8 +64,8 @@
     font-weight: 300;
     font-family: "Inter", sans-serif;
 
-    color: var(--text-color-2);
-    background-color: var(--ent-button-color);
+    color: var(--color-text-alternate);
+    background-color: var(--color-theme-primary);
 
     border: transparent;
     border-radius: 10px;
@@ -81,12 +81,12 @@
     transition: 0.2s ease-in;
 
     &:hover {
-      background-color: var(--main-color-accent);
+      background-color: var(--color-theme-primary-accent);
     }
 
     svg {
       display: block;
-      fill: var(--text-color-2);
+      fill: var(--color-text-alternate);
       justify-self: end;
       align-self: flex-end;
     }
@@ -101,8 +101,8 @@
     font-weight: 300;
     font-family: "Inter", sans-serif;
 
-    color: var(--text-color-2);
-    background-color: var(--res-button-color);
+    color: var(--color-text-alternate);
+    background-color: var(--color-button-clearform);
 
     border: transparent;
     border-radius: 10px;
@@ -118,7 +118,7 @@
     transition: 0.2s ease-in;
 
     &:hover {
-      background-color: var(--res-button-alt-color);
+      background-color: var(--color-button-clearform-alt);
     }
   }
 }
@@ -138,7 +138,7 @@ input {
   padding-inline: 2em;
   line-height: 3em;
   border-radius: 5px;
-  background-color: var(--textbox-fill-color);
+  background-color: var(--color-input-fill);
   border: thin transparent;
   transition: 0.1s ease;
 
@@ -161,7 +161,7 @@ input {
   font-size: 1rem;
   margin-inline: 1.25rem;
   margin-block: -1rem;
-  color: var(--line-detail-color);
+  color: var(--color-detail-line);
   background-color: transparent;
   transition: 0.2s ease-in-out;
 
@@ -170,8 +170,8 @@ input {
 
 input:focus,
 input:valid {
-  color: var(--text-outline-color);
-  border: 2px solid var(--line-detail-color);
+  color: var(--color-input-border);
+  border: 2px solid var(--color-detail-line);
 }
 
 input:focus + .label-line,
@@ -186,7 +186,7 @@ input:valid + .label-line {
 
 select {
   text-align: center;
-  background-color: var(--textbox-fill-color);
+  background-color: var(--color-input-fill);
   border: transparent;
   border-radius: 5px;
 
@@ -194,7 +194,7 @@ select {
   min-height: 3.1em;
 }
 option:hover {
-  background-color: var(--line-detail-color);
+  background-color: var(--color-detail-line);
 }
 
 .entry-area {

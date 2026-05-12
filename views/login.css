@@ -10,11 +10,11 @@
   justify-content: center;
   align-items: center;
 
-  background: var(--bg-color);
+  background: var(--color-panel-background);
 }
 
 .main-container {
-  background-color: var(--fg-color);
+  background-color: var(--color-panel-foreground);
   width: 30vw;
 }
 
@@ -22,7 +22,7 @@
   font-family: "Kumbh Sans", "Inter", sans-serif;
   justify-content: center;
   align-items: center;
-  background: var(--fg-color);
+  background: var(--color-panel-foreground);
   padding: 2em;
 
   position: relative;
@@ -37,7 +37,7 @@
   }
 
   a {
-    color: var(--link-color);
+    color: var(--color-text-link);
     text-decoration: none;
   }
 
@@ -64,7 +64,7 @@
     font-weight: 300;
     font-family: "Inter", sans-serif;
 
-    color: var(--text-color-2);
+    color: var(--color-text-alternate);
     background-color: var(--ent-button-color);
 
     border: transparent;
@@ -82,7 +82,7 @@
     transition: 0.2s ease-in;
 
     &:hover {
-      background-color: var(--main-color-accent);
+      background-color: var(--color-theme-primary-accent);
     }
   }
 }
@@ -102,7 +102,7 @@ input {
   padding-inline: 2em;
   line-height: 3em;
   border-radius: 5px;
-  background-color: var(--textbox-fill-color);
+  background-color: var(--color-input-fill);
   border: thin transparent;
   transition: 0.1s ease;
 
@@ -116,7 +116,7 @@ input {
   margin-inline: 1.25rem;
   padding-block: 0;
   margin-block: -1rem;
-  color: var(--line-detail-color);
+  color: var(--color-detail-line);
   transition: 0.2s ease-in-out;
 
   z-index: 10;
@@ -124,8 +124,8 @@ input {
 
 input:focus,
 input:valid {
-  color: var(--text-outline-color);
-  border: 2px solid var(--line-detail-color);
+  color: var(--color-input-border);
+  border: 2px solid var(--color-detail-line);
 }
 
 input:focus + .label-line,

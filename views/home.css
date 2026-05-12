@@ -89,7 +89,7 @@ main {
   opacity: 0.8;
 
   position: relative;
-  background-color: var(--cell-color, #aaa);
+  background-color: var(--color-display-cell, #aaa);
   padding: 1rem;
   border-radius: 0.25rem;
   box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
@@ -176,7 +176,7 @@ main {
   display: inline-block;
   width: 1em;
   height: 1em;
-  background: var(--status-occupied-color);
+  background: var(--color-status-occupied);
   border-radius: 50%;
   margin-left: 0.2em;
 }
@@ -211,16 +211,16 @@ main {
 }
 
 .occupied {
-  background: var(--status-occupied-color);
+  background: var(--color-status-occupied);
 }
 .vacant {
-  background: var(--status-available-color);
+  background: var(--color-status-vacant);
 }
 .reserved {
-  background: var(--status-reserved-color);
+  background: var(--color-status-reserved);
 }
 .offline {
-  background: var(--status-offline-color);
+  background: var(--color-status-closed);
 }
 
 @media (max-width: 800px) {
