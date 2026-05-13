@@ -1,9 +1,19 @@
 <?php
-    require_once('../bl/sectionManage.php');
-    require_once('../bl/roomManage.php');
-    require_once('../bl/scheduleManage.php');
-    require_once('../bl/scheduleTypeManage.php');
-    require_once('../bl/dayManage.php');
+    // require_once('../bl/sectionManage.php');
+    require_once dirname(__DIR__, 2) . '/bl/sectionManage.php';
+    
+    // require_once('../bl/roomManage.php');
+    require_once dirname(__DIR__, 2) . '/bl/roomManage.php';
+    
+    // require_once('../bl/scheduleManage.php');
+    require_once dirname(__DIR__, 2) . '/bl/scheduleManage.php';
+    
+    // require_once('../bl/scheduleTypeManage.php');
+    require_once dirname(__DIR__, 2) . '/bl/scheduleTypeManage.php';
+    
+    // require_once('../bl/dayManage.php');
+    require_once dirname(__DIR__, 2) . '/bl/dayManage.php';
+
 
     $roommanagement = new roomManage();
     $rooms = $roommanagement -> getRooms();
@@ -36,11 +46,11 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-    <link rel="stylesheet" href="components/main.css">
+    <link rel="stylesheet" href="../components/main.css">
     <link rel="stylesheet" href="admin2.css">
     
     <nav>   
-        <?php include_once("components/navbarAdmin.html");?>
+        <?php include_once("../components/navbarAdmin.html");?>
     </nav>
     <script defer src="../scripts/service.js"></script>
 </head>
@@ -50,7 +60,7 @@
             $("#myTable").DataTable();
         }); 
     </script>
-    <?php include_once("components/adminSideNavbar.html");?>
+    <?php include_once("adminSideNavbar.html");?>
     <main class="main-border-box main-top">
         <div class="input-area">
             <div class="entry-area">

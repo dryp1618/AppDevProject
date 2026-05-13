@@ -1,5 +1,6 @@
 <?php
-    require_once('../bl/userManage.php');
+    // require_once('../bl/userManage.php');
+    require_once dirname(__DIR__, 2) . '/bl/userManage.php';
 
     $usermanagement = new userManage();
     $users = $usermanagement -> getUser();
@@ -18,11 +19,11 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-    <link rel="stylesheet" href="components/main.css">
+    <link rel="stylesheet" href="../components/main.css">
     <link rel="stylesheet" href="admin1.css">
 
     <nav>   
-        <?php include_once("components/navbarAdmin.html");?>
+        <?php include_once("../components/navbarAdmin.html");?>
     </nav>
     <script defer type="text/javascript" src="../scripts/service.js"></script>
     <script defer type="text/javascript" src="../scripts/dataTable.js"></script>
@@ -33,7 +34,7 @@
             $("#myTable").DataTable();
         }); 
     </script>
-    <?php include_once("components/adminSideNavbar.html");?>
+    <?php include_once("adminSideNavbar.html");?>
     <main class="main-border-box">
         <table class="display compact" id="myTable">
             <thead>

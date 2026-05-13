@@ -1,6 +1,9 @@
 <?php
-    require_once("../model/database.php");
-    require_once("../model/schedTypeModel.php");
+    // require_once("../model/database.php");
+    require_once __DIR__ . '/../model/database.php';
+    
+    // require_once("../model/schedTypeModel.php");
+    require_once __DIR__ . '/../model/schedTypeModel.php';
 
     class schedTypeManage{
         private $sTypeModel;

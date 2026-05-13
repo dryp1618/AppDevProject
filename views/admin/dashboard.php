@@ -37,8 +37,8 @@
     
     
     <link rel="stylesheet" href="../components/main.css">
-    <link rel="stylesheet" href="../admin1.css">
-    <link rel="stylesheet" href="../adminDashboard.css">
+    <link rel="stylesheet" href="admin1.css">
+    <link rel="stylesheet" href="adminDashboard.css">
     <nav>   
         <?php include_once("../components/navbarAdmin.html");?>
     </nav>
@@ -68,7 +68,7 @@
             $("#myTable").DataTable();
         }); 
     </script>
-    <?php include_once("../components/adminSideNavbar.html");?>
+    <?php include_once("adminSideNavbar.html");?>
     <main class="main-border-box">
         <div class="card-area">
             <div class="card-item card-red tooltip">
