@@ -13,7 +13,7 @@
   --color-panel-foreground: #f6f6f6;
 
   --color-theme-primary: #b73b3b;
-  --color-theme-primary-accent: #b73b3b;
+  --color-theme-primary-accent: #ce4545;
 
   --color-display-cell: #f8feff;
   --color-display-cell-selected: var(--color-black);
@@ -22,6 +22,7 @@
   --color-navbar-accent: var(--color-theme-primary-accent);
 
   --color-button-enter: var(--color-navbar-primary);
+  --color-button-enter-alt: var(--color-navbar-primary-accent);
   --color-button-clearform: #918f8f;
   --color-button-clearform-alt: #817f7f;
   --color-button-disable: #636363;

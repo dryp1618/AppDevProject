@@ -56,33 +56,33 @@
   gap: 1rem;
 
   button {
-    width: 70%;
-    height: 2em;
-
-    line-height: 1;
-    font-size: 1.5em;
-    font-weight: 300;
-    font-family: "Inter", sans-serif;
-
-    color: var(--color-text-alternate);
-    background-color: var(--ent-button-color);
-
-    border: transparent;
-    border-radius: 10px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 1em;
 
+    gap: 1em;
     padding: 10px 20px;
-    border: var(--button-color);
+
+    height: auto;
+    width: 70%;
+
+    font-family: "Inter", sans-serif;
+    font-size: 1.5em;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--color-white);
+
+    background-color: var(--color-button-enter);
+
+    border: 1px solid var(--color-button-enter);
+    border-radius: 10px;
 
     cursor: pointer;
-    transition: 0.2s ease-in;
+
+    transition: background-color 0.2s ease-in;
 
     &:hover {
-      background-color: var(--color-theme-primary-accent);
+      background-color: #ce4545;
     }
   }
 }
