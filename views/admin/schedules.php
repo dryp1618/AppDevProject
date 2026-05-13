@@ -50,7 +50,9 @@
     <link rel="stylesheet" href="admin2.css">
     
     <nav>   
-        <?php include_once("../components/navbarAdmin.html");?>
+        <?php //cinclude_once("../components/navbarAdmin.html");?>
+        <?php require_once dirname(__DIR__, 2) . '/views/components/navbarAdmin.html';?>
+
     </nav>
     <script defer src="../scripts/service.js"></script>
 </head>
