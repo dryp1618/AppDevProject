@@ -21,9 +21,9 @@
 
 ## Priority
 
+- Sweet alert
 - Implement user roles. Every registration is a non-privileged user, assign session when logging in
 - Sidebar functionality in index and home page
-- Sweet alert
 
 ## Inessential
 
