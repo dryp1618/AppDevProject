@@ -66,20 +66,26 @@ function newUserRegisterFunc() {
   var userID = document.getElementById("regID").value.trim();
   var email = document.getElementById("email").value.trim();
   var phone = document.getElementById("phone").value.trim();
-  var usrPass = document.getElementById("userPassword").value.trim();
+  var password = document.getElementById("userPassword").value.trim();
 
+  const idRegex = /^\d+$/;
   const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-  const phoneRegex = /^0(9\d{9}|[2-9]\d{7,8})$./; //philippine local phone numbers
+  const phoneRegex = /^0(9\d{9}|[2-8]\d{7,8})$/; //philippine local phone numbers
   const passwordRegex = /^(?=.*[0-9])(?=.*[_.!@#$*])[^\s]{6,}$/; //at least one number, one special character, more than 6 characters
 
-  if (firstName.length < 3 && lastName.length < 3) {
+  if (!idRegex.test(userID)) {
+    console.log("Invalid ID.");
+    return;
+  }
+
+  if (firstName.length < 3 || lastName.length < 3) {
     console.log(
       "First or Last name too short. Three or more characters required.",
     );
     return;
   }
-  if (userID.length == 10) {
-    console.log("User ID is only 10 digits.");
+  if (userID.length !== 10) {
+    console.log("User ID should only be 10 digits.");
     return;
   }
 
@@ -107,7 +113,7 @@ function newUserRegisterFunc() {
       regUserID: userID,
       regEmail: email,
       regPhone: phone,
-      regPass: usrPass,
+      regPass: password,
     },
     success: (returnData) => {
       console.log("Data sent to register user.");
@@ -161,6 +167,13 @@ function deleteUserFunc(userID) {
 function loginFunc() {
   var loginID = document.getElementById("loginID").value.trim();
   var password = document.getElementById("userPassword").value.trim();
+
+  const loginIdRegex = /^\d+$/;
+
+  if (!loginIdRegex.test(loginID)) {
+    console.log("Invalid ID.");
+    return;
+  }
 
   $.ajax({
     url: "../controllers/userController.php",

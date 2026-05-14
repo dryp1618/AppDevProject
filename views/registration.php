@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="entry-area">
-                        <input type="text" id="regID" minlength="11" maxlength="11" required validate>
+                        <input type="text" id="regID" minlength="10" maxlength="11" required validate>
                         <label for="regID" class="label-line">ID Number</label>
                         <!-- <span class="req-error" id="err-id-number"></span> -->
                     </div>
@@ -53,7 +53,7 @@
                         <span class="req-error" id="err-email"></span>
                     </div>
                     <div class="entry-area">
-                        <input type="tel" id="phone" pattern="^0(9\d{9}|[2-9]\d{7,8})$" required pattern validate minlength="5" maxlength="9">
+                        <input type="tel" id="phone" pattern="^0(9\d{9}|[2-8]\d{7,8})$" required pattern validate minlength="5" maxlength="11">
                         <label for="phone" class="label-line">Phone Number</label>
                         <!-- <span class="req-error" id="err-phone-number"></span> -->
                     </div>
