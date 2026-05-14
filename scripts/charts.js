@@ -8,15 +8,10 @@ new Chart(pie, {
     labels: window.PieData.labels,
     datasets: [
       {
-        label: "Percentage of current room statuses",
+        label: "Current count of room statuses",
         data: window.PieData.data,
         borderWidth: 2,
-        backgroundColor: [
-          "#F1948A",
-          "#82E0AA",
-          "#85C1E9",
-          "#BFC9CA",
-        ],
+        backgroundColor: ["#F1948A", "#82E0AA", "#85C1E9", "#BFC9CA"],
       },
     ],
   },
