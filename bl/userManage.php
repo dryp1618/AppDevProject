@@ -1,8 +1,5 @@
 <?php
-    // require_once("../model/database.php");
     require_once __DIR__ . '/../model/database.php';
-    
-    // require_once("../model/usersModel.php");
     require_once __DIR__ . '/../model/usersModel.php';
 
     class userManage{

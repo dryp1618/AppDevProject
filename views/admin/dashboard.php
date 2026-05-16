@@ -1,9 +1,6 @@
 <?php
-    // require_once('../../bl/roomManage.php');
     require_once dirname(__DIR__, 2) . '/bl/roomManage.php';
-    // require_once('../bl/scheduleManage.php');
     require_once dirname(__DIR__, 2) . '/bl/scheduleManage.php';
-    // require_once('../bl/dayManage.php');
     require_once dirname(__DIR__, 2) . '/bl/dayManage.php';
 
     $roommanagement = new roomManage();
@@ -40,11 +37,9 @@
     <link rel="stylesheet" href="admin1.css">
     <link rel="stylesheet" href="adminDashboard.css">
     <nav>   
-        <?php // include_once("../components/navbarAdmin.html");?>
         <?php require_once dirname(__DIR__, 2) . '/views/components/navbarAdmin.html';?>
-
     </nav>
-    <script defer type="text/javascript" src="../scripts/dataTable.js"></script>
+    <script defer type="text/javascript" src="../../scripts/dataTable.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer type="text/javascript" src="../../scripts/service.js"></script>
     <script defer type="text/javascript" src="../../scripts/charts.js"></script>

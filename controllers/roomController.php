@@ -6,9 +6,5 @@
         if (isset($_POST['disableRoom'])) {
             $roomManage -> toggleDisable($_POST['disableRoom']);
             exit;
-        } else if(isset($_POST['reqDetail'])){
-            
-            // echo json_encode();
-            exit;
         }
 ?>

@@ -1,17 +1,8 @@
 <?php
-    // require_once('../bl/sectionManage.php');
     require_once dirname(__DIR__, 2) . '/bl/sectionManage.php';
-    
-    // require_once('../bl/roomManage.php');
     require_once dirname(__DIR__, 2) . '/bl/roomManage.php';
-    
-    // require_once('../bl/scheduleManage.php');
     require_once dirname(__DIR__, 2) . '/bl/scheduleManage.php';
-    
-    // require_once('../bl/scheduleTypeManage.php');
     require_once dirname(__DIR__, 2) . '/bl/scheduleTypeManage.php';
-    
-    // require_once('../bl/dayManage.php');
     require_once dirname(__DIR__, 2) . '/bl/dayManage.php';
 
 
@@ -50,11 +41,9 @@
     <link rel="stylesheet" href="admin2.css">
     
     <nav>   
-        <?php //cinclude_once("../components/navbarAdmin.html");?>
         <?php require_once dirname(__DIR__, 2) . '/views/components/navbarAdmin.html';?>
-
     </nav>
-    <script defer src="../scripts/service.js"></script>
+    <script defer src="../../scripts/service.js"></script>
 </head>
 <body>
     <script async>

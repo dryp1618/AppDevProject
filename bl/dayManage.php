@@ -1,8 +1,5 @@
 <?php
-    // require_once("../model/database.php");
     require_once __DIR__ . '/../model/database.php';
-    
-    // require_once("../model/daysModel.php");
     require_once __DIR__ . '/../model/daysModel.php';
 
     class dayManage{

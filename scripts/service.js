@@ -150,7 +150,7 @@ function updateUserFunc(userID) {
 
 function deleteUserFunc(userID) {
   $.ajax({
-    url: "../controllers/userController.php",
+    url: "../../controllers/userController.php",
     type: "POST",
     data: {
       delID: userID,
@@ -220,7 +220,7 @@ function addNewSchedule() {
   var timeOut = document.getElementById("timeOut").value;
 
   $.ajax({
-    url: "../controllers/scheduleController.php",
+    url: "../../controllers/scheduleController.php",
     type: "POST",
     data: {
       newSchedType: type,
@@ -248,7 +248,7 @@ function changeSchedInfo(sched_id) {
   var timeOut = document.getElementById("timeOut").value;
 
   $.ajax({
-    url: "../controllers/scheduleController.php",
+    url: "../../controllers/scheduleController.php",
     type: "POST",
     data: {
       updSchedID: sched_id,
@@ -270,7 +270,7 @@ function changeSchedInfo(sched_id) {
 
 function deleteSchedule(sched_id) {
   $.ajax({
-    url: "../controllers/scheduleController.php",
+    url: "../../controllers/scheduleController.php",
     type: "POST",
     data: {
       delSchedID: sched_id,
@@ -288,7 +288,7 @@ function deleteSchedule(sched_id) {
 
 function toggleRoom(sched_id) {
   $.ajax({
-    url: "../controllers/roomController.php",
+    url: "../../controllers/roomController.php",
     type: "POST",
     data: {
       disableRoom: sched_id,

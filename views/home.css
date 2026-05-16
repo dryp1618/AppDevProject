@@ -147,6 +147,29 @@ main {
   font-weight: bold;
 }
 
+.no-room-selected {
+  color: #666666;
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 1px;
+  line-height: 1.4;
+
+  flex-grow: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.line {
+  border: none;
+  border-top: 1px solid #b5b5b5;
+  width: 100%;
+  margin: 0;
+}
+
 .room-list {
   display: flex;
   flex-flow: column nowrap;

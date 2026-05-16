@@ -1,7 +1,5 @@
 <?php
-    // require_once("../model/database.php");
     require_once __DIR__ . '/../model/database.php';
-    // require_once("../model/roomsModel.php");
     require_once __DIR__ . '/../model/roomsModel.php';
 
     class roomManage{
@@ -29,15 +27,10 @@
             $response = $this->roomModel->readRoomsModel();
             return $response->fetchAll(PDO::FETCH_ASSOC);
         }
-        
 
         public function updateStatus(){
             try {
-                if($this->roomModel->updateStatusModel()){
-                    // echo "Updating each room status...";
-                }else{
-                    echo "Error encountered while updating status.";
-                }
+                $this->roomModel->updateStatusModel();
             } catch (InvalidArgumentException $ex) {
                 http_response_code(500);
                 echo $ex->getMessage();

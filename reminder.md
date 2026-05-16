@@ -19,22 +19,28 @@
 - Emailer [✅]
 - GitHub [✅]
 
-## Priority
+## Priorit
 
 - Sweet alert
+- Dynamic Cards actually dynamic (not just dynamic data)
+- Password validation, allowing or disallowing user inputs, show user the type requirements, confirm password twice
+- Make emailer formatted better
+- Fix navbar implementation.
 - Implement user roles. Every registration is a non-privileged user, assign session when logging in
-- Sidebar functionality in index and home page
+- Sidebar can appear and clear and update color and room name, but not show next 3 schedules
+- Make root path a constant for both JS and PHP
+- Want to reserve a room? Contact `roomtrack.admin@gmail.com` in home page only
 
 ## Inessential
 
 - Fix font size, and family (make it universal)
-- Fix CSS grid layout (bigger grid then split into smaller grid)
+- Fix CSS grid layout just optimize
 - Update logic to prevent schedule duplicates
 - Update logic to prevent user duplicates
 - Update notification to inform admin if there's schedule conflicts
 - Add admin or user sessions
 - Chart count doesn't count closed rooms as part of a working hour and therefore should reduce the "free time & room" count
-- Implement SPA
+- Implement routing & SPA
 - Optimize everything for performance, robustness, and remove redundance
 
 * Why store your phone numbers with a varchar with a 15 char limit? cause that's the E.164 standard
