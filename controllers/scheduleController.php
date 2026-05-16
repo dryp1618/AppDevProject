@@ -34,8 +34,6 @@
                 <center><p>$room</p></center>
                 <center><h3><strong>Section</strong></h3></center>
                 <center><p>$section</p></center>
-                <center><h3><strong>Day</strong></h3></center>
-                <center><p>$dateOfRes</p></center>
                 <center><h3><strong>Date of Creation</strong></h3></center>
                 <center><p>$datenow</p></center>
                 ";
