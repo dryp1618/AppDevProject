@@ -24,12 +24,11 @@
 - Sweet alert
 - Dynamic Cards actually dynamic (not just dynamic data)
 - Password validation, allowing or disallowing user inputs, show user the type requirements, confirm password twice
-- Make emailer formatted better
-- Fix navbar implementation.
-- Implement user roles. Every registration is a non-privileged user, assign session when logging in
+- Fix navbar implementation
+- Implement user roles. Every registration is a non-privileged user, assign session when logging in. User Controller handles setting the session variables
 - Sidebar can appear and clear and update color and room name, but not show next 3 schedules
 - Make root path a constant for both JS and PHP
-- Want to reserve a room? Contact `roomtrack.admin@gmail.com` in home page only
+- Want to reserve a room? Contact `roomtrack.admin@gmail.com` in home page footer only
 
 ## Inessential
 

@@ -12,9 +12,10 @@
 
                 $days = ['Sunday', 'Monday', 'Tuesday', 'Wedesday', 'Thursday', 'Friday', 'Saturday'];
 
-                $dateOfRes = htmlspecialchars($days[$_POST['newSchedDay']]);
+                $day = htmlspecialchars($days[$_POST['newSchedDay']]);
                 $room = htmlspecialchars($_POST['newSchedRoom']);
-                $timeSpan = htmlspecialchars($_POST['newSchedTimeIn'] . ' - ' . $_POST['newSchedTimeOut']);
+                $timeStart = htmlspecialchars(date_format(date_create($_POST['newSchedTimeIn']),"g:iA"));
+                $timeEnd = htmlspecialchars(date_format(date_create($_POST['newSchedTimeOut']),"g:iA"));
                 $section = htmlspecialchars($_POST['newSchedSect']);
                 $datenow = htmlspecialchars(date('Y-m-d H:i:s'));
 
@@ -24,21 +25,14 @@
                     die('Invalid email!');
                 }
 
-                $body = "
-                <center><h2>Room Reservation created</h2></center>
-                <center><h3><strong>Day</strong></h3></center>
-                <center><p>$dateOfRes</p></center>
-                <center><h3><strong>Time</strong></h3></center>
-                <center><p>$timeSpan</p></center>
-                <center><h3><strong>Room</strong></h3></center>
-                <center><p>$room</p></center>
-                <center><h3><strong>Section</strong></h3></center>
-                <center><p>$section</p></center>
-                <center><h3><strong>Day</strong></h3></center>
-                <center><p>$dateOfRes</p></center>
-                <center><h3><strong>Date of Creation</strong></h3></center>
-                <center><p>$datenow</p></center>
-                ";
+                $body = file_get_contents(__DIR__ . '/emailFormat.html');
+
+                $body = str_replace('{{section}}', $section, $body);
+                $body = str_replace('{{room}}', $room, $body);
+                $body = str_replace('{{day}}', $day, $body);
+                $body = str_replace('{{start}}', $timeStart, $body);
+                $body = str_replace('{{end}}', $timeEnd, $body);
+                $body = str_replace('{{date}}', $datenow, $body);
                     
                 //receiver, name of receiver, subject, body
                 $result = sendEmail(
