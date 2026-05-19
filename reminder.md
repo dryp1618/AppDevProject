@@ -10,16 +10,7 @@
 * Student view: Can request to reserve a room, can logout, user account (change info)
 * Admin view: See dashboard (graphs, tables, cards), can see view homepage, can logout
 
-# To-Do
-
-- Hashing [✅]
-- Input Validation [✅]
-- Dynamic Cards [✅]
-- Dynamic Charts [✅]
-- Emailer [✅]
-- GitHub [✅]
-
-## Priorit
+## Priority
 
 - Sweet alert
 - Dynamic Cards actually dynamic (not just dynamic data)
@@ -28,7 +19,6 @@
 - Implement user roles. Every registration is a non-privileged user, assign session when logging in. User Controller handles setting the session variables
 - Sidebar can appear and clear and update color and room name, but not show next 3 schedules
 - Make root path a constant for both JS and PHP
-- Want to reserve a room? Contact `roomtrack.admin@gmail.com` in home page footer only
 
 ## Inessential
 
@@ -44,6 +34,9 @@
 
 * Why store your phone numbers with a varchar with a 15 char limit? cause that's the E.164 standard
   https://dev.to/jkprod/best-way-to-store-phone-numbers-in-your-app-1j1o
+
+* Copied email from Entry #6
+  https://reallygooddesigns.com/free-responsive-html-email-templates/
 
 # Hashing
 

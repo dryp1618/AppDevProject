@@ -78,7 +78,7 @@ function newUserRegisterFunc() {
     return;
   }
 
-  if (firstName.length < 3 || lastName.length < 3) {
+  if (firstName.length < 3 && lastName.length < 3) {
     console.log(
       "First or Last name too short. Three or more characters required.",
     );
