@@ -17,6 +17,8 @@
 - Email formatted properly [✅]
 - Dynamic Cards actually dynamic (not just dynamic data) [✅]
 - Password validation, allowing or disallowing user inputs, show user the type requirements, confirm password twice [✅]
+- Update logic to prevent schedule duplicates [✅]
+- Update logic to prevent user duplicates [✅]
 - Implement user roles. Every registration is a non-privileged user, assign session when logging in. User Controller handles setting the session variables [✅]
 
 - Fix navbar implementation
@@ -27,10 +29,7 @@
 
 - Fix font size, and family (make it universal)
 - Fix CSS grid layout just optimize
-- Update logic to prevent schedule duplicates
-- Update logic to prevent user duplicates
 - Update notification to inform admin if there's schedule conflicts
-- Add admin or user sessions
 - Chart count doesn't count closed rooms as part of a working hour and therefore should reduce the "free time & room" count
 - Implement routing & SPA
 - Optimize everything for performance, robustness, and remove redundance
