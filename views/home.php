@@ -52,7 +52,7 @@
             <div id="sidebar-view"></div>
         </aside>
     </div>
-    <?php require_once("components/footer.html");?>
+    <?php require_once("components/footerHome.html");?>
     <script defer type="text/javascript" src="../scripts/script.js"></script>
 </body>
 </html>

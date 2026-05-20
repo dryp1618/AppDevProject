@@ -14,8 +14,9 @@
 
 - Email formatted properly [✅]
 - Sweet alert [✅]
-- Dynamic Cards actually dynamic (not just dynamic data)
-- Password validation, allowing or disallowing user inputs, show user the type requirements, confirm password twice
+- Dynamic Cards actually dynamic (not just dynamic data) [✅]
+
+- Password validation, allowing or disallowing user inputs, show user the type requirements, confirm password twice [✅]
 - Fix navbar implementation
 - Implement user roles. Every registration is a non-privileged user, assign session when logging in. User Controller handles setting the session variables
 - Sidebar can appear and clear and update color and room name, but not show next 3 schedules

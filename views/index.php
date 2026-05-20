@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room Tracker | Homepage</title>
     <link rel="stylesheet" href="components/main.css">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <script async>
@@ -44,10 +44,9 @@
         <main class="main-border-box">
             <div id="grid-room-container"></div>
         </main>
-        <aside class="main-border-box invis" id="sidebar">
-            <div id="sidebar-view"></div>
-        </aside>
     </div>
+        <?php require_once("components/footerBlank.html");?>
+
     <script defer type="text/javascript" src="../scripts/script.js"></script>
 
 </body>

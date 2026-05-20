@@ -55,7 +55,7 @@
 
         public function getRoomStat(){
             $response = $this->roomModel->readRoomStatus();
-            return $response->fetch(PDO::FETCH_ASSOC);
+            return $response->fetchAll(PDO::FETCH_ASSOC);
         }
 
     }
