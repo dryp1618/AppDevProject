@@ -53,7 +53,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1em;
 
   .btn-enter {
     width: 70%;
@@ -125,9 +124,11 @@
 
 .entry-area {
   position: relative;
-  height: 3.1em;
-  list-style: 80px;
+  min-height: 3.1em;
+  height: 5.5em;
   width: 80%;
+  padding-bottom: 2.2rem;
+  height: 6.5em;
 }
 
 input {
@@ -197,17 +198,20 @@ option:hover {
   background-color: var(--color-detail-line);
 }
 
-.entry-area {
-  margin-bottom: 1.5rem;
-}
-
 .req-error {
   display: none;
-  font-size: 12px;
+  position: absolute;
+  font-size: 0.8rem;
   color: red;
-  margin-top: 5px;
+  width: 100%;
+  top: 3.4em;
+  left: 0;
+  z-index: 11;
+  line-height: 1.2;
+  white-space: normal;
 }
 
 .req-error.visible {
   display: block;
+  padding-top: 1em;
 }

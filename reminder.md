@@ -12,7 +12,8 @@
 
 ## Priority
 
-- Sweet alert
+- Email formatted properly [✅]
+- Sweet alert [✅]
 - Dynamic Cards actually dynamic (not just dynamic data)
 - Password validation, allowing or disallowing user inputs, show user the type requirements, confirm password twice
 - Fix navbar implementation
