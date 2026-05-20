@@ -39,6 +39,7 @@
   --color-text-sub-primary: #f0efef;
   --color-text-alternate: var(--color-white);
   --color-text-link: #1277a2;
+  --color-text-link-alt: #fcd34d;
 
   --color-input-fill: #d9d9d9;
   --color-input-border: #5c5c5c;
@@ -132,16 +133,36 @@ nav svg {
 .footer-container {
   background: var(--color-navbar-accent);
   width: 100%;
-  height: 4em;
+  min-height: 4em;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.footer-container p {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
 }
 
 .footer-container a {
   text-decoration: none;
-  color: var(--color-text-link);
+  color: var(--color-text-link-alt);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-container .material-symbols-outlined {
+  vertical-align: middle;
+  font-size: 1.25rem;
 }
 
 /* ==== MOBILE RESPONSIVE ===== */
