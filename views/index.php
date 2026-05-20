@@ -35,11 +35,8 @@
                 <span class="room-status"></span>
             </label>
         </div>
-    </template>
-    <nav>   
-        <button onclick="toggleSidebar()" class="mobile-only">Button</button>
-        <?php include_once("components/navbarPublic.html");?>
-    </nav>
+    </template> 
+        <?php require_once("components/navbar.php");?>
     <div class="main-content">
         <main class="main-border-box">
             <div id="grid-room-container"></div>

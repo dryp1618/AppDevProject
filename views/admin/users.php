@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once dirname(__DIR__, 2) . '/bl/userManage.php';
 
     $usermanagement = new userManage();
@@ -20,10 +21,6 @@
 
     <link rel="stylesheet" href="../components/main.css">
     <link rel="stylesheet" href="admin1.css">
-
-    <nav>
-        <?php require_once dirname(__DIR__, 2) . '/views/components/navbarAdmin.html';?>
-    </nav>
     <script defer type="text/javascript" src="../../scripts/service.js"></script>
 </head>
 <body>
@@ -32,6 +29,9 @@
             $("#myTable").DataTable();
         }); 
     </script>
+    <nav>
+        <?php require_once dirname(__DIR__, 2) . '/views/components/navbar.php';?>
+    </nav>
     <?php include_once("adminSideNavbar.html");?>
     <main class="main-border-box">
         <table class="display compact" id="myTable">

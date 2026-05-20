@@ -62,11 +62,16 @@
 
         public function loginUser($inputID, $inputPass){
             try {
-                if($this->userModel->loginUserModel($inputID, $inputPass)){
-                    return true;
-                }else{
+                $response = $this->userModel->loginUserModel($inputID, $inputPass);
+                
+                if (!$response) {
                     return false;
                 }
+                return [
+                    'userID' => $response['userID'], 
+                    'roleID' => $response['roleID']  
+                ];
+
             } catch (InvalidArgumentException $ex) {
                 http_response_code(500);
                 echo $ex->getMessage();

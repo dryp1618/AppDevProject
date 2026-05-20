@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once("../bl/roomManage.php");
 
     $roommanagement = new roomManage();
@@ -40,10 +41,7 @@
             </label>
         </div>
     </template>
-    <nav>   
-        <button onclick="toggleSidebar()" class="mobile-only">Button</button>
-        <?php include_once("components/navbarAdmin.html");?>
-    </nav>
+        <?php require_once("components/navbar.php");?>
     <div class="main-content">
         <main class="main-border-box">
             <div id="grid-room-container"></div>

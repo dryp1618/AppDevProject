@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once dirname(__DIR__, 2) . '/bl/sectionManage.php';
     require_once dirname(__DIR__, 2) . '/bl/roomManage.php';
     require_once dirname(__DIR__, 2) . '/bl/scheduleManage.php';
@@ -40,12 +41,12 @@
     <link rel="stylesheet" href="../components/main.css">
     <link rel="stylesheet" href="admin2.css">
     
-    <nav>   
-        <?php require_once dirname(__DIR__, 2) . '/views/components/navbarAdmin.html';?>
-    </nav>
     <script defer src="../../scripts/service.js"></script>
 </head>
 <body>
+    <nav>
+        <?php require_once dirname(__DIR__, 2) . '/views/components/navbar.php';?>
+    </nav>
     <script async>
         $(document).ready(function () {
             $("#myTable").DataTable();

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once dirname(__DIR__, 2) . '/bl/roomManage.php';
     require_once dirname(__DIR__, 2) . '/bl/scheduleManage.php';
     require_once dirname(__DIR__, 2) . '/bl/dayManage.php';
@@ -59,9 +60,10 @@
     <link rel="stylesheet" href="../components/main.css">
     <link rel="stylesheet" href="admin1.css">
     <link rel="stylesheet" href="adminDashboard.css">
-    <nav>   
-        <?php require_once dirname(__DIR__, 2) . '/views/components/navbarAdmin.html';?>
+    <nav>
+        <?php require_once dirname(__DIR__, 2) . '/views/components/navbar.php';?>
     </nav>
+    
     <script defer type="text/javascript" src="../../scripts/dataTable.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer type="text/javascript" src="../../scripts/service.js"></script>
