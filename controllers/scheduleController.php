@@ -1,9 +1,15 @@
 <?php
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     require_once('../bl/scheduleManage.php');
     require_once('../helper/sendEmail.php');
 
     $schedManage = new scheduleManage();
+
+        if(!($loggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true && ($_SESSION['userRole'] === 1))){
+            exit;
+        }
 
         if (isset($_POST['newSchedType'], $_POST['newSchedSect'], $_POST['newSchedRoom'], $_POST['newSchedDay'], $_POST['newSchedTimeIn'], $_POST['newSchedTimeOut'])) {
             $schedManage -> registerNewSchedule($_POST['newSchedType'], $_POST['newSchedSect'], $_POST['newSchedRoom'], $_POST['newSchedDay'], $_POST['newSchedTimeIn'], $_POST['newSchedTimeOut']);
