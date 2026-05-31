@@ -6,8 +6,14 @@
 
     $roomManage = new roomManage();
 
-    if(!($loggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true && ($_SESSION['userRole'] === 1))){
-            exit;
+    if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+        http_response_code(0);
+        exit;
+    }
+
+    if ($_SESSION['userRole'] !== 1) {
+        http_response_code(0);
+        exit;
     }
 
     if (isset($_POST['disableRoom'])) {

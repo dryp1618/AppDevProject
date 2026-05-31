@@ -7,7 +7,13 @@
 
     $schedManage = new scheduleManage();
 
-        if(!($loggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true && ($_SESSION['userRole'] === 1))){
+        if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+            http_response_code(0);
+            exit;
+        }
+
+        if ($_SESSION['userRole'] !== 1) {
+            http_response_code(0);
             exit;
         }
 
