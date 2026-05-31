@@ -10,11 +10,11 @@
   justify-content: center;
   align-items: center;
 
-  background: var(--bg-color);
+  background: var(--color-panel-background);
 }
 
 .main-container {
-  background-color: var(--fg-color);
+  background-color: var(--color-panel-foreground);
   width: 30vw;
 }
 
@@ -22,7 +22,7 @@
   font-family: "Kumbh Sans", "Inter", sans-serif;
   justify-content: center;
   align-items: center;
-  background: var(--fg-color);
+  background: var(--color-panel-foreground);
   padding: 2em;
 
   position: relative;
@@ -37,7 +37,7 @@
   }
 
   a {
-    color: var(--link-color);
+    color: var(--color-text-link);
     text-decoration: none;
   }
 
@@ -56,33 +56,33 @@
   gap: 1rem;
 
   button {
-    width: 70%;
-    height: 2em;
-
-    line-height: 1;
-    font-size: 1.5em;
-    font-weight: 300;
-    font-family: "Inter", sans-serif;
-
-    color: var(--text-color-2);
-    background-color: var(--ent-button-color);
-
-    border: transparent;
-    border-radius: 10px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 1em;
 
+    gap: 1em;
     padding: 10px 20px;
-    border: var(--button-color);
+
+    height: auto;
+    width: 70%;
+
+    font-family: "Inter", sans-serif;
+    font-size: 1.5em;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--color-white);
+
+    background-color: var(--color-button-enter);
+
+    border: 1px solid var(--color-button-enter);
+    border-radius: 10px;
 
     cursor: pointer;
-    transition: 0.2s ease-in;
+
+    transition: background-color 0.2s ease-in;
 
     &:hover {
-      background-color: var(--main-color-accent);
+      background-color: #ce4545;
     }
   }
 }
@@ -102,7 +102,7 @@ input {
   padding-inline: 2em;
   line-height: 3em;
   border-radius: 5px;
-  background-color: var(--textbox-fill-color);
+  background-color: var(--color-input-fill);
   border: thin transparent;
   transition: 0.1s ease;
 
@@ -116,7 +116,7 @@ input {
   margin-inline: 1.25rem;
   padding-block: 0;
   margin-block: -1rem;
-  color: var(--line-detail-color);
+  color: var(--color-detail-line);
   transition: 0.2s ease-in-out;
 
   z-index: 10;
@@ -124,8 +124,8 @@ input {
 
 input:focus,
 input:valid {
-  color: var(--text-outline-color);
-  border: 2px solid var(--line-detail-color);
+  color: var(--color-input-border);
+  border: 2px solid var(--color-detail-line);
 }
 
 input:focus + .label-line,

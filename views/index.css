@@ -16,10 +16,6 @@ nav {
 .main-content {
   height: 90vh;
   width: 100%;
-  display: grid;
-
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas: "main sidebar";
 
   gap: 1em;
   padding: 1em;
@@ -27,14 +23,6 @@ nav {
   align-items: center;
 
   box-sizing: border-box;
-}
-
-.main-content:has(.invis) {
-  grid-template-columns: 1fr;
-}
-
-.invis {
-  display: none;
 }
 
 aside {
@@ -184,7 +172,6 @@ main {
   margin-top: 1em;
 }
 
-
 .room-item {
   background: #eaeaea;
   padding: 1em;
@@ -192,7 +179,6 @@ main {
   margin-bottom: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .room-header {
   font-size: 2rem;

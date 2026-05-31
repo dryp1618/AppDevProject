@@ -12,9 +12,10 @@
 
                 $days = ['Sunday', 'Monday', 'Tuesday', 'Wedesday', 'Thursday', 'Friday', 'Saturday'];
 
-                $dateOfRes = htmlspecialchars($days[$_POST['newSchedDay']]);
+                $day = htmlspecialchars($days[$_POST['newSchedDay']]);
                 $room = htmlspecialchars($_POST['newSchedRoom']);
-                $timeSpan = htmlspecialchars($_POST['newSchedTimeIn'] . '-' . $_POST['newSchedTimeOut']);
+                $timeStart = htmlspecialchars(date_format(date_create($_POST['newSchedTimeIn']),"g:iA"));
+                $timeEnd = htmlspecialchars(date_format(date_create($_POST['newSchedTimeOut']),"g:iA"));
                 $section = htmlspecialchars($_POST['newSchedSect']);
                 $datenow = htmlspecialchars(date('Y-m-d H:i:s'));
 
@@ -23,15 +24,15 @@
                 if(!$email){
                     die('Invalid email!');
                 }
-                    
-                $body = "
-                <h3>Room Reservation created</h3>
-                <p><strong>Day:</strong> $dateOfRes</p>
-                <p><strong>Time:</strong> $timeSpan</p>
-                <p><strong>Room:</strong><br> $room</p>
-                <p><strong>Section:</strong><br> $section</p>
-                <p><strong>Date of creation:</strong><br> $datenow</p>
-                ";
+
+                $body = file_get_contents(__DIR__ . '/emailFormat.html');
+
+                $body = str_replace('{{section}}', $section, $body);
+                $body = str_replace('{{room}}', $room, $body);
+                $body = str_replace('{{day}}', $day, $body);
+                $body = str_replace('{{start}}', $timeStart, $body);
+                $body = str_replace('{{end}}', $timeEnd, $body);
+                $body = str_replace('{{date}}', $datenow, $body);
                     
                 //receiver, name of receiver, subject, body
                 $result = sendEmail(
@@ -52,6 +53,17 @@
             $schedManage -> changeScheduleInfo($_POST['updSchedID'], $_POST['updSchedType'], $_POST['updSchedRoom'], $_POST['updSchedSect'], $_POST['updSchedDay'], $_POST['updSchedTimeIn'], $_POST['updSchedTimeOut']);
         } else if(isset($_POST['delSchedID'])){
             $schedManage -> removeScheduleEntry($_POST['delSchedID']);
+            exit;
+        } else if(isset($_POST['reqRoomDetail'])){
+            $schedules = $schedManage->getNextScheds($_POST['reqRoomDetail']);
+
+            $response = [
+                "id"    => $_POST['reqRoomDetail'],
+                "name"  => $_POST['reqRoomDetail'],
+                "slots" => $schedules
+            ];
+
+            echo json_encode($response);
             exit;
         }
 ?>

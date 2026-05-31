@@ -16,7 +16,6 @@
             date_default_timezone_set('Asia/Manila');
             $datenow = date('Y-m-d H:i:s');
 
-            // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $hashedPassword = password_hash($password, PASSWORD_ARGON2ID);
             
             $response->bindParam(":userID", $userID);
@@ -74,18 +73,21 @@
             $response->bindParam(":userID", $userID);
             $response->execute();
 
-            $passCheck = $response->fetch(PDO::FETCH_ASSOC);
+            $userRow = $response->fetch(PDO::FETCH_ASSOC);
 
-            if(!isset($passCheck['password'])){
+            if (!$userRow || !isset($userRow['password'])) {
                 return false;
             }
 
-            if($userPassword == $passCheck['password']){
-                return true;
+            if ($userPassword === $userRow['password']) {
+                return $userRow;
             }
 
-            return password_verify($userPassword, $passCheck['password']);
-            exit;
+            if (password_verify($userPassword, $userRow['password'])) {
+                return $userRow;
+            }
+            
+            return false;
         }
     }
 ?>

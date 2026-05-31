@@ -22,7 +22,6 @@
   transition: color 0.2s ease;
 }
 
-/* gradient sweep from left */
 .panel-select a::before {
   content: "";
   position: absolute;
@@ -33,7 +32,6 @@
   border-radius: 8px;
 }
 
-/* left accent bar */
 .panel-select a::after {
   content: "";
   position: absolute;

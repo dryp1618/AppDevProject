@@ -15,12 +15,17 @@
             $usermanagement -> removeUser($_POST['delID']);
             exit;
         } else if(isset($_POST['loginID'], $_POST['loginPass'])){
-            $confirmLogin = $usermanagement->loginUser($_POST['loginID'], $_POST['loginPass']);
-
-            if($confirmLogin){
+            $userData = $usermanagement->loginUser($_POST['loginID'], $_POST['loginPass']);
+            if($userData !== false){
+                $_SESSION['loggedIn'] = true;
+                $_SESSION['userID']   = $userData['userID'];
+                $_SESSION['userRole'] = $userData['roleID'];
+                
                 echo json_encode(['success' => true, 'message' => 'Login authorized.']);
             } else {
+                $_SESSION['loggedIn'] = false;
                 echo json_encode(['success' => false, 'message' => 'Wrong credentials.']);
             }
+            exit;
         }
 ?>

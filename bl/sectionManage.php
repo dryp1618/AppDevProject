@@ -1,6 +1,6 @@
 <?php
-    require_once("../model/database.php");
-    require_once("../model/sectionModel.php");
+    require_once __DIR__ . '/../model/database.php';
+    require_once __DIR__ . '/../model/sectionModel.php';
 
     class sectionManage{
         private $secModel;

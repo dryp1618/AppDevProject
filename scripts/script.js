@@ -1,26 +1,7 @@
 const sidebar = document.getElementById("sidebar");
-
 function toggleSidebar() {
   sidebar.classList.toggle("show");
 }
-
-// const rooms = [
-//   { id: 1, name: 2001, status: "occupied" },
-//   { id: 2, name: 2002, status: "vacant" },
-//   { id: 3, name: 2003, status: "occupied" },
-//   { id: 4, name: 2004, status: "reserved" },
-//   { id: 5, name: 2005, status: "occupied" },
-//   { id: 6, name: 2006, status: "occupied" },
-//   { id: 7, name: 2007, status: "occupied" },
-//   { id: 8, name: 2008, status: "closed" },
-//   { id: 9, name: 2009, status: "occupied" },
-//   { id: 10, name: 2010, status: "occupied" },
-//   { id: 11, name: 2011, status: "occupied" },
-//   { id: 12, name: 2012, status: "vacant" },
-//   { id: 13, name: 2013, status: "vacant" },
-//   { id: 14, name: 2014, status: "reserved" },
-//   { id: 15, name: 2015, status: "occupied" },
-// ];
 
 const container = document.getElementById("grid-room-container");
 const template = document.getElementById("room-template");
@@ -33,6 +14,7 @@ container.addEventListener("click", function (e) {
     if (checked) {
       checked.checked = false;
       checked.dataset.wasChecked = "false";
+      clearSidebar();
     }
   }
 });
@@ -44,14 +26,10 @@ const colorMap = {
   4: "#878787", //closed
 };
 
-const selectedRoomId = document.querySelector(
-  'input[name="room-selection"]:checked',
-)?.value;
-
-if (selectedRoomId) {
-  console.log("User selected room:", selectedRoomId);
-} else {
-  console.log("No room selected yet.");
+function clearSidebar() {
+  app.innerHTML = `<hr class="line">
+  <div class="no-room-selected">NO ROOM SELECTED</div>
+  <hr class="line">`;
 }
 
 function createRoomCard(room) {
@@ -67,7 +45,7 @@ function createRoomCard(room) {
     4: "Closed",
   };
 
-  const uniqueId = `room-${room.id}`;
+  const uniqueId = `${room.id}`;
   input.id = uniqueId;
   card.setAttribute("for", uniqueId);
   input.value = room.id;
@@ -83,30 +61,17 @@ function createRoomCard(room) {
     if (this.dataset.wasChecked === "true") {
       this.checked = false;
       this.dataset.wasChecked = "false";
+      clearSidebar();
     } else {
       document
         .querySelectorAll('input[name="room-selection"]')
         .forEach((i) => (i.dataset.wasChecked = "false"));
       this.dataset.wasChecked = "true";
+      fetchRoomData(this.value);
     }
   });
 
   return clone;
-}
-
-function updateRoomStatus(id, newStatus) {
-  const card = document.querySelector(`.room-card[data-id="${id}"]`);
-
-  if (card) {
-    const statusEl = card.querySelector(".room-status");
-    if (statusEl) statusEl.textContent = newStatus;
-
-    const newColor = colorMap[newStatus] || "#878787";
-    card.style.setProperty("--status-color", newColor);
-
-    card.style.transform = "scale(1.02)";
-    setTimeout(() => (card.style.transform = "scale(1)"), 200);
-  }
 }
 
 function groupByFloor(rooms) {
@@ -147,19 +112,83 @@ function renderRooms(rooms) {
 
 renderRooms(rooms);
 
-// ===========================
-const roomsSched = [
-  {
-    id: 1,
-    name: 2005,
-    status: "occupied",
-    slots: [
-      { type: "occupied", label: "2ITA", time: "10:00 - 13:00" },
-      { type: "vacant", label: "VACANT", time: "13:00 - 14:00" },
-      { type: "reserved", label: "RESERVED", time: "14:00 - 17:00" },
-    ],
-  },
-];
+// ===========================================================================
+
+//  ==============================================================
+
+function getSelectedRoomId() {
+  return (
+    document.querySelector('input[name="room-selection"]:checked')?.value ??
+    null
+  );
+}
+
+// const roomsSched = [
+//   {
+//     id: 1,
+//     name: 2005,
+//     status: "occupied",
+//     slots: [
+//       { type: "occupied", label: "2ITA", time: "10:00 - 13:00" },
+//       { type: "vacant", label: "VACANT", time: "13:00 - 14:00" },
+//       { type: "reserved", label: "RESERVED", time: "14:00 - 17:00" },
+//     ],
+//   },
+// ];
+
+function fetchRoomData(roomId) {
+  $.ajax({
+    url: "../controllers/scheduleController.php",
+    type: "POST",
+    data: { reqRoomDetail: roomId },
+    dataType: "json",
+    success: function (data) {
+      console.log("raw data:", data);
+      console.log("slots:", data.slots);
+      const roomSched = {
+        ...data,
+        slots: buildSlotsWithVacant(data.slots),
+      };
+      app.innerHTML = "";
+      app.appendChild(createSideRoomCard(roomSched));
+    },
+    error: function (xhr, status, err) {
+      console.error("Request failed: ", status, err);
+    },
+  });
+}
+
+function buildSlotsWithVacant(slots) {
+  if (!slots.length) return [];
+
+  const result = [];
+
+  for (let i = 0; i < slots.length; i++) {
+    result.push(slots[i]);
+
+    // Check gap between current end and next start
+    if (i < slots.length - 1) {
+      const currEnd = slots[i].time.split(" - ")[1];
+      const nextStart = slots[i + 1].time.split(" - ")[0];
+
+      if (currEnd !== nextStart) {
+        result.push({
+          type: "vacant",
+          label: "VACANT",
+          time: `${currEnd} - ${nextStart}`,
+        });
+      }
+    }
+  }
+
+  return result;
+}
+
+document.querySelectorAll('input[name="room-selection"]').forEach((radio) => {
+  radio.addEventListener("change", () => {
+    document.getElementById("sidebar").classList.remove("invis");
+  });
+});
 
 const app = document.getElementById("sidebar-view");
 
@@ -167,33 +196,52 @@ function createSideRoomCard(room) {
   const card = document.createElement("div");
   card.className = "room-list";
 
+  const statusKey = getCurrentStatus(room.slots);
+  const dotColor = colorMap[statusKey];
+
   card.innerHTML = `
     <div class="room-header">
       ${room.name}
-      <span class="status-dot"></span>
+      <span class="status-dot" style="background-color: ${dotColor}"></span>
     </div>
-    <div class="room-status">Occupied</div>
+    <div class="room-status">${statusKey === 1 ? "Occupied" : "Vacant"}</div>
   `;
+  if (!room.slots || room.slots.length === 0) {
+    const empty = document.createElement("div");
+    empty.textContent = "No upcoming schedules.";
+    card.appendChild(empty);
+    return card;
+  }
 
   room.slots.forEach((slot) => {
     const slotDiv = document.createElement("div");
     slotDiv.className = "slot";
-
     slotDiv.innerHTML = `
-      <div class="slot-header ${slot.type}">
-        ${slot.label}
-      </div>
-      <div class="slot-time">
-        ${slot.time}
-      </div>
+      <div class="slot-header ${slot.type}">${slot.label}</div>
+      <div class="slot-time">${slot.time}</div>
     `;
-
     card.appendChild(slotDiv);
   });
 
   return card;
 }
 
-roomsSched.forEach((room) => {
-  app.appendChild(createSideRoomCard(room));
-});
+function getCurrentStatus(slots) {
+  const now = new Date();
+  const currMinutes = now.getHours() * 60 + now.getMinutes();
+
+  for (const slot of slots) {
+    if (slot.type === "vacant") continue;
+
+    const [startStr, endStr] = slot.time.split(" - ");
+    const [sh, sm] = startStr.split(":").map(Number);
+    const [eh, em] = endStr.split(":").map(Number);
+    const startMinutes = sh * 60 + sm;
+    const endMinutes = eh * 60 + em;
+
+    if (currMinutes >= startMinutes && currMinutes <= endMinutes) {
+      return 1; // occupied
+    }
+  }
+  return 2; // vacant
+}

@@ -1,64 +1,116 @@
-// == VALIDATION ===
-// const rules = [
-//   {
-//     input: document.getElementById("txtfName"),
-//     error: document.getElementById("err-first-name"),
-//     validate(v) {
-//       if (!v) return "Username is required.";
-//       if (v.length < 3)
-//         return `Too short — need ${3 - v.length} more character${3 - v.length > 1 ? "s" : ""}.`;
-//       if (/\s/.test(v)) return "No spaces allowed.";
-//       return null;
-//     },
-//   },
-//   {
-//     input: document.getElementById("txtlName"),
-//     error: document.getElementById("err-last-name"),
-//     validate(v) {
-//       if (!v) return "Username is required.";
-//       if (v.length < 3)
-//         return `Too short — need ${3 - v.length} more character${3 - v.length > 1 ? "s" : ""}.`;
-//       if (/\s/.test(v)) return "No spaces allowed.";
-//       return null;
-//     },
-//   },
-//   {
-//     input: document.getElementById("email"),
-//     error: document.getElementById("err-email"),
-//     validate(v) {
-//       if (!v) return "Email is required.";
-//       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v))
-//         return "Enter a valid email address.";
-//       return null;
-//     },
-//   },
-//   {
-//     input: document.getElementById("password"),
-//     error: document.getElementById("err-password"),
-//     validate(v) {
-//       if (!v) return "Password is required.";
-//       if (v.length < 8)
-//         return `Too short — need ${8 - v.length} more character${8 - v.length > 1 ? "s" : ""}.`;
-//       if (!/\d/.test(v)) return "Must contain at least one number.";
-//       if (!/[^a-zA-Z0-9]/.test(v)) return "Must contain at least one symbol.";
-//       return null;
-//     },
-//   },
-// ];
+//  =========================== VALIDATION =====================================
+function allowOnlyNumbers(element) {
+  element.value = element.value.replace(/[^0-9]/g, "");
+}
+function allowOnlyLetters(element) {
+  element.value = element.value.replace(/[^a-zA-Z]/g, "");
+}
 
-// rules.forEach(({ input, error, validate }) => {
-//   input.addEventListener("input", () => {
-//     const msg = validate(input.value);
-//     if (msg) {
-//       error.textContent = msg;
-//       error.classList.add("visible");
-//     } else {
-//       error.classList.remove("visible");
-//     }
-//   });
-// });
+function setError(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add("visible");
+}
+
+function clearError(id) {
+  const el = document.getElementById(id);
+  el.textContent = "";
+  el.classList.remove("visible");
+}
+
+function validate() {
+  const pw = document.getElementById("userPassword").value;
+  const confirm = document.getElementById("confPassword").value;
+  let valid = true;
+
+  if (pw === "") {
+    setError("err-password", "Password cannot be empty.");
+    valid = false;
+  } else if (!/^(?=.*[0-9])(?=.*[_.!@#$*])[^\s]{6,}$/.test(pw)) {
+    setError(
+      "err-password",
+      "Password needs 6+ characters, one number, and one special character (_ . ! @ # $ *).",
+    );
+    valid = false;
+  } else {
+    clearError("err-password");
+  }
+
+  if (confirm === "") {
+    setError("err-confirm", "Please confirm your password.");
+    valid = false;
+  } else if (pw !== confirm) {
+    setError("err-confirm", "Passwords do not match.");
+    valid = false;
+  } else {
+    clearError("err-confirm");
+  }
+
+  return valid;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") newUserRegisterFunc();
+  });
+
+  document.getElementById("userPassword").addEventListener("input", validate);
+  document.getElementById("confPassword").addEventListener("input", validate);
+
+  document.getElementById("txtfName").addEventListener("input", () => {
+    const val = document.getElementById("txtfName").value.trim();
+    val.length < 3
+      ? setError("err-fname", "First name needs at least 3 characters.")
+      : clearError("err-fname");
+  });
+
+  document.getElementById("txtlName").addEventListener("input", () => {
+    const val = document.getElementById("txtlName").value.trim();
+    val.length < 3
+      ? setError("err-lname", "Last name needs at least 3 characters.")
+      : clearError("err-lname");
+  });
+
+  document.getElementById("regID").addEventListener("input", () => {
+    const val = document.getElementById("regID").value.trim();
+    !/^\d+$/.test(val) || val.length !== 10
+      ? setError("err-id", "ID must be exactly 10 digits.")
+      : clearError("err-id");
+  });
+
+  document.getElementById("email").addEventListener("input", () => {
+    const val = document.getElementById("email").value.trim();
+    const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+    !emailRegex.test(val)
+      ? setError("err-email", "Invalid email address.")
+      : clearError("err-email");
+  });
+
+  document.getElementById("phone").addEventListener("input", () => {
+    const val = document.getElementById("phone").value.trim();
+    const phoneRegex = /^0(9\d{9}|[2-8]\d{7,8})$/;
+    !phoneRegex.test(val)
+      ? setError("err-phone", "Invalid Philippine phone number.")
+      : clearError("err-phone");
+  });
+});
 
 //  =========================== USER =====================================
+
+function swalError(mes) {
+  return Swal.fire(mes, "", "error");
+}
+function swalCheck(mes) {
+  return Swal.fire(mes, "", "success");
+}
+function swalConfirm(mes) {
+  return Swal.fire({
+    title: mes,
+    showCancelButton: true,
+    confirmButtonText: "Confirm",
+    cancelButtonTezt: "Cancel",
+  });
+}
 
 function newUserRegisterFunc() {
   var firstName = document.getElementById("txtfName").value.trim();
@@ -66,37 +118,41 @@ function newUserRegisterFunc() {
   var userID = document.getElementById("regID").value.trim();
   var email = document.getElementById("email").value.trim();
   var phone = document.getElementById("phone").value.trim();
-  var usrPass = document.getElementById("userPassword").value.trim();
+  var password = document.getElementById("userPassword").value.trim();
 
+  const idRegex = /^\d+$/;
   const emailRegex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-  const phoneRegex = /^0(9\d{9}|[2-9]\d{7,8})$./; //philippine local phone numbers
-  const passwordRegex = /^(?=.*[0-9])(?=.*[_.!@#$*])[^\s]{6,}$/; //at least one number, one special character, more than 6 characters
+  const phoneRegex = /^0(9\d{9}|[2-8]\d{7,8})$/;
 
-  if (firstName.length < 3 && lastName.length < 3) {
-    console.log(
-      "First or Last name too short. Three or more characters required.",
-    );
-    return;
-  }
-  if (userID.length == 10) {
-    console.log("User ID is only 10 digits.");
-    return;
-  }
+  let valid = true;
+
+  if (firstName.length < 3) {
+    setError("err-fname", "First name needs at least 3 characters.");
+    valid = false;
+  } else clearError("err-fname");
+
+  if (lastName.length < 3) {
+    setError("err-lname", "Last name needs at least 3 characters.");
+    valid = false;
+  } else clearError("err-lname");
+
+  if (!idRegex.test(userID) || userID.length !== 10) {
+    setError("err-id", "ID must be exactly 10 digits.");
+    valid = false;
+  } else clearError("err-id");
 
   if (!emailRegex.test(email)) {
-    console.log("Invalid email.");
-    return;
-  }
+    setError("err-email", "Invalid email address.");
+    valid = false;
+  } else clearError("err-email");
 
   if (!phoneRegex.test(phone)) {
-    console.log("Invalid phone number.");
-    return;
-  }
+    setError("err-phone", "Invalid Philippine phone number.");
+    valid = false;
+  } else clearError("err-phone");
 
-  if (!passwordRegex.test(password)) {
-    console.log("Invalid password.");
-    return;
-  }
+  if (!valid) return;
+  if (!validate()) return;
 
   $.ajax({
     url: "../controllers/userController.php",
@@ -107,14 +163,15 @@ function newUserRegisterFunc() {
       regUserID: userID,
       regEmail: email,
       regPhone: phone,
-      regPass: usrPass,
+      regPass: password,
     },
     success: (returnData) => {
-      console.log("Data sent to register user.");
+      swalCheck("Regustration Successful!");
       window.location.href = "../views/login.php";
     },
     error: (xhr) => {
       alert(xhr.status + " : " + xhr.responseText);
+      swalError(xhr.responseText || "An Error occurred! Please try again.");
     },
   });
 }
@@ -144,7 +201,7 @@ function updateUserFunc(userID) {
 
 function deleteUserFunc(userID) {
   $.ajax({
-    url: "../controllers/userController.php",
+    url: "../../controllers/userController.php",
     type: "POST",
     data: {
       delID: userID,
@@ -162,6 +219,13 @@ function loginFunc() {
   var loginID = document.getElementById("loginID").value.trim();
   var password = document.getElementById("userPassword").value.trim();
 
+  const loginIdRegex = /^\d+$/;
+
+  if (!loginIdRegex.test(loginID)) {
+    console.log("Invalid ID.");
+    return;
+  }
+
   $.ajax({
     url: "../controllers/userController.php",
     type: "POST",
@@ -172,14 +236,14 @@ function loginFunc() {
     dataType: "json",
     success: (returnData) => {
       if (returnData.success) {
-        console.log(returnData.message || "Login works.");
+        swalConfirm("Logging in! Please wait." || returnData.message);
         window.location.href = "../views/home.php";
       } else {
         console.log(returnData.message || "Login fails.");
       }
     },
     error: (xhr) => {
-      alert(xhr.status + " : " + xhr.responseText);
+      swalError(xhr.responseText || "Error loggin in, please try again.");
     },
   });
 }
@@ -207,7 +271,7 @@ function addNewSchedule() {
   var timeOut = document.getElementById("timeOut").value;
 
   $.ajax({
-    url: "../controllers/scheduleController.php",
+    url: "../../controllers/scheduleController.php",
     type: "POST",
     data: {
       newSchedType: type,
@@ -235,7 +299,7 @@ function changeSchedInfo(sched_id) {
   var timeOut = document.getElementById("timeOut").value;
 
   $.ajax({
-    url: "../controllers/scheduleController.php",
+    url: "../../controllers/scheduleController.php",
     type: "POST",
     data: {
       updSchedID: sched_id,
@@ -257,7 +321,7 @@ function changeSchedInfo(sched_id) {
 
 function deleteSchedule(sched_id) {
   $.ajax({
-    url: "../controllers/scheduleController.php",
+    url: "../../controllers/scheduleController.php",
     type: "POST",
     data: {
       delSchedID: sched_id,
@@ -275,7 +339,7 @@ function deleteSchedule(sched_id) {
 
 function toggleRoom(sched_id) {
   $.ajax({
-    url: "../controllers/roomController.php",
+    url: "../../controllers/roomController.php",
     type: "POST",
     data: {
       disableRoom: sched_id,

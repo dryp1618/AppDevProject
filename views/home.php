@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once("../bl/roomManage.php");
 
     $roommanagement = new roomManage();
@@ -22,6 +23,10 @@
     <title>Room Tracker | Homepage</title>
     <link rel="stylesheet" href="components/main.css">
     <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
 </head>
 <body>
     <script defer>
@@ -36,18 +41,16 @@
             </label>
         </div>
     </template>
-    <nav>   
-        <button onclick="toggleSidebar()" class="mobile-only">Button</button>
-        <?php include_once("components/navbarAdmin.html");?>
-    </nav>
+        <?php require_once("components/navbar.php");?>
     <div class="main-content">
         <main class="main-border-box">
             <div id="grid-room-container"></div>
         </main>
-        <aside class="main-border-box" id="sidebar">
+        <aside class="main-border-box invis" id="sidebar">
             <div id="sidebar-view"></div>
         </aside>
     </div>
+    <?php require_once("components/footerHome.html");?>
     <script defer type="text/javascript" src="../scripts/script.js"></script>
 </body>
 </html>

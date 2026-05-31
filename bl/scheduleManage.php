@@ -1,6 +1,6 @@
 <?php
-    require_once("../model/database.php");
-    require_once("../model/scheduleModel.php");
+    require_once __DIR__ . '/../model/database.php';
+    require_once __DIR__ . '/../model/scheduleModel.php';
 
     class scheduleManage{
         private $schedModel;
@@ -64,6 +64,34 @@
                 exit;
             }
         }
+
+                public function getNextScheds($room_number){
+                    $rows = $this->schedModel->getSideScheds($room_number)->fetchAll(PDO::FETCH_ASSOC);
+
+                    date_default_timezone_set('Asia/Manila');
+                    $currTime = date('H:i:s');
+                    $status = "vacant";
+
+                    $slots = [];
+                    foreach($rows as $row){
+                        // Check if current time falls within this slot
+                        if($currTime >= $row['time_start'] && $currTime <= $row['time_end']){
+                            $status = "occupied";
+                        }
+
+                        $slots[] = [
+                            "type"  => "occupied",
+                            "label" => $row["section_code"],
+                            "time" => substr($row["time_start"], 0, 5) . " - " . substr($row["time_end"], 0, 5)
+                        ];
+                    }
+
+                    return [
+                        "name"   => $room_number,
+                        "status" => $status,
+                        "slots"  => $slots
+                    ];
+                }
     }
 
 

@@ -1,7 +1,8 @@
 <?php
-    require_once('../bl/roomManage.php');
-    require_once('../bl/scheduleManage.php');
-    require_once('../bl/dayManage.php');
+    session_start();
+    require_once dirname(__DIR__, 2) . '/bl/roomManage.php';
+    require_once dirname(__DIR__, 2) . '/bl/scheduleManage.php';
+    require_once dirname(__DIR__, 2) . '/bl/dayManage.php';
 
     $roommanagement = new roomManage();
     $roommanagement->updateStatus();
@@ -10,14 +11,37 @@
     $busyRms = $roommanagement->getBusiestCount();
     $availDays = $roommanagement->getTotalAvailableDailyHour();
 
-    $statusLabel = array_map('ucfirst' ,array_keys($rmStat));
-    $statusData = array_values($rmStat);
+    $statusLabel = array_column($rmStat, 'status_name');
+    $statusData = array_column($rmStat, 'status_count');
 
     $busyLabel = array_column($busyRms, 'room_number');
     $busyData = array_column($busyRms, 'total_hours');
 
     $availDailyLabel = array_column($availDays, 'day_name');
     $availDailyData = array_column($availDays, 'vacant_hours');
+
+    $statusConfig = [
+    'occupied' => [
+        'class' => 'card-red',
+        'label' => 'Occupied',
+        'desc'  => 'Current Occupied Room count within 30 minute interval'
+    ],
+    'vacant' => [
+        'class' => 'card-green',
+        'label' => 'Vacant',
+        'desc'  => 'Current Available Room count within 30 minute interval'
+    ],
+    'reserved' => [
+        'class' => 'card-blue',
+        'label' => 'Reserved',
+        'desc'  => 'Current Reserved Room count within 30 minute interval'
+    ],
+    'closed' => [
+        'class' => 'card-blank',
+        'label' => 'Closed',
+        'desc'  => 'Current Closed Room count within 30 minute interval'
+    ]
+];
 
 ?>
 
@@ -33,16 +57,17 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css">
     
     
-    <link rel="stylesheet" href="components/main.css">
+    <link rel="stylesheet" href="../components/main.css">
     <link rel="stylesheet" href="admin1.css">
     <link rel="stylesheet" href="adminDashboard.css">
-    <nav>   
-        <?php include_once("components/navbarAdmin.html");?>
+    <nav>
+        <?php require_once dirname(__DIR__, 2) . '/views/components/navbar.php';?>
     </nav>
-    <script defer type="text/javascript" src="../scripts/dataTable.js"></script>
+    
+    <script defer type="text/javascript" src="../../scripts/dataTable.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script defer type="text/javascript" src="../scripts/service.js"></script>
-    <script defer type="text/javascript" src="../scripts/charts.js"></script>
+    <script defer type="text/javascript" src="../../scripts/service.js"></script>
+    <script defer type="text/javascript" src="../../scripts/charts.js"></script>
 </head>
 <body>
     <script>
@@ -65,30 +90,23 @@
             $("#myTable").DataTable();
         }); 
     </script>
-    <?php include_once("components/adminSideNavbar.html");?>
+    <?php include_once("adminSideNavbar.html");?>
     <main class="main-border-box">
         <div class="card-area">
-            <div class="card-item card-red tooltip">
-                <span class="room-count"><?=  $rmStat['occupied'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
-                <span class="tooltiptext">Current Occupied Room count within 30 minute interval</span>
-                Occupied
-                <!-- current count of rooms within this 30 minute timeframe -->
-            </div>
-            <div class="card-item card-green tooltip">
-                <span class="room-count"><?=  $rmStat['vacant'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
-                <span class="tooltiptext">Current Available Room count within 30 minute interval</span>
-                Vacant
-            </div>
-            <div class="card-item card-blue tooltip">
-                <span class="room-count"><?=  $rmStat['reserved'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
-                <span class="tooltiptext">Current Reserved Room count within 30 minute interval</span>
-                Reserved
-            </div>
-            <div class="card-item card-blank tooltip">
-                <span class="room-count"><?=  $rmStat['closed'] ?> / <?=  $rmTotal['room_count'] ?></span> <br>
-                <span class="tooltiptext">Current Closed Room count within 30 minute interval</span>
-                Closed
-            </div>
+            <?php foreach ($rmStat as $stat): 
+                $statusKey = strtolower($stat['status_name']); 
+                if (!isset($statusConfig[$statusKey])) continue; 
+                $config = $statusConfig[$statusKey];
+            ?>
+                <div class="card-item <?= $config['class'] ?> tooltip">
+                    <span class="room-count">
+                        <?= $stat['status_count'] ?> / <?= $rmTotal['room_count'] ?>
+                    </span> <br>
+                    <span class="tooltiptext"><?= $config['desc'] ?></span>
+                    <?= $config['label'] ?>
+                </div>
+            <?php endforeach; ?>
+            
         </div>
         <div class="graph-area">
             <div class="graph-box">

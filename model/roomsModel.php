@@ -53,11 +53,12 @@
 
         public function readRoomStatus(){
             $query = "SELECT 
-                            SUM(IF(statusID = 1, 1, 0)) AS occupied,
-                            SUM(IF(statusID = 2, 1, 0)) AS vacant,
-                            SUM(IF(statusID = 3, 1, 0)) AS reserved,
-                            SUM(IF(statusID = 4, 1, 0)) AS closed
-                        FROM tbl_rooms;";
+                        tbl_roomstatus.status_name,
+                        COUNT(tbl_rooms.room_number) AS status_count
+                    FROM tbl_roomstatus
+                    LEFT JOIN tbl_rooms ON tbl_roomstatus.statusID = tbl_rooms.statusID
+                    WHERE tbl_roomstatus.statusID IN (1, 2, 3, 4)
+                    GROUP BY tbl_roomstatus.statusID, tbl_roomstatus.status_name;";
             $response = $this->conn->prepare($query);
             $response->execute();
             return $response;
@@ -103,7 +104,4 @@
             return $response;
         }
     }
-
-
-
 ?>

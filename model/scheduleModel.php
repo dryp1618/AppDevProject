@@ -15,13 +15,16 @@
 
             date_default_timezone_set('Asia/Manila');
             $datenow = date('Y-m-d H:i:s');
+
+            $timeS = date_format(date_create($time_start), "H:i:s");
+            $timeE = date_format(date_create($time_end), "H:i:s");
             
             $response->bindParam(":room_number", $room);
             $response->bindParam(":schedTypeID", $type);
             $response->bindParam(":day_id", $day);
             $response->bindParam(":section_code", $section);
-            $response->bindParam(":time_start", date_format(date_create($time_start), "H:i:s"));
-            $response->bindParam(":time_end", date_format(date_create($time_end), "H:i:s"));
+            $response->bindParam(":time_start",$timeS);
+            $response->bindParam(":time_end", $timeE);
             $response->bindParam(":updatedAt", $datenow);
             $response->bindParam(":createdAt", $datenow);
             
@@ -31,8 +34,6 @@
         }
         
         public function readSchedulesModel(){
-            // $query = "SELECT tbl_users.*, tbl_userroles.role_name FROM tbl_users INNER JOIN tbl_userroles ON tbl_users.roleID = tbl_userroles.roleID";
-
             $query = "SELECT tbl_schedules.*, tbl_schedtype.*, tbl_days.day_name FROM tbl_schedules INNER JOIN tbl_schedtype ON tbl_schedules.schedTypeID = tbl_schedtype.schedTypeID INNER JOIN tbl_days ON tbl_schedules.day_id = tbl_days.day_id";
 
             $response = $this->conn->prepare($query);
@@ -81,6 +82,29 @@
             $response->execute();
             $resp = $response->fetch(PDO::FETCH_ASSOC);
             return (int) $resp[0];
+        }
+
+        public function getSideScheds($id){
+            $query = "SELECT room_number, section_code, time_start, time_end
+                    FROM tbl_schedules
+                    WHERE room_number = :room_number
+                    AND day_id = :day_id
+                    AND time_end > :current_time
+                    ORDER BY time_start ASC
+                    LIMIT 4;";
+
+
+            date_default_timezone_set('Asia/Manila');
+            $currDay = date('w');
+            $currTime = date('H:i:s');
+            
+            $response = $this->conn->prepare($query);
+
+            $response->bindParam(":room_number", $id);
+            $response->bindParam(":day_id", $currDay);
+            $response->bindParam(":current_time", $currTime);
+            $response->execute();
+            return $response;
         }
     }
 ?>

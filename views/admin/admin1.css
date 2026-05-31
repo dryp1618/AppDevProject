@@ -22,7 +22,7 @@ main {
   margin-inline: 1em;
 
   overflow: auto;
-  background-color: var(--fg-color);
+  background-color: var(--color-panel-foreground);
 }
 
 nav {
@@ -49,11 +49,11 @@ aside {
 
   a {
     background-color: transparent;
-    color: var(--text-color-1);
+    color: var(--color-text-primary);
     font-size: 1.5em;
     text-decoration: none;
 
-    border-bottom: solid thin var(--line-detail-color);
+    border-bottom: solid thin var(--color-detail-line);
     transition:
       scale 0.5s ease-in-out,
       background-color 1s ease-in-out;
@@ -78,7 +78,7 @@ table {
 
 .action-button-area .update-button {
   color: inherit;
-  background-color: var(--update-button-color);
+  background-color: var(--color-button-update);
   border-radius: 50%;
   border: none;
   height: 3em;
@@ -89,7 +89,7 @@ table {
 }
 .action-button-area .delete-button {
   color: inherit;
-  background-color: var(--delete-button-color);
+  background-color: var(--color-button-delete);
   border-radius: 50%;
   border: none;
   height: 3em;
