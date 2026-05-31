@@ -39,39 +39,3 @@
 
 * Copied email from Entry #6
   https://reallygooddesigns.com/free-responsive-html-email-templates/
-
-# Hashing
-
-- Password hash = argon2id
-- API encrypt = AES
-
-# Lesson notes:
-
-- Dashboard cards are dynamically generated
-- Every user text input should have a maximum length (dbAllow-1) = maxlength
-- JS can also disallow minimum and maximum characters
-- JS validation always happens on the client-side
-- Another JS RegEx to only allow numbers
-
-- Important validations:
-
-* Text input maximum length
-* Do not allow future date selection
-
-## Github lesson notes:
-
-- If it is collaborative, make one email as the Repo Owner and share the credentials instead
-- Visibility
-  - Public: Anyone can view, download, comment on your code
-  - Private: Only stays within the account
-- gitignore: hides or does not upload certain files or folders
-- In company, there's a separate team that only requests the repo
-
-- dot(.) means all files
-- Commands:
-  - git init: initializes the git
-  - git add
-  - git commit -m "$message$": queues the changes to be uploaded with a message
-  - git push: uploading the code to the repo
-  - git switch -c $branch_name$ : create a new branch
-    - git push -u origin new-branch: pushes a new branch
